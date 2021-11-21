@@ -15,18 +15,18 @@ export const Layout: FunctionComponent = ({ children }) => (
     <div className="mx-16 bg-purple-400 w-full h-full rounded-3xl shadow-sm ">
       <nav className="flex w-full justify-between">
         <span className="text-5xl font-bold pt-7 pl-24 text-white text-shadow-lg">
-          <Link href="/">RNArefiner</Link>
+          <Link href="/main">RNArefiner</Link>
         </span>
 
         <div className="flex justify-around w-1/4 pt-12">
           <span className={navigationStyle}>
-            <Link href="/">About</Link>
+            <Link href="/about">About</Link>
           </span>
           <span className={navigationStyle}>
-            <Link href="/">Help</Link>
+            <Link href="/help">Help</Link>
           </span>
           <span className={navigationStyle + ' pr-12'}>
-            <Link href="/">Cite us</Link>
+            <Link href="/contact">Cite us</Link>
           </span>
         </div>
       </nav>

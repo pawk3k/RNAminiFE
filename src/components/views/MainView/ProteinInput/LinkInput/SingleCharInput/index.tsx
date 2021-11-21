@@ -11,7 +11,7 @@ export const SingleCharInput: FunctionComponent<
       fontWeight: 'bold',
       textAlign: 'center',
     }}
-    className="w-14 h-16 rounded-2xl border-2 border-purple-400 ml-4"
+    className="w-14 h-16 rounded-2xl border-2 border-purple-400 ml-4 outline-none"
     {...props}
   />
 );
