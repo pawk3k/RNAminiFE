@@ -30,7 +30,7 @@ export const Layout: FunctionComponent = ({ children }) => (
           </span>
         </div>
       </nav>
-      {children}
+      <div className="w-full h-full">{children}</div>
     </div>
     {/* <header className="fixed w-full text-center text-2xl bg-green-500">
       <h1>RNArefiner</h1>
