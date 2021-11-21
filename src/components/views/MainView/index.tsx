@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { ChangeEvent, useEffect, useState } from 'react';
 // @ts-ignore
 import parsePdb from 'parse-pdb';
+import { ProteinInput } from './ProteinInput';
 
 const Main: NextPage = () => {
   const [email, setEmail] = useState(false);
@@ -40,7 +41,12 @@ const Main: NextPage = () => {
 
   return (
     <div className="w-full h-full">
-      <main className="w-full h-full">
+      <main className="w-full h-full flex justify-around">
+        <div>lorem</div>
+        <div className="w-1/2">
+          <ProteinInput />
+          {/* <div className="h-96 bg-purple-300 rounded-3xl">kek</div> */}
+        </div>
         {/* <p>Get started by uploading file or picking from Protein DB</p>
         <span>
           <input
