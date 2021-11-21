@@ -14,8 +14,7 @@ This project serves to enhance protein structures.
 To start -> upload `.pdb` file and you will get output in `.pdb` format.
 
 ## Upcoming Features
-- [ ] Uploading file from local machine
+- [x] Uploading file from local machine
+- [x] Add https support on localhost
 - [ ] Downloading the same file from the server
-- [ ] Add https support on localhost
-- [ ] Autocomplete with using `downshift` hooks & debouncing & (api)[https://www.rcsb.org/search/suggest]
 - [ ] NProgress like on github 

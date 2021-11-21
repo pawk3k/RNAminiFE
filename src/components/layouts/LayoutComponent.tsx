@@ -1,8 +1,5 @@
-// Navbar on left side of the page
-
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-// import css file
 
 const style =
   'h-12 rounded bg-gray-400 even:bg-gray-200 cursor-pointer  hover:bg-500 text-center pt-3';
