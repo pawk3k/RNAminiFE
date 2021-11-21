@@ -9,5 +9,5 @@ module.exports = {
       backgroundColor: ['even', 'odd'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-textshadow')],
 };
