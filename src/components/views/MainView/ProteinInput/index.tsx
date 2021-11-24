@@ -4,7 +4,7 @@ import FileInput from './FileInput';
 import LinkInput from './LinkInput';
 
 const ProteinInput: FunctionComponent = () => (
-  <div className="h-96 bg-purple-300 rounded-3xl shadow-md">
+  <div className="h-96  bg-purple-300 rounded-3xl shadow-md">
     <Tabs>
       {({ selectedIndex }): JSX.Element => {
         const getTabStyle = (index: number): object => ({
