@@ -1,14 +1,13 @@
 import 'tailwindcss/tailwind.css';
 
 import type { AppProps } from 'next/app';
-import { Layout } from '../src/components/layouts/LayoutComponent';
+import { FunctionComponent } from 'react';
+import Layout from '../src/components/layouts/LayoutComponent';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  );
-}
+const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) => (
+  <Layout>
+    <Component {...pageProps} />
+  </Layout>
+);
 
 export default MyApp;
