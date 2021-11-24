@@ -1,10 +1,12 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
-import { FunctionComponent } from 'react';
+import { Dispatch, FunctionComponent, SetStateAction } from 'react';
 import FileInput from './FileInput';
 import LinkInput from './LinkInput';
 
-const ProteinInput: FunctionComponent = () => (
-  <div className="h-96  bg-purple-300 rounded-3xl shadow-md">
+const ProteinInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>> }> = ({
+  setFile,
+}) => (
+  <div className="h-96 relative bg-purple-300 rounded-3xl shadow-md">
     <Tabs>
       {({ selectedIndex }): JSX.Element => {
         const getTabStyle = (index: number): object => ({
@@ -22,8 +24,8 @@ const ProteinInput: FunctionComponent = () => (
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel>
-                <FileInput />
+              <TabPanel className="absolute h-5/6 mt-4 w-full">
+                <FileInput setFile={setFile} />
               </TabPanel>
               <TabPanel>
                 <LinkInput />

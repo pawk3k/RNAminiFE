@@ -1,25 +1,15 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // @ts-ignore
-import parsePdb from 'parse-pdb';
-import { ProteinInput } from './ProteinInput';
+import ProteinInput from './ProteinInput';
+import Switch from './Switch/Switch';
 
 const Main: NextPage = () => {
-  const [email, setEmail] = useState(false);
-  const [isOk, setIsOk] = useState<boolean | null>(null);
+  const [isOk] = useState<boolean | null>(null);
   const [file, setFile] = useState('');
-  const showFile = async (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const text = e.target?.result;
-      setFile(String(text));
-    };
-    reader.readAsText(e.target.files![0]);
-  };
 
-  const handleSendFileToServer = async () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleSendFileToServer = async (): Promise<void> => {
     const response = await fetch('http://localhost:8080/api/task', {
       method: 'POST',
       headers: {
@@ -40,52 +30,16 @@ const Main: NextPage = () => {
   }, [isOk]);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full p-14">
       <main className="w-full h-full flex justify-around">
         <div>Get started by uploading file or picking from Protein DB</div>
         <div className="w-1/2">
-          <ProteinInput />
-        </div>
-        {/*<span>
-          <input
-            type="file"
-            accept=".pdb"
-            onChange={(e: ChangeEvent<HTMLInputElement>) => showFile(e)}
-          />
-          <span className="mr-10">or</span>
-          <span>
-            <label htmlFor="autocomplete" className="mr-5">
-              Find your protein:
-            </label>
-            <input id="autocomplete" type="text" className="border-2 rounded" />
-          </span>
-        </span>
-        <div className="mt-3 flex  items-center justify-center">
-          Send notification by email
-          <input
-            type="checkbox"
-            onChange={(): void => setEmail((prevState) => !prevState)}
-          />
-        </div>
-        {email && (
-          <div className="mt-5">
-            <span className="mr-3">email:</span>
-            <input className="border-2 rounded" />
+          <ProteinInput setFile={setFile} />
+          <div className="pt-6 flex">
+            <Switch />
+            Notify me when results are ready
           </div>
-        )}
-        <div style={{ marginTop: '10px' }}>
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => {
-              const { atoms } = parsePdb(file);
-              console.log(file);
-              setIsOk(atoms.length > 0 ? true : false);
-              handleSendFileToServer();
-            }}
-          >
-            Submit
-          </button>
-        </div> */}
+        </div>
       </main>
     </div>
   );
