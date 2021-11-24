@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { SingleCharInput } from './SingleCharInput';
 
-export const LinkInput: FunctionComponent = () => (
+const LinkInput: FunctionComponent = () => (
   <div className="flex justify-center flex-col text-center">
     <div className="mb-6 mt-16" style={{ color: '#6100ff' }}>
       Enter PDB id
@@ -14,3 +14,5 @@ export const LinkInput: FunctionComponent = () => (
     </div>
   </div>
 );
+
+export default LinkInput;

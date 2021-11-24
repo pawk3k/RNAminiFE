@@ -1,6 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-export const FileInput: FunctionComponent = () =>
-(
-    <div>file</div> 
-)
+const FileInput: FunctionComponent = () => <div>file</div>;
+export default FileInput;
