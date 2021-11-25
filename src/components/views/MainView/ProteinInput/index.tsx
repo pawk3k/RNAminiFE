@@ -20,7 +20,7 @@ const ProteinInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>
                 Local file
               </Tab>
               <Tab className="w-1/2 outline-none" style={getTabStyle(1)}>
-                Proteind Data Bank
+                Protein Data Bank
               </Tab>
             </TabList>
             <TabPanels>

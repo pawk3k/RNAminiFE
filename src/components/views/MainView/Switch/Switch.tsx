@@ -1,10 +1,14 @@
-import { FunctionComponent, useState } from 'react';
+import { Dispatch, FunctionComponent, SetStateAction, useState } from 'react';
 
-const Switch: FunctionComponent = () => {
+type SwitchProps = {
+  setEmail: Dispatch<SetStateAction<string | null>>;
+};
+const Switch: FunctionComponent<SwitchProps> = ({ setEmail }) => {
   const [toggle, setToggle] = useState(true);
   const toggleClass = 'transform translate-x-5';
   const handleToggle = (): void => {
     setToggle((prevToggle) => !prevToggle);
+    setEmail(toggle ? '' : null);
   };
   return (
     <div className="flex flex-col justify-center items-center pr-2">
