@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { SingleCharInput } from './SingleCharInput';
+import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => (
   <div className="flex justify-center flex-col text-center">
