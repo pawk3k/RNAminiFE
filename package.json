@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:ci": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "prepare:hooks": "husky install .husky"
   },
   "lint-staged": {
