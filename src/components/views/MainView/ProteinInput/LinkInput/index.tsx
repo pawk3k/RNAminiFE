@@ -77,10 +77,9 @@ const LinkInput: FunctionComponent = () => {
             onKeyDown={handleKeyDown}
             value={character || ''}
             ref={inputRefs[index]}
-            onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void => {
-              console.log(value);
-              handleChange(index, value);
-            }}
+            onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void =>
+              handleChange(index, value)
+            }
           />
         ))}
       </div>
