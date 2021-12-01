@@ -19,12 +19,13 @@ To start -> upload `.pdb` file and you will get output in `.pdb` format.
 
 - [x] Uploading file from local machine
 - [x] Add https support on localhost
-- [ ] Add github actions to a workflow
+- [x] Add github actions to a workflow
+
 - [ ] Implement all pages in sync with design(image below)
 
   1. [ ] Home page
 
-     - [ ] Enhance otp functionality to be more user friendly
+     - [x] Enhance otp functionality to be more user friendly
 
   2. [ ] About page
   3. [ ] Contact page
