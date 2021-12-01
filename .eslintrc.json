@@ -1,5 +1,5 @@
 {
-  "extends": "@masterborn/eslint-config/frontend/typescript",
+  "extends": ["@masterborn/eslint-config/frontend/typescript", "prettier"],
   "rules": {
     "react/jsx-no-useless-fragment": "error",
     "react/react-in-jsx-scope": "off"
