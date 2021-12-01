@@ -13,19 +13,17 @@ const LinkInput: FunctionComponent = () => {
       }
     }
   };
-  // Handle change for each input
+
   const handleChange = (index: number, value: string): void => {
     const newCharacters = [...characters];
-    newCharacters[index] = value;
+    newCharacters[index] = value.length > 1 ? value.split(characters[index]).join('') : value;
     setCharacters(newCharacters);
-    // manage focus with enter
-    if (value.length === 1) {
+    if (newCharacters[index].length === 1) {
       focusNext(index);
     }
   };
 
   useEffect((): void => {
-    // Focus first input
     if (inputRefs[0].current) {
       // @ts-ignore
       inputRefs[0].current.focus();
@@ -77,11 +75,12 @@ const LinkInput: FunctionComponent = () => {
             // eslint-disable-next-line react/no-array-index-key
             key={index}
             onKeyDown={handleKeyDown}
-            value={character}
+            value={character || ''}
             ref={inputRefs[index]}
-            onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void =>
-              handleChange(index, value)
-            }
+            onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void => {
+              console.log(value);
+              handleChange(index, value);
+            }}
           />
         ))}
       </div>

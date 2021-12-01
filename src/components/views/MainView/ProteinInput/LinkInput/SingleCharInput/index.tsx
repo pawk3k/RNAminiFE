@@ -3,7 +3,6 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 const SingleCharInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   (props, ref) => (
     <input
-      maxLength={1}
       ref={ref}
       style={{
         backgroundColor: '#6100ff',
