@@ -9,7 +9,9 @@ const NotFoundView: FunctionComponent = () => {
     <div className="h-full flex mt-36 flex-col items-center">
       <div className="flex justify-center items-center">
         <FourSvg className="" fill="" />
-        <DnaSvg className="duration-500 transition-transform w-20 h-20 hover:transform hover:rotate-180 " />
+        <div className="bg-dashas-pink rounded-full w-28 h-28 flex justify-center items-center">
+          <DnaSvg className="duration-500 fill-current transition-transform w-20 h-20 hover:transform hover:rotate-180 " />
+        </div>
         <FourSvg className="" fill="" />
       </div>
       <div className="text-3xl mb-24">Page not found 😢</div>
