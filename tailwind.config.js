@@ -2,6 +2,7 @@
 const colors = {
   'dashas-purple': '#6100ff',
   'dashas-pink': '#FCEAFF',
+  'dashas-red': '#FF0000',
 };
 
 module.exports = {

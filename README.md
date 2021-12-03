@@ -17,6 +17,9 @@ To start -> upload `.pdb` file and you will get output in `.pdb` format.
 
 ## Upcoming Features
 
+rna svg https://www.svgrepo.com/svg/69771/dna
+4 https://www.svgrepo.com/svg/340740/number-4
+
 - [x] Uploading file from local machine
 - [x] Add https support on localhost
 - [x] Add github actions to a workflow
