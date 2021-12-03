@@ -33,7 +33,9 @@ const Main: NextPage = () => {
   return (
     <div className="w-full h-full p-14">
       <main className="w-full h-full flex justify-around">
-        <div>Get started by uploading file or picking from Protein DB</div>
+        <div className="text-8xl w-1/2 mt-10 ml-10 text-white text-shadow-xl">
+          Start by uploading your file
+        </div>
         <div className="w-1/2">
           <ProteinInput setFile={setFile} />
           <div className="pt-6 flex">

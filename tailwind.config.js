@@ -1,9 +1,16 @@
 // eslint-disable-next-line
+const colors = {
+  'dashas-purple': '#6100ff',
+  'dashas-pink': '#FCEAFF',
+};
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors,
+    },
   },
   variants: {
     extend: {
