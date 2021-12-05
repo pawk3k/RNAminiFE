@@ -2,10 +2,12 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import { Dispatch, FunctionComponent, SetStateAction } from 'react';
 import FileInput from './FileInput';
 import LinkInput from './LinkInput';
+import FileSvg from '../../../../assets/FileSvg';
 
-const ProteinInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>> }> = ({
-  setFile,
-}) => (
+const ProteinInput: FunctionComponent<{
+  file: string;
+  setFile: Dispatch<SetStateAction<string>>;
+}> = ({ setFile, file }) => (
   <div className="h-96 relative bg-purple-300 rounded-3xl shadow-md">
     <Tabs>
       {({ selectedIndex }): JSX.Element => {
@@ -25,7 +27,14 @@ const ProteinInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>
             </TabList>
             <TabPanels>
               <TabPanel className="absolute h-5/6 mt-4 w-full">
-                <FileInput setFile={setFile} />
+                {file ? (
+                  <div className="flex flex-col justify-center items-center h-5/6">
+                    <div className="mb-4">File uploaded sucseed!</div>
+                    <FileSvg />
+                  </div>
+                ) : (
+                  <FileInput setFile={setFile} />
+                )}
               </TabPanel>
               <TabPanel>
                 <LinkInput />

@@ -2,7 +2,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
-import Loading from './Loading';
+import Loading from '../uiKit/Loading';
 
 const navigationStyle = 'text-white text-shadow-lg';
 
@@ -64,7 +64,7 @@ const Layout: FunctionComponent = ({ children }) => {
               </span>
             </div>
           </nav>
-          <div className="w-full h-full relative pb-16">{children}</div>
+          <div className="w-full  relative">{children}</div>
         </div>
       </div>
     </div>

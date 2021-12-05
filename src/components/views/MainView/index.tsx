@@ -1,11 +1,13 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // @ts-ignore
+import parsePdb from 'parse-pdb';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
+import Dialog from '../../uiKit/Dialog';
 
 const Main: NextPage = () => {
-  const [isOk] = useState<boolean | null>(null);
+  const [isOk, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useState('');
   const [email, setEmail] = useState<null | string>(null);
 
@@ -24,9 +26,18 @@ const Main: NextPage = () => {
     alert(response.uuid);
   };
 
+  const checkValidity = () => {
+    const { atoms } = parsePdb(file);
+    setIsOk(atoms.length > 0 ? true : false);
+    if (atoms.length > 0) {
+      // handleSendFileToServer();
+    }
+  };
+
   useEffect(() => {
-    if (isOk) {
-      // alert(isOk ? 'Data sent to processing' : 'File is not correct');
+    console.log(isOk);
+    if (isOk !== null) {
+      alert(isOk ? 'Data sent to processing' : 'File is not correct');
     }
   }, [isOk]);
 
@@ -37,7 +48,7 @@ const Main: NextPage = () => {
           Start by uploading your file
         </div>
         <div className="w-1/2">
-          <ProteinInput setFile={setFile} />
+          <ProteinInput setFile={setFile} file={file} />
           <div className="pt-6 flex">
             <Switch setEmail={setEmail} />
             Notify me when results are ready
@@ -51,6 +62,7 @@ const Main: NextPage = () => {
           )}
           <div className="flex">
             <button
+              onClick={checkValidity}
               type="submit"
               className="mt-6 relative rounded-3xl mx-auto w-1/3 h-10 text-center duration-300 bg-purple-300 shadow-xl transform focus:translate-y-1"
             >
@@ -59,6 +71,10 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
+      <Dialog isOpen={email != null} onDissmis={(): void => setEmail(null)}>
+        <p>The overlay styles are a white fade instead of the default black fade.</p>
+        <button>Very nice.</button>
+      </Dialog>
     </div>
   );
 };
