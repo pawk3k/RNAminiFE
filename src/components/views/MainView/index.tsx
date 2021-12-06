@@ -10,6 +10,7 @@ const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useState('');
   const [email, setEmail] = useState<null | string>(null);
+  const [isOpen, setisOpen] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSendFileToServer = async (): Promise<void> => {
@@ -29,6 +30,7 @@ const Main: NextPage = () => {
   const checkValidity = () => {
     const { atoms } = parsePdb(file);
     setIsOk(atoms.length > 0 ? true : false);
+    setisOpen(true);
     if (atoms.length > 0) {
       // handleSendFileToServer();
     }
@@ -42,9 +44,9 @@ const Main: NextPage = () => {
   }, [isOk]);
 
   return (
-    <div className="w-full h-full p-14">
-      <main className="w-full h-full flex justify-around">
-        <div className="text-8xl w-1/2 mt-10 ml-10 text-white text-shadow-xl">
+    <div className="w-full h-full p-14 flex-auto">
+      <main className="w-full h-full flex justify-around sm:flex-wrap md:flex-wrap lg:flex-nowrap">
+        <div className="md:text-2xl md:mb-3 lg:text-8xl lg:mr-10 w-1/2 mt-10 ml-10 text-white text-shadow-xl">
           Start by uploading your file
         </div>
         <div className="w-1/2">
@@ -71,9 +73,24 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
-      <Dialog isOpen={email != null} onDissmis={(): void => setEmail(null)}>
-        <p>The overlay styles are a white fade instead of the default black fade.</p>
-        <button>Very nice.</button>
+      <Dialog isOpen={isOpen} onDissmis={(): void => setisOpen(false)}>
+        {file ? (
+          <div className="flex justify-center">File upload sucseed</div>
+        ) : (
+          <div className="flex justify-center flex-col">
+            <p>There was an error in file you uploaded</p>
+            <button
+              onClick={(): void => {
+                setFile('');
+                setisOpen(false);
+              }}
+              type="button"
+              className="bg-gray-100 shadow-lg  mt-4 w-1/2 self-center ring-blue-400 ring-1 rounded-2xl"
+            >
+              Try again{' '}
+            </button>
+          </div>
+        )}
       </Dialog>
     </div>
   );

@@ -3,9 +3,15 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 import Loading from '../uiKit/Loading';
+import { NavigationLink } from './LayoutComponent.styles';
 
-const navigationStyle = 'text-white text-shadow-lg';
+const navigationStyle =
+  'flex flex-col group text-white text-shadow-lg transition-transform hover:transform duration-500 ';
+{
+  /* <div className="hover:underline transition-transform animate-spin scale-x-150 ">
 
+</div> */
+}
 const Layout: FunctionComponent = ({ children }) => {
   const router = useRouter();
 
@@ -53,15 +59,9 @@ const Layout: FunctionComponent = ({ children }) => {
             </span>
 
             <div className="flex justify-around w-1/4 ">
-              <span className={navigationStyle}>
-                <Link href="/about">About</Link>
-              </span>
-              <span className={navigationStyle}>
-                <Link href="/help">Help</Link>
-              </span>
-              <span className={`${navigationStyle} pr-12`}>
-                <Link href="/contact">Cite us</Link>
-              </span>
+              <NavigationLink href="/about" />
+              <NavigationLink href="/help" />
+              <NavigationLink href="/contact" />
             </div>
           </nav>
           <div className="w-full  relative">{children}</div>

@@ -11,12 +11,17 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      transitionProperty: {
+        width: 'width',
+        spacing: 'margin, padding',
+      },
     },
   },
   variants: {
     extend: {
       backgroundColor: ['even', 'odd'],
       transform: ['active', 'hover'],
+      scale: ['group-hover'],
     },
   },
   // eslint-disable-next-line

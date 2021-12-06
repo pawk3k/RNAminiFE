@@ -9,7 +9,7 @@ const Dialog: FunctionComponent<{ isOpen: boolean; onDissmis: () => void }> = ({
   return (
     isOpen && (
       <DialogOverlay isOpen={isOpen}>
-        <DialogContent className="flex  ring-blue ring-4 flex-col items-center justify-center">
+        <DialogContent className="flex max-w-md rounded-2xl absolute top-1/4 left-1/4 mx-auto ring-blue ring-4 flex-col items-center justify-center my-auto">
           <button className="self-end mb-5" onClick={onDissmis}>
             x
           </button>
