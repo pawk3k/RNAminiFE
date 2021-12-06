@@ -37,11 +37,16 @@ const Main: NextPage = () => {
   };
 
   useEffect(() => {
-    console.log(isOk);
-    if (isOk !== null) {
-      alert(isOk ? 'Data sent to processing' : 'File is not correct');
+    if (file) {
+      checkValidity();
+      setisOpen(true);
     }
-  }, [isOk]);
+  }, [file]);
+
+  const resetFile = (): void => {
+    setFile('');
+    setisOpen(false);
+  };
 
   return (
     <div className="w-full h-full p-14 flex-auto">
@@ -73,17 +78,14 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
-      <Dialog isOpen={isOpen} onDissmis={(): void => setisOpen(false)}>
-        {file ? (
+      <Dialog isOpen={isOpen} onDissmis={(): void => (isOk ? setisOpen(false) : resetFile())}>
+        {isOk ? (
           <div className="flex justify-center">File upload sucseed</div>
         ) : (
           <div className="flex justify-center flex-col">
             <p>There was an error in file you uploaded</p>
             <button
-              onClick={(): void => {
-                setFile('');
-                setisOpen(false);
-              }}
+              onClick={resetFile}
               type="button"
               className="bg-gray-100 shadow-lg  mt-4 w-1/2 self-center ring-blue-400 ring-1 rounded-2xl"
             >
