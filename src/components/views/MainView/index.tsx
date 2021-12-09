@@ -50,11 +50,11 @@ const Main: NextPage = () => {
 
   return (
     <div className="w-full h-full p-14 flex-auto">
-      <main className="w-full h-full flex justify-around sm:flex-wrap md:flex-wrap lg:flex-nowrap">
-        <div className="md:text-2xl md:mb-3 lg:text-8xl lg:mr-10 w-1/2 mt-10 ml-10 text-white text-shadow-xl">
+      <main className="w-full h-full flex justify-around sm:flex-wrap  lg:flex-nowrap">
+        <div className="sm:text-2xl md:mb-3 lg:text-8xl lg:mr-10 w-1/2 mt-10 ml-10 text-white text-shadow-xl">
           Start by uploading your file
         </div>
-        <div className="w-1/2">
+        <div className="  lg:w-1/2 sm:w-ful ">
           <ProteinInput setFile={setFile} file={file} />
           <div className="pt-6 flex">
             <Switch setEmail={setEmail} />
