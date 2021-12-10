@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 // @ts-ignore
 import parsePdb from 'parse-pdb';
 import ProteinInput from './ProteinInput';
@@ -10,7 +10,7 @@ const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useState('');
   const [email, setEmail] = useState<null | string>(null);
-  const [isOpen, setisOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSendFileToServer = async (): Promise<void> => {
@@ -27,34 +27,34 @@ const Main: NextPage = () => {
     alert(response.uuid);
   };
 
-  const checkValidity = () => {
+  const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
-    setIsOk(atoms.length > 0 ? true : false);
-    setisOpen(true);
+    setIsOk(atoms.length > 0);
+    setIsOpen(true);
     if (atoms.length > 0) {
       // handleSendFileToServer();
     }
-  };
+  }, [file]);
 
   useEffect(() => {
     if (file) {
       checkValidity();
-      setisOpen(true);
+      setIsOpen(true);
     }
-  }, [file]);
+  }, [checkValidity, file]);
 
   const resetFile = (): void => {
     setFile('');
-    setisOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <div className="w-full h-full p-14 flex-auto">
-      <main className="w-full h-full flex justify-around sm:flex-wrap  lg:flex-nowrap">
-        <div className="sm:text-2xl md:mb-3 lg:text-8xl lg:mr-10 w-1/2 mt-10 ml-10 text-white text-shadow-xl">
+      <main className="w-full h-full flex justify-around flex-wrap lg:flex-nowrap">
+        <div className="text-3xl md:mb-3 lg:text-6xl justify-center lg:w-1/3 lg:mr-10  lg:mt-32 lg:ml-10 text-white text-shadow-xl">
           Start by uploading your file
         </div>
-        <div className="  lg:w-1/2 sm:w-ful ">
+        <div className="w-full mt-8">
           <ProteinInput setFile={setFile} file={file} />
           <div className="pt-6 flex">
             <Switch setEmail={setEmail} />
@@ -78,9 +78,9 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
-      <Dialog isOpen={isOpen} onDissmis={(): void => (isOk ? setisOpen(false) : resetFile())}>
+      <Dialog isOpen={isOpen} onDissmis={(): void => (isOk ? setIsOpen(false) : resetFile())}>
         {isOk ? (
-          <div className="flex justify-center">File upload sucseed</div>
+          <div className="flex justify-center">File upload succeed</div>
         ) : (
           <div className="flex justify-center flex-col">
             <p>There was an error in file you uploaded</p>
@@ -89,7 +89,7 @@ const Main: NextPage = () => {
               type="button"
               className="bg-gray-100 shadow-lg  mt-4 w-1/2 self-center ring-blue-400 ring-1 rounded-2xl"
             >
-              Try again{' '}
+              Try again
             </button>
           </div>
         )}

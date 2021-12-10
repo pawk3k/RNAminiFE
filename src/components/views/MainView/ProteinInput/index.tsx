@@ -18,10 +18,10 @@ const ProteinInput: FunctionComponent<{
         return (
           <>
             <TabList className="pt-5 px-16">
-              <Tab className="w-1/2 outline-none" style={getTabStyle(0)}>
+              <Tab className="w-full md:w-1/2 " style={getTabStyle(0)}>
                 Local file
               </Tab>
-              <Tab className="w-1/2 outline-none" style={getTabStyle(1)}>
+              <Tab className="w-full mt-5 md:mt-0 md:w-1/2 " style={getTabStyle(1)}>
                 Protein Data Bank
               </Tab>
             </TabList>
