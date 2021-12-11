@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Loading from '../uiKit/Loading';
 import { NavigationLink } from './LayoutComponent.styles';
 import useNProgress from '../hooks/useNProgress';
+import HamburgerMenu from './HamburegerMenu';
 
 const Layout: FunctionComponent = ({ children }) => {
   const state = useNProgress();
@@ -18,13 +19,16 @@ const Layout: FunctionComponent = ({ children }) => {
             <span className="text-2xl sm:text-5xl font-bold pl-24 text-white text-shadow-lg">
               <Link href="/main">RNArefiner</Link>
             </span>
+
             <button
               type="button"
-              className="bg-white"
+              className="flex items-center space-x-2 focus:outline-none "
               onClick={(): void => setIsHamburgerOpen((prevState) => !prevState)}
             >
-              {isHamburgerOpen ? 'Open' : 'Close'}
+              <span>{isHamburgerOpen ? 'Open' : 'Close'}</span>
+              <HamburgerMenu isOpen={isHamburgerOpen} />
             </button>
+
             <div className="hidden md:flex justify-around w-1/4 ">
               <NavigationLink href="/about" />
               <NavigationLink href="/help" />
