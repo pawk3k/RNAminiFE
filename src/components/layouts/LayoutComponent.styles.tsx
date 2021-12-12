@@ -5,11 +5,9 @@ import { useRouter } from 'next/dist/client/router';
 const navigationStyle =
   'flex flex-col group text-white  text-shadow-lg transition-transform hover:transform duration-500 ';
 
-const capitalize = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
+const capitalize = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const NavigationLink: FunctionComponent<{ href: string }> = ({ href }) => {
+const NavigationLink: FunctionComponent<{ href: string }> = ({ href }) => {
   const { route } = useRouter();
   return (
     <span className={navigationStyle}>
@@ -22,3 +20,4 @@ export const NavigationLink: FunctionComponent<{ href: string }> = ({ href }) =>
     </span>
   );
 };
+export default NavigationLink;

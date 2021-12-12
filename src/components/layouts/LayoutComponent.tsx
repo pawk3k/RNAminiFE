@@ -2,7 +2,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import Loading from '../uiKit/Loading';
-import { NavigationLink } from './LayoutComponent.styles';
+import NavigationLink from './LayoutComponent.styles';
 import useNProgress from '../hooks/useNProgress';
 import HamburgerMenu from './HamburegerMenu';
 
@@ -11,9 +11,9 @@ const Layout: FunctionComponent = ({ children }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   return (
-    <div>
+    <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex justify-center md:py-16 bg-purple-500 w-full">
+      <div className="flex h-full justify-center md:py-16 bg-purple-500 w-full">
         <div className="md:mx-16 bg-purple-400 w-full h-full rounded-3xl shadow-sm md:relative">
           <nav className="flex flex-col md:flex-row w-full justify-between align-baseline items-end pt-7">
             <div className="flex gap-4">
@@ -25,11 +25,14 @@ const Layout: FunctionComponent = ({ children }) => {
                 className="flex items-center justify-between focus:outline-none md:hidden"
                 onClick={(): void => setIsHamburgerOpen((prevState) => !prevState)}
               >
-                <span>{isHamburgerOpen ? 'Open' : 'Close'}</span>
-                <HamburgerMenu isOpen={isHamburgerOpen} />
+                <HamburgerMenu isOpen={!isHamburgerOpen} />
               </button>
             </div>
-            <div className={`${isHamburgerOpen ? 'hidden' : ''} w-full text-center md:contents`}>
+            <div
+              className={`${
+                isHamburgerOpen ? 'hidden' : ''
+              } w-full text-center md:contents bg-purple-300 md:bg-none`}
+            >
               <NavigationLink href="/about" />
               <NavigationLink href="/help" />
               <NavigationLink href="/contact" />
@@ -38,7 +41,7 @@ const Layout: FunctionComponent = ({ children }) => {
           <div className="w-full relative">{children}</div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Layout;

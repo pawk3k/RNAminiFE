@@ -78,7 +78,7 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
-      <Dialog isOpen={isOpen} onDissmis={(): void => (isOk ? setIsOpen(false) : resetFile())}>
+      <Dialog isOpen={isOpen} onDismiss={(): void => (isOk ? setIsOpen(false) : resetFile())}>
         {isOk ? (
           <div className="flex justify-center">File upload succeed</div>
         ) : (
