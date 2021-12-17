@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 const colors = {
   'dashas-purple': '#6100ff',
   'dashas-pink': '#FCEAFF',
@@ -6,9 +5,7 @@ const colors = {
 };
 
 module.exports = {
-  purge: [],
-  important: true,
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors,
@@ -18,13 +15,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ['even', 'odd'],
-      transform: ['active', 'hover'],
-      scale: ['group-hover'],
-    },
-  },
-  // eslint-disable-next-line
-  plugins: [require('tailwindcss-textshadow')],
+  plugins: [],
 };

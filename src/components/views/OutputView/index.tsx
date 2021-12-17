@@ -36,8 +36,9 @@ const OutputView: FunctionComponent = () => {
     <div>
       <div className="ml-10 mt-40">
         <Molstar
-          pdbId="1a0a"
-          url="https://files.rcsb.org/download/1a0a.pdb"
+          // pdbId="1a0a"
+          // url="https://files.rcsb.org/download/1a0a.pdb"
+          // @ts-ignore
           dimensions={[500, 500]}
           options={{
             layoutShowControls: false,
