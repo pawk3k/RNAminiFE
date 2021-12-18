@@ -15,7 +15,7 @@ const Layout: FunctionComponent = ({ children }) => {
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
       <div className="flex h-full justify-center md:py-16 bg-purple-500 w-full">
         <div className="md:mx-16 bg-purple-400 w-full h-full rounded-3xl shadow-sm md:relative">
-          <nav className="flex flex-col md:flex-row w-full justify-between align-baseline items-end pt-7">
+          <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex gap-4">
               <span className="text-2xl sm:text-5xl font-bold pl-24 text-white text-shadow-lg">
                 <Link href="/main">RNArefiner</Link>
@@ -31,7 +31,7 @@ const Layout: FunctionComponent = ({ children }) => {
             <div
               className={`${
                 isHamburgerOpen ? 'hidden' : ''
-              } w-full text-center md:contents bg-purple-300 md:bg-none`}
+              } w-full text-center  md:bg-none flex justify-end gap-24 last:mr-24`}
             >
               <NavigationLink href="/about" />
               <NavigationLink href="/help" />
