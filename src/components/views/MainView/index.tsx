@@ -53,7 +53,7 @@ const Main: NextPage = () => {
       <main className="w-full h-full flex justify-around flex-wrap lg:flex-nowrap gap-6 ">
         <div
           style={{ fontSize: '78px' }}
-          className="md:mb-3 lg:text-6xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl"
+          className="mt-4 md:mb-3 lg:text-6xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl"
         >
           Start by uploading your file
         </div>

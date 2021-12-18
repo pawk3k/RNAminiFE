@@ -1,68 +1,10 @@
-import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent } from 'react';
+import useOTP from '../../../../hooks/useOTP';
+import Toast from '../../../../uiKit/Toast';
 import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => {
-  const [characters, setCharacters] = useState(Array(4).fill(''));
-  const inputRefs = characters.map(() => React.createRef<HTMLInputElement>());
-
-  const focusNext = (index: number): void => {
-    if (index < inputRefs.length - 1) {
-      if (inputRefs[index + 1].current) {
-        // @ts-ignore
-        inputRefs[index + 1].current.focus();
-      }
-    }
-  };
-
-  const handleChange = (index: number, value: string): void => {
-    const newCharacters = [...characters];
-    newCharacters[index] = value.length > 1 ? value.split(characters[index]).join('') : value;
-    setCharacters(newCharacters);
-    if (newCharacters[index].length === 1) {
-      focusNext(index);
-    }
-  };
-
-  useEffect((): void => {
-    if (inputRefs[0].current) {
-      // @ts-ignore
-      inputRefs[0].current.focus();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const focusPrev = (index: number): void => {
-    if (index > 0) {
-      if (inputRefs[index - 1].current) {
-        // @ts-ignore
-        inputRefs[index - 1].current.focus();
-      }
-    }
-  };
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
-    const index = inputRefs.findIndex((ref) => ref.current === event.target);
-
-    if (event.key === 'ArrowRight') {
-      focusNext(index);
-    }
-
-    // eslint-disable-next-line default-case
-    switch (event.key) {
-      case 'ArrowLeft':
-        focusPrev(index);
-        break;
-      case 'ArrowRight':
-        focusNext(index);
-        break;
-      case 'Backspace': {
-        event.preventDefault();
-        const newCharacters = [...characters];
-        newCharacters[index] = '';
-        setCharacters(newCharacters);
-        focusPrev(index);
-      }
-    }
-  };
+  const { characters, handleKeyDown, handleChange, inputRefs } = useOTP();
 
   return (
     <div className="flex justify-center flex-col text-center">
@@ -83,8 +25,16 @@ const LinkInput: FunctionComponent = () => {
           />
         ))}
       </div>
+
+      {/* add buttons styles with tailwind */}
+      <button
+        className="  w-40 mx-auto mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        get
+      </button>
+      <Toast />
     </div>
   );
 };
-
 export default LinkInput;
