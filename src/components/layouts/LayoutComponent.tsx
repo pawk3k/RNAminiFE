@@ -3,7 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import Loading from '../uiKit/Loading';
 import NavigationLink from './LayoutComponent.styles';
-import useNProgress from '../hooks/useNProgress';
+import useNProgress from '../../hooks/useNProgress';
 import HamburgerMenu from './HamburegerMenu';
 
 const Layout: FunctionComponent = ({ children }) => {

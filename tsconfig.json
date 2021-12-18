@@ -13,7 +13,47 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@clients/*": [
+        "./src/clients/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@tests/*": [
+        "./tests/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@utils": [
+        "./src/utils/index.ts"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@typings/*": [
+        "./src/typings/*"
+      ],
+      "@hoc/*": [
+        "./src/hoc/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@root/*": [
+        "./src/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ]
+    }
+    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx","tailwind.config.js","postcss.config.js"],
   "exclude": ["node_modules"]

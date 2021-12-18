@@ -3,13 +3,23 @@ import '../styles/global.css';
 
 import type { AppProps } from 'next/app';
 import { FunctionComponent } from 'react';
+import { ToastContainer } from 'react-toastify';
+import QueryClientProvider from '@root/contextProviders/QueryClientProvider';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../src/components/layouts/LayoutComponent';
-// import '@reach/dialog/styles.css';
+import 'react-toastify/dist/ReactToastify.css';
+import '@reach/dialog/styles.css';
 
 const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) => (
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
+  <>
+    <QueryClientProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+    <ToastContainer />
+  </>
 );
 
 export default MyApp;
