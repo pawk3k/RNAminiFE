@@ -1,3 +1,4 @@
+import useGetFromBank from '@hooks/queries/useGetFromBank';
 import useOTP from '@hooks/useOTP';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 import { toast } from 'react-toastify';
@@ -6,6 +7,8 @@ import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => {
   const { characters, handleKeyDown, handleChange, inputRefs } = useOTP();
+  const { data } = useGetFromBank();
+  console.log(data);
 
   return (
     <div className="flex justify-center flex-col text-center">
