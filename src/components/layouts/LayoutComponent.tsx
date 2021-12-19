@@ -13,8 +13,19 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex h-full justify-center md:py-16 bg-purple-500 w-full">
-        <div className="md:mx-16 bg-purple-400 w-full h-full rounded-3xl shadow-sm md:relative">
+      <div
+        style={{
+          background: 'linear-gradient(107.42deg, rgba(112, 75, 172, 0.9) 1.85%, #6100FF 100.59%)',
+        }}
+        className="flex h-full justify-center md:py-16 w-full"
+      >
+        <div
+          style={{
+            background:
+              'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
+          }}
+          className="md:mx-16 bg-gradient-to-br w-full h-full rounded-3xl shadow-2xl md:relative"
+        >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex gap-4">
               <span className="text-2xl sm:text-5xl font-bold pl-24 text-white text-shadow-lg">
