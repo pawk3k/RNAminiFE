@@ -1,17 +1,29 @@
-name: Audit Accessibility
-on: [push]
+name: Lighthouse
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  lighthouseci:
+  lighthouse:
+    name: Audit accessibility with Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        - with: 
-            ref: ${{ github.event.head_commit.sha }}
-      - uses: actions/setup-node@v1
-        - with:
-          node-version: '16'
-      - run: npm install && npm install -g @lhci/cli@0.8.x
-      - run: npm run build
-      - run: lhci autorun
-      - env: 
-          - LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: prepare application
+        run: |
+          npm install
+          npm run build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.8.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
