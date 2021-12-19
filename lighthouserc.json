@@ -1,16 +1,19 @@
 {
     "ci": {
-        "extends": "lighthouse:default",
-        "settings": {
-            "onlyCategories": [
-                "performance",
-                "accessibility",
-                "best-practices",
-                "seo"
-            ]
+        "collect": {
+            "url": [
+                "http://localhost:5000/main"
+            ],
+            "startServerCommand": "serve:lhci",
+            "startServerReadyPattern": "Accepting connections at http://localhost:5000",
+            "settings": {
+                "onlyCategories": [
+                    "accessibility"
+                ]
+            }
         },
         "upload": {
             "target": "temporary-public-storage"
         }
     }
-}
+};
