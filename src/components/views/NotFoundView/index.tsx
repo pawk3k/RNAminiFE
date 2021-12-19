@@ -1,8 +1,7 @@
+import DnaSvg from '@assets/DnaSvg';
+import FourSvg from '@assets/FourSvg';
 import { useRouter } from 'next/dist/client/router';
 import React, { FunctionComponent } from 'react';
-import DnaSvg from '../../../assets/DnaSvg';
-import FourSvg from '../../../assets/FourSvg';
-import Dialog from '../../uiKit/Dialog';
 
 const NotFoundView: FunctionComponent = () => {
   const { push } = useRouter();
