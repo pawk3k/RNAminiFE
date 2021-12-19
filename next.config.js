@@ -1,5 +1,11 @@
+const withPlugins = require('next-compose-plugins');
+const withSvgr = require('next-svgr');
+
+const plugins = [[withSvgr]];
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+module.exports = withPlugins(plugins, {
   reactStrictMode: true,
   async redirects() {
     return [
@@ -10,4 +16,4 @@ module.exports = {
       },
     ];
   },
-};
+});

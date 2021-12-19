@@ -1,8 +1,8 @@
+import { FileIcon } from '@assets/index';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import { Dispatch, FunctionComponent, SetStateAction } from 'react';
 import FileInput from './FileInput';
 import LinkInput from './LinkInput';
-import FileSvg from '../../../../assets/FileSvg';
 
 const ProteinInput: FunctionComponent<{
   file: string;
@@ -30,7 +30,7 @@ const ProteinInput: FunctionComponent<{
                 {file ? (
                   <div className="flex flex-col justify-center items-center ">
                     <div className="mb-4">File uploaded succeed!</div>
-                    <FileSvg />
+                    <FileIcon />
                   </div>
                 ) : (
                   <FileInput setFile={setFile} />

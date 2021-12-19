@@ -1,0 +1,6 @@
+{
+  "ref": true,
+  "svgoConfig": {
+    "plugins": [{ "removeViewBox": false, "cleanupIDs": true }]
+  }
+}

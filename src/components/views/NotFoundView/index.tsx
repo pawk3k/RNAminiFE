@@ -1,5 +1,5 @@
-import DnaSvg from '@assets/DnaSvg';
-import FourSvg from '@assets/FourSvg';
+import { Four, DnaIcon } from '@assets/index';
+
 import { useRouter } from 'next/dist/client/router';
 import React, { FunctionComponent } from 'react';
 
@@ -8,11 +8,11 @@ const NotFoundView: FunctionComponent = () => {
   return (
     <div className="h-full flex mt-36 flex-col items-center">
       <div className="flex justify-center items-center">
-        <FourSvg className="" fill="" />
+        <Four className="w-52 h-52" fill="" />
         <div className=" w-28 h-28 flex justify-center items-center">
-          <DnaSvg className="duration-500 fill-current transition-transform w-20 h-20 hover:transform hover:rotate-180 hover:scale-50 " />
+          <DnaIcon className="duration-500 fill-current transition-transform w-20 h-20 hover:transform hover:rotate-180 hover:scale-50 " />
         </div>
-        <FourSvg className="" fill="" />
+        <Four className="w-52 h-52" fill="" />
       </div>
       <div className="text-3xl mb-24">Page not found 😢</div>
       <button
