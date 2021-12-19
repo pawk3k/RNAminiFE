@@ -19,9 +19,11 @@ const FileInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>> }
       <label htmlFor="pdb-file" className="w-full cursor-pointer">
         <div className="h-full rounded-b-3xl flex flex-col justify-center items-center">
           <DragAndDrop />
-          <p>Drag&Drop File here</p>
-          <p className="my-5">or</p>
-          <span className="border-2 rounded-3xl px-7 text-lg border-purple-700">Browse Files</span>
+          <p className=" text-dashas-purple">Drag&Drop File here</p>
+          <p className="my-5 text-dashas-purple">or</p>
+          <span className="border-2 rounded-3xl text-dashas-purple px-7 text-lg border-dashas-purple">
+            Browse Files
+          </span>
         </div>
         <input
           id="pdb-file"

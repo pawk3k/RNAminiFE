@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 
 const DragAndDrop: FunctionComponent = () => (
   <svg
-    className="w-20 h-20"
+    className="w-20 h-20 text-black"
     width="24px"
     height="24px"
     viewBox="0 0 24 24"

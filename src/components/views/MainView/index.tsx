@@ -74,7 +74,7 @@ const Main: NextPage = () => {
             <button
               onClick={checkValidity}
               type="submit"
-              className="mt-6 relative rounded-3xl mx-auto w-1/3 h-10 text-center duration-300 bg-purple-300 shadow-xl transform focus:translate-y-1"
+              className="shadow-md text-dashas-purple shadow-dashas-purple mt-6 relative rounded-3xl mx-auto w-1/3 h-10 text-center duration-300 bg-purple-300  transform focus:translate-y-1"
             >
               Submit
             </button>
