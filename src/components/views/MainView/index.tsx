@@ -11,7 +11,6 @@ const Main: NextPage = () => {
   const [file, setFile] = useState('');
   const [email, setEmail] = useState<null | string>(null);
   const [isOpen, setIsOpen] = useState(false);
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSendFileToServer = async (): Promise<void> => {
     const response = await fetch('http://localhost:8080/api/task', {
