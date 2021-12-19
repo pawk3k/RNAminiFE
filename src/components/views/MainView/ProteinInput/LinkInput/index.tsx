@@ -9,8 +9,8 @@ const LinkInput: FunctionComponent = () => {
   const { mutate: getProteinFromBank } = useGetFromBank();
 
   return (
-    <div className="flex justify-center flex-col text-center">
-      <div className="mb-6 mt-16" style={{ color: '#6100ff' }}>
+    <div className="flex justify-center flex-col text-center pb-8">
+      <div className="mb-6 mt-11" style={{ color: '#6100ff' }}>
         Enter PDB id
       </div>
       <div>

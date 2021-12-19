@@ -8,7 +8,7 @@ const ProteinInput: FunctionComponent<{
   file: string;
   setFile: Dispatch<SetStateAction<string>>;
 }> = ({ setFile, file }) => (
-  <div className="h-96 relative bg-purple-300 rounded-3xl shadow-md">
+  <div className="relative bg-purple-300 rounded-3xl shadow-md">
     <Tabs>
       {({ selectedIndex }): JSX.Element => {
         const getTabStyle = (index: number): object => ({
@@ -26,10 +26,10 @@ const ProteinInput: FunctionComponent<{
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel className="absolute h-5/6 mt-4 w-full">
+              <TabPanel className="w-full">
                 {file ? (
-                  <div className="flex flex-col justify-center items-center h-5/6">
-                    <div className="mb-4">File uploaded sucseed!</div>
+                  <div className="flex flex-col justify-center items-center ">
+                    <div className="mb-4">File uploaded succeed!</div>
                     <FileSvg />
                   </div>
                 ) : (
