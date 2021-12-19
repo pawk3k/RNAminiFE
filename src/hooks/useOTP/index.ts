@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { UseOTPReturnType } from './useOTP.types';
 
-const useOTP = (
-  numberOfCharacters: number = 4,
-): {
-  characters: string[];
-  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  handleChange: (index: number, value: string) => void;
-  inputRefs: React.RefObject<HTMLInputElement>[];
-} => {
+const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
   const [characters, setCharacters] = useState(Array(numberOfCharacters).fill(''));
   const inputRefs = characters.map(() => React.createRef<HTMLInputElement>());
 

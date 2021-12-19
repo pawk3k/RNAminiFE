@@ -1,10 +1,10 @@
-import useOTP from '@hooks/useOTP';
+import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => {
-  const { characters, handleKeyDown, handleChange, inputRefs } = useOTP();
+  const { characters, handleKeyDown, handleChange, inputRefs } = useOTPContext();
 
   return (
     <div className="flex justify-center flex-col text-center pb-24">
