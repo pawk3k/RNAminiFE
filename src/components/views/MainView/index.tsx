@@ -52,7 +52,7 @@ const Main: NextPage = () => {
   };
 
   return (
-    <div className="w-full h-full md:p-14 flex-auto md:pl-44 md:pr-24 ">
+    <div className="w-full h-full px-4 md:p-14 flex-auto md:pl-44 md:pr-24 ">
       <main className="w-full h-full flex justify-around flex-wrap lg:flex-nowrap gap-6 ">
         <div className="text-md mt-4 md:mb-3 md:text-2xl  lg:text-7xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
           Start by uploading your file
