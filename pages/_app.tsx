@@ -9,7 +9,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import OTPContextProvider from '@root/contextProviders/OTPContext';
 import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
-import '@reach/dialog/styles.css';
 import Layout from '../src/components/layouts/LayoutComponent';
 
 const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) => (

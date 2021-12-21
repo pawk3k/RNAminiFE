@@ -18,7 +18,6 @@
     ]
   },
   "dependencies": {
-    "@reach/dialog": "^0.16.2",
     "@reach/tabs": "^0.16.4",
     "@tanem/react-nprogress": "^3.0.82",
     "axios": "^0.24.0",

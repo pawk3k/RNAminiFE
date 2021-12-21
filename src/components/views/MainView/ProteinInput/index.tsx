@@ -29,8 +29,8 @@ const ProteinInput: FunctionComponent<{
               <TabPanel className="w-full">
                 {file ? (
                   <div className="flex flex-col justify-center items-center">
-                    <div className="mb-4">File uploaded succeed!</div>
-                    <FileIcon />
+                    <div className="my-4">File uploaded succeed!</div>
+                    <FileIcon className="w-20 h-20 m-16 mt-4" />
                   </div>
                 ) : (
                   <FileInput setFile={setFile} />

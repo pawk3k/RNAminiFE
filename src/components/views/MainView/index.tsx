@@ -6,7 +6,7 @@ import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import useGetFromBank from '@hooks/queries/useGetFromBank';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
-import Dialog from '../../uiKit/Dialog';
+import { toast } from 'react-toastify';
 
 const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
@@ -35,14 +35,17 @@ const Main: NextPage = () => {
     setIsOk(atoms.length > 0);
     setIsOpen(true);
     if (atoms.length > 0) {
+      toast('File upload sucseed!');
       // handleSendFileToServer();
+    } else {
+      toast('File upload failed!');
+      setFile('');
     }
   }, [file]);
 
   useEffect(() => {
     if (file) {
       checkValidity();
-      setIsOpen(true);
     }
   }, [checkValidity, file]);
 
@@ -85,22 +88,6 @@ const Main: NextPage = () => {
           </div>
         </div>
       </main>
-      <Dialog isOpen={isOpen} onDismiss={(): void => (isOk ? setIsOpen(false) : resetFile())}>
-        {isOk ? (
-          <div className="flex justify-center">File upload succeed</div>
-        ) : (
-          <div className="flex justify-center flex-col">
-            <p>There was an error in file you uploaded</p>
-            <button
-              onClick={resetFile}
-              type="button"
-              className="bg-gray-100 shadow-lg  mt-4 w-1/2 self-center ring-blue-400 ring-1 rounded-2xl"
-            >
-              Try again
-            </button>
-          </div>
-        )}
-      </Dialog>
     </div>
   );
 };
