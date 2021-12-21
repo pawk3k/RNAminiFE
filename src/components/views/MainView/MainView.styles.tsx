@@ -7,7 +7,6 @@ const SubmitButton: FunctionComponent = () => {
   const { characters } = useOTPContext();
   const { mutate: getDataFromBank } = useGetFromBank();
   const submitDisabled = characters.join('').length < 4;
-  console.log(submitDisabled);
   return (
     <div className="flex">
       <button
