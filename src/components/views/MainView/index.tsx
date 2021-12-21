@@ -71,7 +71,7 @@ const Main: NextPage = () => {
               placeholder="example@gmail.com"
             />
           )}
-          <SubmitButton />
+          <SubmitButton file={file} />
         </div>
       </main>
     </div>

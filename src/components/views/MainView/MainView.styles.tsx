@@ -3,14 +3,14 @@ import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import { FunctionComponent } from 'react';
 import SingleCharInput from './ProteinInput/LinkInput/SingleCharInput/index';
 
-const SubmitButton: FunctionComponent = () => {
+const SubmitButton: FunctionComponent<{ file: string }> = ({ file }) => {
   const { characters } = useOTPContext();
   const { mutate: getDataFromBank } = useGetFromBank();
-  const submitDisabled = characters.join('').length < 4;
+  const submitDisabled = !file && characters.join('').length < 4;
   return (
     <div className="flex">
       <button
-        disabled={characters.join('').length < 4}
+        disabled={submitDisabled}
         onClick={(): void => {
           getDataFromBank({
             proteinChars: characters.join(''),
