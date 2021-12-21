@@ -7,12 +7,12 @@ import useGetFromBank from '@hooks/queries/useGetFromBank';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
 import { toast } from 'react-toastify';
+import SubmitButton from './MainView.styles';
 
 const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useState('');
   const [email, setEmail] = useState<null | string>(null);
-  const [isOpen, setIsOpen] = useState(false);
   const { characters } = useOTPContext();
   const { mutate: getDataFromBank } = useGetFromBank();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,7 +33,6 @@ const Main: NextPage = () => {
   const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
     setIsOk(atoms.length > 0);
-    setIsOpen(true);
     if (atoms.length > 0) {
       toast('File upload sucseed!');
       // handleSendFileToServer();
@@ -51,7 +50,6 @@ const Main: NextPage = () => {
 
   const resetFile = (): void => {
     setFile('');
-    setIsOpen(false);
   };
 
   return (
@@ -73,19 +71,7 @@ const Main: NextPage = () => {
               placeholder="example@gmail.com"
             />
           )}
-          <div className="flex">
-            <button
-              onClick={(): void => {
-                getDataFromBank({
-                  proteinChars: characters.join(''),
-                });
-              }}
-              type="submit"
-              className="shadow-md text-dashas-purple shadow-dashas-purple mt-6 relative rounded-3xl mx-auto w-1/3 h-10 text-center duration-300 bg-purple-300  transform focus:translate-y-1"
-            >
-              Submit
-            </button>
-          </div>
+          <SubmitButton />
         </div>
       </main>
     </div>
