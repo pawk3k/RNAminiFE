@@ -19,7 +19,7 @@ const Layout: FunctionComponent = ({ children }) => {
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
           }}
-          className="md:mx-16 bg-gradient-to-br w-full h-full rounded-3xl shadow-2xl md:relative"
+          className="md:mx-16 w-full rounded-3xl shadow-2xl md:relative"
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex gap-4">
@@ -44,7 +44,7 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <main className="h-full flex justify-center items-center">{children}</main>
+          <main className="flex justify-center items-center">{children}</main>
         </div>
       </div>
     </>
