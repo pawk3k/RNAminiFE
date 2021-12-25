@@ -8,7 +8,7 @@ const SubmitButton: FunctionComponent<{ file: string }> = ({ file }) => {
   const { mutate: getDataFromBank } = useGetFromBank();
   const submitDisabled = !file && characters.join('').length < 4;
   return (
-    <div className="flex">
+    <div className="flex mb-2">
       <button
         disabled={submitDisabled}
         onClick={(): void => {

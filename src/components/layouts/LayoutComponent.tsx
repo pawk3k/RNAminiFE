@@ -13,12 +13,7 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div
-        style={{
-          background: 'linear-gradient(107.42deg, rgba(112, 75, 172, 0.9) 1.85%, #6100FF 100.59%)',
-        }}
-        className="flex h-full justify-center md:py-16 w-full"
-      >
+      <div className="flex h-full justify-center  items-center md:py-16 w-full">
         <div
           style={{
             background:
@@ -49,7 +44,7 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          {children}
+          <main className="h-full flex justify-center items-center">{children}</main>
         </div>
       </div>
     </>

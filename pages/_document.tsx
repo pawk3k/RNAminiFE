@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
         className="antialiased h-full overflow-y-scroll bg-blue-200"
       >
         <Head />
-        <body>
+        <body className="h-full">
           <Main />
           <NextScript />
         </body>
