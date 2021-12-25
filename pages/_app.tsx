@@ -15,7 +15,7 @@ const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) 
   <>
     <Head>
       <title>RNA refiner</title>
-      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, height=device-height" />
       <meta name="description" content="Engineering work for PUT" />
     </Head>
     <OTPContextProvider>

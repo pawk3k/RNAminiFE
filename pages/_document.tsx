@@ -3,14 +3,15 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="en" className="antialiased h-full">
+      <Html
+        style={{
+          background: 'linear-gradient(107.42deg, rgba(112, 75, 172, 0.9) 1.85%, #6100FF 100.59%)',
+        }}
+        lang="en"
+        className="antialiased h-full overflow-y-scroll bg-blue-200"
+      >
         <Head />
-        <body className="overflow-hidden h-full">
-          <style>
-            {`
-            #__next { height: 100% }
-          `}
-          </style>
+        <body>
           <Main />
           <NextScript />
         </body>

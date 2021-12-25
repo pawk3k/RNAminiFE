@@ -54,26 +54,24 @@ const Main: NextPage = () => {
 
   return (
     <div className="w-full h-full px-4 md:p-14 flex-auto md:pl-44 md:pr-24 ">
-      <main className="w-full h-full flex justify-around flex-wrap lg:flex-nowrap gap-6 ">
-        <div className="text-md mt-4 md:mb-3 md:text-5xl xl:text-7xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
-          Start by uploading your file
+      <div className="text-md mt-4 md:mb-3 md:text-5xl xl:text-7xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
+        Start by uploading your file
+      </div>
+      <div className="w-full">
+        <ProteinInput setFile={setFile} file={file} />
+        <div className="pt-6 flex">
+          <Switch setEmail={setEmail} />
+          Notify me when results are ready
         </div>
-        <div className="w-full">
-          <ProteinInput setFile={setFile} file={file} />
-          <div className="pt-6 flex">
-            <Switch setEmail={setEmail} />
-            Notify me when results are ready
-          </div>
-          {email != null && (
-            <input
-              type="email"
-              className="rounded-3xl mt-6 pl-4 h-9 w-full shadow-lg"
-              placeholder="example@gmail.com"
-            />
-          )}
-          <SubmitButton file={file} />
-        </div>
-      </main>
+        {email != null && (
+          <input
+            type="email"
+            className="rounded-3xl mt-6 pl-4 h-9 w-full shadow-lg"
+            placeholder="example@gmail.com"
+          />
+        )}
+        <SubmitButton file={file} />
+      </div>
     </div>
   );
 };

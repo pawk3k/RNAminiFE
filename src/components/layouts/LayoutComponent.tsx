@@ -49,7 +49,7 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <div className="w-full relative">{children}</div>
+          {children}
         </div>
       </div>
     </>
