@@ -13,7 +13,7 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex h-full justify-center  items-center md:py-16 w-full">
+      <div className="flex justify-center  items-center md:py-16 w-full">
         <div
           style={{
             background:
@@ -22,7 +22,7 @@ const Layout: FunctionComponent = ({ children }) => {
           className="md:mx-16 w-full rounded-3xl shadow-2xl md:relative"
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
-            <div className="flex gap-4">
+            <div className="flex w-full justify-between">
               <span className="text-2xl sm:text-5xl font-bold pl-24 text-white text-shadow-lg">
                 <Link href="/main">RNArefiner</Link>
               </span>
