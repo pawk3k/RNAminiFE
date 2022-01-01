@@ -9,7 +9,13 @@
     "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx --cache",
     "lint:ci": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "serve:lhci": "npm run start",
-    "prepare:hooks": "husky install .husky"
+    "prepare:hooks": "husky install .husky",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
+    "pretest:e2e:run": "npm run build",
+    "test:e2e:run": "start-server-and-test dev http://localhost:4010 cy:run",
+    "test:e2e:dev": "start-server-and-test dev http://localhost:4010 cy:open"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
@@ -35,16 +41,20 @@
   },
   "devDependencies": {
     "@masterborn/eslint-config": "0.0.13",
+    "@testing-library/cypress": "^8.0.2",
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",
     "autoprefixer": "10.4.0",
+    "cypress": "^9.2.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
+    "is-ci": "^3.0.1",
     "lint-staged": "^12.1.2",
     "postcss": "8.4.4",
     "prettier": "^2.4.1",
+    "start-server-and-test": "^1.14.0",
     "tailwindcss": "3.0.0",
     "typescript": "4.4.4"
   }
