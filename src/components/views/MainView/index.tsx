@@ -7,7 +7,7 @@ import useGetFromBank from '@hooks/queries/useGetFromBank';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
 import { toast } from 'react-toastify';
-import SubmitButton from './MainView.styles';
+import SubmitButton from './SubmitButton/index';
 
 const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
@@ -15,20 +15,6 @@ const Main: NextPage = () => {
   const [email, setEmail] = useState<null | string>(null);
   const { characters } = useOTPContext();
   const { mutate: getDataFromBank } = useGetFromBank();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSendFileToServer = async (): Promise<void> => {
-    const response = await fetch('http://localhost:8080/api/task', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        task: file,
-        email: null,
-      }),
-    }).then((res) => res.json());
-    alert(response.uuid);
-  };
 
   const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
