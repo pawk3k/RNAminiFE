@@ -1,5 +1,6 @@
 import { MutationFunction, useMutation, UseMutationOptions, UseMutationResult } from 'react-query';
 import { toast } from 'react-toastify';
+import useAddFile from '../useAddFile';
 
 type MutationArguments = {
   proteinChars: string;
@@ -18,9 +19,12 @@ const getFromBank: MutationFunction<string, MutationArguments> = async ({ protei
 
 const useGetFromBank = (
   options?: UseMutationOptions<string, unknown, MutationArguments, unknown>,
-): UseMutationResult<string, unknown, MutationArguments, unknown> =>
-  useMutation(getFromBank, {
-    onSuccess: () => {
+): UseMutationResult<string, unknown, MutationArguments, unknown> => {
+  const { mutate: sendToServer } = useAddFile();
+  return useMutation(getFromBank, {
+    onSuccess: (data) => {
+      sendToServer({ proteinChars: data });
+
       toast('Success!');
     },
     onError: () => {
@@ -28,5 +32,6 @@ const useGetFromBank = (
     },
     ...options,
   });
+};
 
 export default useGetFromBank;

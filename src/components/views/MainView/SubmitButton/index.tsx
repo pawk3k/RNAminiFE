@@ -9,20 +9,6 @@ const SubmitButton: FunctionComponent<{ file: string }> = ({ file }) => {
   const { mutate: sendFileToServer } = useAddFile();
   const submitDisabled = !file && characters.join('').length < 4;
 
-  // const handleSendFileToServer = async (): Promise<void> => {
-  //   const response = await fetch('http://localhost:8080/api/task', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       data: file,
-  //       email: null,
-  //     }),
-  //   }).then((res) => res.json());
-  //   alert(response.uuid);
-  // };
-
   const handleSubmit = (): void => {
     if (characters.join('').length < 4) {
       sendFileToServer({ proteinChars: file });
