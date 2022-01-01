@@ -7,7 +7,7 @@ const Molstar = dynamic(() => import('molstar-react'), {
 
 const OutputView: FunctionComponent = () => {
   const isError = false;
-  const isLoading = false;
+  const isLoading = true;
   const isErrorOrLoading = isError || isLoading;
 
   return isErrorOrLoading ? (

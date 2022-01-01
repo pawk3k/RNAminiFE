@@ -13,13 +13,14 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex justify-center  items-center md:py-16 w-full">
+      <div className="flex justify-center  items-center  w-full min-h-full">
         <div
           style={{
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
+            
           }}
-          className="md:mx-16 w-full rounded-3xl shadow-2xl md:relative"
+          className="md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex w-full justify-between">
@@ -44,7 +45,7 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <main className="flex justify-center items-center">{children}</main>
+          <main className="flex justify-center items-center min-h-full">{children}</main>
         </div>
       </div>
     </>
