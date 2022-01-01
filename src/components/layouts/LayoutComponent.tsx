@@ -18,9 +18,8 @@ const Layout: FunctionComponent = ({ children }) => {
           style={{
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
-            
           }}
-          className="md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
+          className="flex flex-col md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex w-full justify-between">
@@ -45,7 +44,7 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <main className="flex justify-center items-center min-h-full">{children}</main>
+          <main className="flex flex-grow justify-center items-center h-max">{children}</main>
         </div>
       </div>
     </>

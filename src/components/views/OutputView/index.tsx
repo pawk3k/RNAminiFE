@@ -11,7 +11,7 @@ const OutputView: FunctionComponent = () => {
   const isErrorOrLoading = isError || isLoading;
 
   return isErrorOrLoading ? (
-    <div className="relative my-auto w-full h-full flex justify-center items-center text-dashas-purple">
+    <div className="my-auto w-full h-full flex justify-center items-center text-dashas-purple">
       <div className="pl-9 relative bg-dashas-pink rounded-3xl w-2/3 h-60 flex justify-start items-start flex-col">
         <div className="mt-11">Task : id</div>
         <div>Submission time: time</div>
