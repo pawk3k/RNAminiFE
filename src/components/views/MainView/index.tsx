@@ -8,10 +8,11 @@ import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
 import { toast } from 'react-toastify';
 import SubmitButton from './SubmitButton/index';
+import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
 
 const Main: NextPage = () => {
   const [isOk, setIsOk] = useState<boolean | null>(null);
-  const [file, setFile] = useState('');
+  const [file, setFile] = useFileContext();
   const [email, setEmail] = useState<null | string>(null);
   const { characters } = useOTPContext();
   const { mutate: getDataFromBank } = useGetFromBank();
@@ -40,7 +41,7 @@ const Main: NextPage = () => {
 
   return (
     <div className="w-full px-4 md:p-14 flex-auto md:pl-44 md:pr-24 ">
-      <div className='w-full flex flex-wrap md:flex-nowrap items-center justify-center'> 
+      <div className="w-full flex flex-wrap md:flex-nowrap items-center justify-center">
         <div className="text-md mt-4 md:mb-3 md:text-5xl xl:text-7xl justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
           Start by uploading your file
         </div>

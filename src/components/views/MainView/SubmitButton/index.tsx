@@ -1,10 +1,12 @@
 import useAddFile from '@hooks/queries/useAddFile';
 import useGetFromBank from '@hooks/queries/useGetFromBank';
+import { useFileContext } from '@root/contextProviders/FileContextProvider';
 import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import { FunctionComponent } from 'react';
 
-const SubmitButton: FunctionComponent<{ file: string }> = ({ file }) => {
+const SubmitButton: FunctionComponent = () => {
   const { characters } = useOTPContext();
+  const [file] = useFileContext();
   const { mutate: getDataFromBank } = useGetFromBank();
   const { mutate: sendFileToServer } = useAddFile();
   const submitDisabled = !file && characters.join('').length < 4;

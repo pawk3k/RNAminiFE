@@ -24,7 +24,6 @@ const useGetFromBank = (
   return useMutation(getFromBank, {
     onSuccess: (data) => {
       sendToServer({ proteinChars: data });
-
       toast('Success!');
     },
     onError: () => {
