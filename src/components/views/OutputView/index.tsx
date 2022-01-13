@@ -1,10 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
+// import MolStarWrapper from './MyMol';
 // @ts-ignore
 const Molstar = dynamic(() => import('molstar-react'), {
+  ssr: false,
+});
+
+const MolStarWrapper = dynamic(() => import('./MyMol'), {
   ssr: false,
 });
 
@@ -23,6 +28,13 @@ const OutputView: FunctionComponent = () => {
     a.download = 'input.pdb';
     a.click();
   };
+  const myRef = useRef();
+  // console.log(myRef);
+  useEffect(() => {
+    if (myRef.current) {
+      console.log(myRef?.current);
+    }
+  });
 
   // return isErrorOrLoading ? (
   //   <div className="my-auto w-full h-full flex justify-center items-center text-dashas-purple">
@@ -65,14 +77,16 @@ const OutputView: FunctionComponent = () => {
   //   </div>
   // );
   return (
+    // <MolStarWrapper />
     <Molstar
-      // pdbId="1a0a"
       // url="https://files.rcsb.org/download/1a0a.pdb"
+
       // @ts-ignore
       dimensions={[500, 500]}
       options={{
         layoutShowControls: false,
         'hide-controls': 1,
+        ref: myRef,
       }}
       // pdb={file}
     />
