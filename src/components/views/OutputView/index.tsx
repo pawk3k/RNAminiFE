@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
+import MolstarViewer from './viewer-3d/Viewer3D';
 // import MolStarWrapper from './MyMol';
 // @ts-ignore
 const Molstar = dynamic(() => import('molstar-react'), {
@@ -85,21 +86,22 @@ const OutputView: FunctionComponent = () => {
   //   </div>
   // );
   return (
-    // <MolStarWrapper />
-    <Molstar
-      // url="https://files.rcsb.org/download/1a0a.pdb"
+    <MolStarWrapper />
 
-      // @ts-ignore
-      dimensions={[500, 500]}
-      options={{
-        layoutShowControls: false,
-        'hide-controls': 1,
-        ref: myRef,
-      }}
-      showControls={false}
-      selectedEntanglementIndex={0}
-      setSelectedEntanglementIndex={function (index: number): void {}}
-    />
+    // <Molstar
+    //   // url="https://files.rcsb.org/download/1a0a.pdb"
+
+    //   // @ts-ignore
+    //   dimensions={[500, 500]}
+    //   options={{
+    //     layoutShowControls: false,
+    //     'hide-controls': 1,
+    //     ref: myRef,
+    //   }}
+    //   showControls={false}
+    //   selectedEntanglementIndex={0}
+    //   setSelectedEntanglementIndex={function (index: number): void {}}
+    // />
 
     // <Viewer3D
     //   model3D={''}

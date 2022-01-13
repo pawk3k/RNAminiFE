@@ -111,16 +111,35 @@ export class MolstarWrapper {
     const structure = await structureBuilder.createStructure(model);
     const components = this.plugin.build().to(structure);
     const traceRepr = createStructureRepresentationParams(this.plugin, void 0, {
-      type: 'ball-and-stick',
+      type: 'carbohydrate',
       color: 'uniform',
-      colorParams: { value: ColorNames.grey },
+      colorParams: { value: ColorNames.green },
       size: 'uniform',
       sizeParams: { value: 2.0 },
     });
-    await applyBuiltInSelection(components, 'backbone')
+    await applyBuiltInSelection(components, 'all')
       .apply(StateTransforms.Representation.StructureRepresentation3D, traceRepr)
       .commit();
   }
+
+  async loadStructureFromData2(
+    data_string: string,
+    format: BuiltInTrajectoryFormat,
+    options?: { dataLabel?: string },
+  ) {
+    const _data = await this.plugin.builders.data.rawData({
+      // @ts-ignore
+      data_string,
+      label: options?.dataLabel,
+    });
+    const trajectory = await this.plugin.builders.structure.parseTrajectory(_data, format);
+    await this.plugin.builders.structure.hierarchy.applyPreset(trajectory, 'default');
+  }
+  async loadStructureFromData3(
+    data_string: string,
+    format: BuiltInTrajectoryFormat,
+    options?: { dataLabel?: string },
+  ) {}
 
   hashPuncture(puncture: RST.PuncturePointsRaw) {
     return puncture.atoms[0] + ';' + puncture.atoms[1];
