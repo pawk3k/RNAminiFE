@@ -1,10 +1,21 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useLayoutEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
+import MolstarViewer from './viewer-3d/Viewer3D';
+import { MolstarWrapper } from './viewer-3d/MolstarWrapper';
+// import Molstara from './Molstar';
 // @ts-ignore
 const Molstar = dynamic(() => import('molstar-react'), {
+  ssr: false,
+});
+
+const Molstara = dynamic(() => import('./viewer-3d/Viewer3D'), {
+  ssr: false,
+});
+
+const Molstarb = dynamic(() => import('./Molstar'), {
   ssr: false,
 });
 
@@ -23,6 +34,14 @@ const OutputView: FunctionComponent = () => {
     a.download = 'input.pdb';
     a.click();
   };
+
+  // const [molstarPlugin, setMolstarPlugin] = useState<MolstarWrapper | undefined>();
+
+  // useLayoutEffect(() => {
+  //   if (viewerRef.current != null) {
+  //     setMolstarPlugin(new MolstarWrapper(viewerRef.current));
+  //   }
+  // }, []);
 
   // return isErrorOrLoading ? (
   //   <div className="my-auto w-full h-full flex justify-center items-center text-dashas-purple">
@@ -65,17 +84,43 @@ const OutputView: FunctionComponent = () => {
   //   </div>
   // );
   return (
-    <Molstar
-      // pdbId="1a0a"
-      // url="https://files.rcsb.org/download/1a0a.pdb"
-      // @ts-ignore
-      dimensions={[500, 500]}
-      options={{
-        layoutShowControls: false,
-        'hide-controls': 1,
+    <Molstara
+      model3D={''}
+      model3DName={'1a0a'}
+      report={{
+        entanglements: [],
+        structures: [],
+        meshes: {},
       }}
-      // pdb={file}
+      showControls={false}
+      selectedEntanglementIndex={0}
+      setSelectedEntanglementIndex={function (index: number): void {}}
     />
+
+    // <Viewer3D
+    //   model3D={''}
+    //   model3DName={'1a0a'}
+    //   report={{
+    //     entanglements: [],
+    //     structures: [],
+    //     meshes: {},
+    //   }}
+    //   showControls={false}
+    //   selectedEntanglementIndex={0}
+    //   setSelectedEntanglementIndex={function (index: number): void {}}
+    // />
+
+    // <Molstar
+    //   // pdbId="1a0a"
+    //   // url="https://files.rcsb.org/download/1a0a.pdb"
+    //   // @ts-ignore
+    //   dimensions={[500, 500]}
+    //   options={{
+    //     layoutShowControls: false,
+    //     'hide-controls': 1,
+    //   }}
+    //   // pdb={file}
+    // />
   );
 };
 

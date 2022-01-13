@@ -1,0 +1,156 @@
+diff --git a/node_modules/molstar/lib/commonjs/mol-plugin-ui/left-panel.js b/node_modules/molstar/lib/commonjs/mol-plugin-ui/left-panel.js
+index d83f985..ac298f6 100644
+--- a/node_modules/molstar/lib/commonjs/mol-plugin-ui/left-panel.js
++++ b/node_modules/molstar/lib/commonjs/mol-plugin-ui/left-panel.js
+@@ -33,10 +33,10 @@ var LeftPanelControls = /** @class */ (function (_super) {
+         };
+         _this.tabs = {
+             'none': (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}, void 0),
+-            'root': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.HomeOutlinedSvg, title: 'Home' }, void 0), (0, jsx_runtime_1.jsx)(actions_1.StateObjectActions, { state: _this.plugin.state.data, nodeRef: mol_state_1.StateTransform.RootRef, hideHeader: true, initiallyCollapsed: true, alwaysExpandFirst: true }, void 0), ((_a = _this.plugin.spec.components) === null || _a === void 0 ? void 0 : _a.remoteState) !== 'none' && (0, jsx_runtime_1.jsx)(snapshots_1.RemoteStateSnapshots, { listOnly: true }, void 0)] }, void 0),
+-            'data': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.AccountTreeOutlinedSvg, title: (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(RemoveAllButton, {}, void 0), " State Tree"] }, void 0) }, void 0), (0, jsx_runtime_1.jsx)(tree_1.StateTree, { state: _this.plugin.state.data }, void 0)] }, void 0),
+-            'states': (0, jsx_runtime_1.jsx)(snapshots_1.StateSnapshots, {}, void 0),
+-            'settings': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.TuneSvg, title: 'Plugin Settings' }, void 0), (0, jsx_runtime_1.jsx)(FullSettings, {}, void 0)] }, void 0),
++            // 'root': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.HomeOutlinedSvg, title: 'Home' }, void 0), (0, jsx_runtime_1.jsx)(actions_1.StateObjectActions, { state: _this.plugin.state.data, nodeRef: mol_state_1.StateTransform.RootRef, hideHeader: true, initiallyCollapsed: true, alwaysExpandFirst: true }, void 0), ((_a = _this.plugin.spec.components) === null || _a === void 0 ? void 0 : _a.remoteState) !== 'none' && (0, jsx_runtime_1.jsx)(snapshots_1.RemoteStateSnapshots, { listOnly: true }, void 0)] }, void 0),
++            'data': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.AccountTreeOutlinedSvg, title: (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: ["Structural elements and entanglements"] }, void 0) }, void 0), (0, jsx_runtime_1.jsx)(tree_1.StateTree, { state: _this.plugin.state.data }, void 0)] }, void 0),
++            // 'states': (0, jsx_runtime_1.jsx)(snapshots_1.StateSnapshots, {}, void 0),
++            // 'settings': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.TuneSvg, title: 'Plugin Settings' }, void 0), (0, jsx_runtime_1.jsx)(FullSettings, {}, void 0)] }, void 0),
+             'help': (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(common_1.SectionHeader, { icon: icons_1.HelpOutlineSvg, title: 'Help' }, void 0), (0, jsx_runtime_1.jsx)(help_1.HelpContent, {}, void 0)] }, void 0)
+         };
+         return _this;
+@@ -95,7 +95,7 @@ var DataIcon = /** @class */ (function (_super) {
+     };
+     DataIcon.prototype.render = function () {
+         var _this = this;
+-        return (0, jsx_runtime_1.jsx)(common_1.IconButton, { svg: icons_1.AccountTreeOutlinedSvg, toggleState: this.tab === 'data', transparent: true, onClick: function () { return _this.props.set('data'); }, title: 'State Tree', style: { position: 'relative' }, extraContent: this.state.changed ? (0, jsx_runtime_1.jsx)("div", { className: 'msp-left-panel-controls-button-data-dirty' }, void 0) : void 0 }, void 0);
++        return (0, jsx_runtime_1.jsx)(common_1.IconButton, { svg: icons_1.AccountTreeOutlinedSvg, toggleState: this.tab === 'data', transparent: true, onClick: function () { return _this.props.set('data'); }, title: 'Structural elements and entanglements', style: { position: 'relative' }, extraContent: this.state.changed ? (0, jsx_runtime_1.jsx)("div", { className: 'msp-left-panel-controls-button-data-dirty' }, void 0) : void 0 }, void 0);
+     };
+     return DataIcon;
+ }(base_1.PluginUIComponent));
+diff --git a/node_modules/molstar/lib/mol-plugin-ui/left-panel.js b/node_modules/molstar/lib/mol-plugin-ui/left-panel.js
+index ab632c5..f1d86ce 100644
+--- a/node_modules/molstar/lib/mol-plugin-ui/left-panel.js
++++ b/node_modules/molstar/lib/mol-plugin-ui/left-panel.js
+@@ -30,10 +30,10 @@ var LeftPanelControls = /** @class */ (function (_super) {
+         };
+         _this.tabs = {
+             'none': _jsx(_Fragment, {}, void 0),
+-            'root': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: HomeOutlinedSvg, title: 'Home' }, void 0), _jsx(StateObjectActions, { state: _this.plugin.state.data, nodeRef: StateTransform.RootRef, hideHeader: true, initiallyCollapsed: true, alwaysExpandFirst: true }, void 0), ((_a = _this.plugin.spec.components) === null || _a === void 0 ? void 0 : _a.remoteState) !== 'none' && _jsx(RemoteStateSnapshots, { listOnly: true }, void 0)] }, void 0),
+-            'data': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: AccountTreeOutlinedSvg, title: _jsxs(_Fragment, { children: [_jsx(RemoveAllButton, {}, void 0), " State Tree"] }, void 0) }, void 0), _jsx(StateTree, { state: _this.plugin.state.data }, void 0)] }, void 0),
+-            'states': _jsx(StateSnapshots, {}, void 0),
+-            'settings': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: TuneSvg, title: 'Plugin Settings' }, void 0), _jsx(FullSettings, {}, void 0)] }, void 0),
++            // 'root': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: HomeOutlinedSvg, title: 'Home' }, void 0), _jsx(StateObjectActions, { state: _this.plugin.state.data, nodeRef: StateTransform.RootRef, hideHeader: true, initiallyCollapsed: true, alwaysExpandFirst: true }, void 0), ((_a = _this.plugin.spec.components) === null || _a === void 0 ? void 0 : _a.remoteState) !== 'none' && _jsx(RemoteStateSnapshots, { listOnly: true }, void 0)] }, void 0),
++            'data': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { title: _jsxs(_Fragment, { children: ["Structural elements and entanglements"] }, void 0) }, void 0), _jsx(StateTree, { state: _this.plugin.state.data }, void 0)] }, void 0),
++            // 'states': _jsx(StateSnapshots, {}, void 0),
++            // 'settings': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: TuneSvg, title: 'Plugin Settings' }, void 0), _jsx(FullSettings, {}, void 0)] }, void 0),
+             'help': _jsxs(_Fragment, { children: [_jsx(SectionHeader, { icon: HelpOutlineSvg, title: 'Help' }, void 0), _jsx(HelpContent, {}, void 0)] }, void 0)
+         };
+         return _this;
+@@ -58,7 +58,20 @@ var LeftPanelControls = /** @class */ (function (_super) {
+     LeftPanelControls.prototype.render = function () {
+         var _this = this;
+         var tab = this.state.tab;
+-        return _jsxs("div", __assign({ className: 'msp-left-panel-controls' }, { children: [_jsxs("div", __assign({ className: 'msp-left-panel-controls-buttons' }, { children: [_jsx(IconButton, { svg: HomeOutlinedSvg, toggleState: tab === 'root', transparent: true, onClick: function () { return _this.set('root'); }, title: 'Home' }, void 0), _jsx(DataIcon, { set: this.set }, void 0), _jsx(IconButton, { svg: SaveOutlinedSvg, toggleState: tab === 'states', transparent: true, onClick: function () { return _this.set('states'); }, title: 'Plugin State' }, void 0), _jsx(IconButton, { svg: HelpOutlineSvg, toggleState: tab === 'help', transparent: true, onClick: function () { return _this.set('help'); }, title: 'Help' }, void 0), _jsx("div", __assign({ className: 'msp-left-panel-controls-buttons-bottom' }, { children: _jsx(IconButton, { svg: TuneSvg, toggleState: tab === 'settings', transparent: true, onClick: function () { return _this.set('settings'); }, title: 'Settings' }, void 0) }), void 0)] }), void 0), _jsx("div", __assign({ className: 'msp-scrollable-container' }, { children: this.tabs[tab] }), void 0)] }), void 0);
++        return _jsxs("div", __assign({ className: 'msp-left-panel-controls' }, { children: [
++
++            _jsxs("div", __assign({ className: 'msp-left-panel-controls-buttons' }, { children: [
++            // _jsx(IconButton, { svg: HomeOutlinedSvg, toggleState: tab === 'root', transparent: true, onClick: function () { return _this.set('root'); }, title: 'Home' }, void 0),
++            _jsx(DataIcon, { set: this.set }, void 0),
++            // _jsx(IconButton, { svg: SaveOutlinedSvg, toggleState: tab === 'states', transparent: true, onClick: function () { return _this.set('states'); }, title: 'Plugin State' }, void 0),
++            _jsx(IconButton, { svg: HelpOutlineSvg, toggleState: tab === 'help', transparent: true, onClick: function () { return _this.set('help'); }, title: 'Help' }, void 0),
++
++            // _jsx("div", __assign({ className: 'msp-left-panel-controls-buttons-bottom' }, { children:
++            //     _jsx(IconButton, { svg: TuneSvg, toggleState: tab === 'settings', transparent: true, onClick: function () { return _this.set('settings'); }, title: 'Settings' }, void 0)
++            // }), void 0)
++                ] }), void 0),
++            _jsx("div", __assign({ className: 'msp-scrollable-container' }, { children: this.tabs[tab] }), void 0)
++            ] }), void 0);
+     };
+     return LeftPanelControls;
+ }(PluginUIComponent));
+@@ -92,7 +105,7 @@ var DataIcon = /** @class */ (function (_super) {
+     };
+     DataIcon.prototype.render = function () {
+         var _this = this;
+-        return _jsx(IconButton, { svg: AccountTreeOutlinedSvg, toggleState: this.tab === 'data', transparent: true, onClick: function () { return _this.props.set('data'); }, title: 'State Tree', style: { position: 'relative' }, extraContent: this.state.changed ? _jsx("div", { className: 'msp-left-panel-controls-button-data-dirty' }, void 0) : void 0 }, void 0);
++        return _jsx(IconButton, { svg: AccountTreeOutlinedSvg, toggleState: this.tab === 'data', transparent: true, onClick: function () { return _this.props.set('data'); }, title: 'Structural elements and entanglements', style: { position: 'relative' }, extraContent: this.state.changed ? _jsx("div", { className: 'msp-left-panel-controls-button-data-dirty' }, void 0) : void 0 }, void 0);
+     };
+     return DataIcon;
+ }(PluginUIComponent));
+diff --git a/node_modules/molstar/lib/mol-plugin-ui/state/tree.js b/node_modules/molstar/lib/mol-plugin-ui/state/tree.js
+index b8f6d3a..feae565 100644
+--- a/node_modules/molstar/lib/mol-plugin-ui/state/tree.js
++++ b/node_modules/molstar/lib/mol-plugin-ui/state/tree.js
+@@ -269,12 +269,12 @@ var StateTreeNodeLabel = /** @class */ (function (_super) {
+         var children = cell.parent.tree.children.get(this.ref);
+         var cellState = cell.state;
+         var expand = _jsx(IconButton, { svg: cellState.isCollapsed ? ArrowRightSvg : ArrowDropDownSvg, flex: '20px', disabled: disabled, onClick: this.toggleExpanded, transparent: true, className: 'msp-no-hover-outline', style: { visibility: children.size > 0 ? 'visible' : 'hidden' } }, void 0);
+-        var remove = !cell.state.isLocked ? _jsx(IconButton, { svg: DeleteOutlinedSvg, onClick: this.remove, disabled: disabled, small: true, toggleState: false }, void 0) : void 0;
++        // var remove = !cell.state.isLocked ? _jsx(IconButton, { svg: DeleteOutlinedSvg, onClick: this.remove, disabled: disabled, small: true, toggleState: false }, void 0) : void 0;
+         var visibility = _jsx(IconButton, { svg: cellState.isHidden ? VisibilityOffOutlinedSvg : VisibilityOutlinedSvg, toggleState: false, disabled: disabled, small: true, onClick: this.toggleVisible }, void 0);
+         var marginStyle = {
+             marginLeft: "".concat(this.props.depth * 8, "px")
+         };
+-        var row = _jsxs("div", __assign({ className: "msp-flex-row msp-tree-row".concat(isCurrent ? ' msp-tree-row-current' : ''), onMouseEnter: this.highlight, onMouseLeave: this.clearHighlight, style: marginStyle }, { children: [expand, label, remove, visibility] }), void 0);
++        var row = _jsxs("div", __assign({ className: "msp-flex-row msp-tree-row".concat(isCurrent ? ' msp-tree-row-current' : ''), onMouseEnter: this.highlight, onMouseLeave: this.clearHighlight, style: marginStyle }, { children: [expand, label, visibility] }), void 0);
+         if (!isCurrent)
+             return row;
+         if (this.state.action === 'apply' && this.state.currentAction) {
+diff --git a/node_modules/molstar/lib/mol-plugin-ui/structure/components.js b/node_modules/molstar/lib/mol-plugin-ui/structure/components.js
+index 4675756..d8f2a3b 100644
+--- a/node_modules/molstar/lib/mol-plugin-ui/structure/components.js
++++ b/node_modules/molstar/lib/mol-plugin-ui/structure/components.js
+@@ -326,7 +326,10 @@ var StructureComponentGroup = /** @class */ (function (_super) {
+         var cell = component.cell;
+         var label = (_a = cell.obj) === null || _a === void 0 ? void 0 : _a.label;
+         var reprLabel = this.reprLabel;
+-        return _jsxs(_Fragment, { children: [_jsxs("div", __assign({ className: 'msp-flex-row' }, { children: [_jsxs(Button, __assign({ noOverflow: true, className: 'msp-control-button-label', title: "".concat(label, ". Click to focus."), onClick: this.focus, onMouseEnter: this.highlight, onMouseLeave: this.clearHighlight, style: { textAlign: 'left' } }, { children: [label, _jsx("small", __assign({ className: 'msp-25-lower-contrast-text', style: { float: 'right' } }, { children: reprLabel }), void 0)] }), void 0), _jsx(IconButton, { svg: cell.state.isHidden ? VisibilityOffOutlinedSvg : VisibilityOutlinedSvg, toggleState: false, onClick: this.toggleVisible, title: "".concat(cell.state.isHidden ? 'Show' : 'Hide', " component"), small: true, className: 'msp-form-control', flex: true }, void 0), _jsx(IconButton, { svg: DeleteOutlinedSvg, toggleState: false, onClick: this.remove, title: 'Remove', small: true, className: 'msp-form-control', flex: true }, void 0), _jsx(IconButton, { svg: MoreHorizSvg, onClick: this.toggleAction, title: 'Actions', toggleState: this.state.action === 'action', className: 'msp-form-control', flex: true }, void 0)] }), void 0), this.state.action === 'label' && _jsx("div", __assign({ className: 'msp-control-offset', style: { marginBottom: '6px' } }, { children: _jsx(ControlRow, { label: 'Label', control: _jsxs("div", __assign({ style: { display: 'flex', textAlignLast: 'center' } }, { children: [_jsx(TextInput, { onChange: this.updateLabel, value: label, style: { flex: '1 1 auto', minWidth: 0 }, className: 'msp-form-control', blurOnEnter: true, blurOnEscape: true }, void 0), _jsx(IconButton, { svg: CheckSvg, onClick: this.toggleLabel, className: 'msp-form-control msp-control-button-label', flex: true }, void 0)] }), void 0) }, void 0) }), void 0), this.state.action === 'action' && _jsxs("div", __assign({ className: 'msp-accent-offset' }, { children: [_jsx("div", __assign({ style: { marginBottom: '6px' } }, { children: _jsx(ActionMenu, { items: this.actions, onSelect: this.selectAction, noOffset: true }, void 0) }), void 0), _jsx("div", __assign({ style: { marginBottom: '6px' } }, { children: component.representations.map(function (r) { return _jsx(StructureRepresentationEntry, { group: _this.props.group, representation: r }, r.cell.transform.ref); }) }), void 0)] }), void 0)] }, void 0);
++        return _jsxs(_Fragment, { children: [_jsxs("div", __assign({ className: 'msp-flex-row' }, { children: [_jsxs(Button, __assign({ noOverflow: true, className: 'msp-control-button-label', title: "".concat(label, ". Click to focus."), onClick: this.focus, onMouseEnter: this.highlight, onMouseLeave: this.clearHighlight, style: { textAlign: 'left' } }, { children: [label, _jsx("small", __assign({ className: 'msp-25-lower-contrast-text', style: { float: 'right' } }, { children: reprLabel }), void 0)] }), void 0),
++               _jsx(IconButton, { svg: cell.state.isHidden ? VisibilityOffOutlinedSvg : VisibilityOutlinedSvg, toggleState: false, onClick: this.toggleVisible, title: "".concat(cell.state.isHidden ? 'Show' : 'Hide', " component"), small: true, className: 'msp-form-control', flex: true }, void 0),
++               // _jsx(IconButton, { svg: DeleteOutlinedSvg, toggleState: false, onClick: this.remove, title: 'Remove', small: true, className: 'msp-form-control', flex: true }, void 0),
++               _jsx(IconButton, { svg: MoreHorizSvg, onClick: this.toggleAction, title: 'Actions', toggleState: this.state.action === 'action', className: 'msp-form-control', flex: true }, void 0)] }), void 0), this.state.action === 'label' && _jsx("div", __assign({ className: 'msp-control-offset', style: { marginBottom: '6px' } }, { children: _jsx(ControlRow, { label: 'Label', control: _jsxs("div", __assign({ style: { display: 'flex', textAlignLast: 'center' } }, { children: [_jsx(TextInput, { onChange: this.updateLabel, value: label, style: { flex: '1 1 auto', minWidth: 0 }, className: 'msp-form-control', blurOnEnter: true, blurOnEscape: true }, void 0), _jsx(IconButton, { svg: CheckSvg, onClick: this.toggleLabel, className: 'msp-form-control msp-control-button-label', flex: true }, void 0)] }), void 0) }, void 0) }), void 0), this.state.action === 'action' && _jsxs("div", __assign({ className: 'msp-accent-offset' }, { children: [_jsx("div", __assign({ style: { marginBottom: '6px' } }, { children: _jsx(ActionMenu, { items: this.actions, onSelect: this.selectAction, noOffset: true }, void 0) }), void 0), _jsx("div", __assign({ style: { marginBottom: '6px' } }, { children: component.representations.map(function (r) { return _jsx(StructureRepresentationEntry, { group: _this.props.group, representation: r }, r.cell.transform.ref); }) }), void 0)] }), void 0)] }, void 0);
+     };
+     return StructureComponentGroup;
+ }(PurePluginUIComponent));
+@@ -334,7 +337,7 @@ var StructureRepresentationEntry = /** @class */ (function (_super) {
+     __extends(StructureRepresentationEntry, _super);
+     function StructureRepresentationEntry() {
+         var _this = _super !== null && _super.apply(this, arguments) || this;
+-        _this.remove = function () { return _this.plugin.managers.structure.component.removeRepresentations(_this.props.group, _this.props.representation); };
++        // _this.remove = function () { return _this.plugin.managers.structure.component.removeRepresentations(_this.props.group, _this.props.representation); };
+         _this.toggleVisible = function (e) {
+             e.preventDefault();
+             e.currentTarget.blur();
+@@ -353,9 +356,11 @@ var StructureRepresentationEntry = /** @class */ (function (_super) {
+     StructureRepresentationEntry.prototype.render = function () {
+         var _a;
+         var repr = this.props.representation.cell;
+-        return _jsxs("div", __assign({ className: 'msp-representation-entry' }, { children: [repr.parent && _jsx(ExpandGroup, __assign({ header: "".concat(((_a = repr.obj) === null || _a === void 0 ? void 0 : _a.label) || '', " Representation"), noOffset: true }, { children: _jsx(UpdateTransformControl, { state: repr.parent, transform: repr.transform, customHeader: 'none', customUpdate: this.update, noMargin: true }, void 0) }), void 0), _jsx(IconButton, { svg: DeleteOutlinedSvg, onClick: this.remove, title: 'Remove', small: true, className: 'msp-default-bg', toggleState: false, style: {
+-                        position: 'absolute', top: 0, right: '32px', lineHeight: '24px', height: '24px', textAlign: 'right', width: '44px', paddingRight: '6px', background: 'none'
+-                    } }, void 0), _jsx(IconButton, { svg: this.props.representation.cell.state.isHidden ? VisibilityOffOutlinedSvg : VisibilityOutlinedSvg, toggleState: false, onClick: this.toggleVisible, title: 'Toggle Visibility', small: true, className: 'msp-default-bg', style: {
++        return _jsxs("div", __assign({ className: 'msp-representation-entry' }, { children: [repr.parent && _jsx(ExpandGroup, __assign({ header: "".concat(((_a = repr.obj) === null || _a === void 0 ? void 0 : _a.label) || '', " Representation"), noOffset: true }, { children: _jsx(UpdateTransformControl, { state: repr.parent, transform: repr.transform, customHeader: 'none', customUpdate: this.update, noMargin: true }, void 0) }), void 0),
++                // _jsx(IconButton, { svg: DeleteOutlinedSvg, onClick: this.remove, title: 'Remove', small: true, className: 'msp-default-bg', toggleState: false, style: {
++                //         position: 'absolute', top: 0, right: '32px', lineHeight: '24px', height: '24px', textAlign: 'right', width: '44px', paddingRight: '6px', background: 'none'
++                //     } }, void 0),
++                _jsx(IconButton, { svg: this.props.representation.cell.state.isHidden ? VisibilityOffOutlinedSvg : VisibilityOutlinedSvg, toggleState: false, onClick: this.toggleVisible, title: 'Toggle Visibility', small: true, className: 'msp-default-bg', style: {
+                         position: 'absolute', top: 0, right: 0, lineHeight: '24px', height: '24px', textAlign: 'right', width: '32px', paddingRight: '6px', background: 'none'
+                     } }, void 0)] }), void 0);
+     };
+diff --git a/node_modules/molstar/lib/mol-plugin-ui/viewport.js b/node_modules/molstar/lib/mol-plugin-ui/viewport.js
+index bb324aa..df6d294 100644
+--- a/node_modules/molstar/lib/mol-plugin-ui/viewport.js
++++ b/node_modules/molstar/lib/mol-plugin-ui/viewport.js
+@@ -66,7 +66,13 @@ var ViewportControls = /** @class */ (function (_super) {
+         return _jsx(IconButton, { svg: icon, toggleState: isOn, onClick: onClick, title: title, style: { background: 'transparent' } }, void 0);
+     };
+     ViewportControls.prototype.render = function () {
+-        return _jsxs("div", __assign({ className: 'msp-viewport-controls', onMouseMove: this.onMouseMove }, { children: [_jsxs("div", __assign({ className: 'msp-viewport-controls-buttons' }, { children: [_jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.icon(AutorenewSvg, this.resetCamera, 'Reset Camera')] }, void 0), _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.icon(CameraOutlinedSvg, this.toggleScreenshotExpanded, 'Screenshot / State Snapshot', this.state.isScreenshotExpanded)] }, void 0), _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.plugin.config.get(PluginConfig.Viewport.ShowControls) && this.icon(BuildOutlinedSvg, this.toggleControls, 'Toggle Controls Panel', this.plugin.layout.state.showControls), this.plugin.config.get(PluginConfig.Viewport.ShowExpand) && this.icon(FullscreenSvg, this.toggleExpanded, 'Toggle Expanded Viewport', this.plugin.layout.state.isExpanded), this.plugin.config.get(PluginConfig.Viewport.ShowSettings) && this.icon(TuneSvg, this.toggleSettingsExpanded, 'Settings / Controls Info', this.state.isSettingsExpanded)] }, void 0), this.plugin.config.get(PluginConfig.Viewport.ShowSelectionMode) && _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), _jsx(ToggleSelectionModeButton, {}, void 0)] }, void 0)] }), void 0), this.state.isScreenshotExpanded && _jsx("div", __assign({ className: 'msp-viewport-controls-panel' }, { children: _jsx(ControlGroup, __assign({ header: 'Screenshot / State', title: 'Click to close.', initialExpanded: true, hideExpander: true, hideOffset: true, onHeaderClick: this.toggleScreenshotExpanded, topRightIcon: CloseSvg, noTopMargin: true, childrenClassName: 'msp-viewport-controls-panel-controls' }, { children: _jsx(DownloadScreenshotControls, { close: this.toggleScreenshotExpanded }, void 0) }), void 0) }), void 0), this.state.isSettingsExpanded && _jsx("div", __assign({ className: 'msp-viewport-controls-panel' }, { children: _jsx(ControlGroup, __assign({ header: 'Settings / Controls Info', title: 'Click to close.', initialExpanded: true, hideExpander: true, hideOffset: true, onHeaderClick: this.toggleSettingsExpanded, topRightIcon: CloseSvg, noTopMargin: true, childrenClassName: 'msp-viewport-controls-panel-controls' }, { children: _jsx(SimpleSettingsControl, {}, void 0) }), void 0) }), void 0)] }), void 0);
++        return _jsxs("div", __assign({ className: 'msp-viewport-controls', onMouseMove: this.onMouseMove }, { children: [_jsxs("div", __assign({ className: 'msp-viewport-controls-buttons' }, { children: [
++            _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.icon(AutorenewSvg, this.resetCamera, 'Reset Camera')] }, void 0),
++            _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.icon(CameraOutlinedSvg, this.toggleScreenshotExpanded, 'Screenshot', this.state.isScreenshotExpanded)] }, void 0),
++            _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), this.plugin.config.get(PluginConfig.Viewport.ShowControls) && this.icon(BuildOutlinedSvg, this.toggleControls, 'Toggle Structural Elements Panel', this.plugin.layout.state.showControls), this.plugin.config.get(PluginConfig.Viewport.ShowExpand) && this.icon(FullscreenSvg, this.toggleExpanded, 'Toggle Expanded Viewport', this.plugin.layout.state.isExpanded), this.plugin.config.get(PluginConfig.Viewport.ShowSettings) && this.icon(TuneSvg, this.toggleSettingsExpanded, 'Settings / Controls Info', this.state.isSettingsExpanded)] }, void 0), this.plugin.config.get(PluginConfig.Viewport.ShowSelectionMode) &&
++            _jsxs("div", { children: [_jsx("div", { className: 'msp-semi-transparent-background' }, void 0), _jsx(ToggleSelectionModeButton, {}, void 0)] }, void 0)] }), void 0),
++                this.state.isScreenshotExpanded && _jsx("div", __assign({ className: 'msp-viewport-controls-panel' }, { children: _jsx(ControlGroup, __assign({ header: 'Screenshot', title: 'Click to close.', initialExpanded: true, hideExpander: true, hideOffset: true, onHeaderClick: this.toggleScreenshotExpanded, topRightIcon: CloseSvg, noTopMargin: true, childrenClassName: 'msp-viewport-controls-panel-controls' }, { children: _jsx(DownloadScreenshotControls, { close: this.toggleScreenshotExpanded }, void 0) }), void 0) }), void 0),
++                this.state.isSettingsExpanded && _jsx("div", __assign({ className: 'msp-viewport-controls-panel' }, { children: _jsx(ControlGroup, __assign({ header: 'Settings', title: 'Click to close.', initialExpanded: true, hideExpander: true, hideOffset: true, onHeaderClick: this.toggleSettingsExpanded, topRightIcon: CloseSvg, noTopMargin: true, childrenClassName: 'msp-viewport-controls-panel-controls' }, { children: _jsx(SimpleSettingsControl, {}, void 0) }), void 0) }), void 0)] }), void 0);
+     };
+     return ViewportControls;
+ }(PluginUIComponent));

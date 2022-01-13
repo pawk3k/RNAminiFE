@@ -1,62 +1,53 @@
-// import React from 'react';
-// import FunctionComponent, { useEffect, useRef } from 'react';
+import { useEffect, FunctionComponent, useRef } from 'react';
+import molstar from './molstar';
+//@ts-ignore
+import { Viewer } from 'molstar/build/viewer/molstar';
 
-// // Molstar react component to read from file pdb
-// const Molstara: FunctionComponent = (props) => {
-//   var pdbId = props.pdbId,
-//     url = props.url,
-//     dimensions = props.dimensions,
-//     options = props.options;
-//   var viewerElement = useRef(null);
-//   var viewer = useRef(null);
-//   useEffect(function () {
-//     var mandatoryOptions = dimensions
-//       ? {
-//           layoutIsExpanded: false,
-//         }
-//       : {};
+// function initViewer(target: string | HTMLElement) {
+//   return new Viewer(target, {
+//     /* options */
+//   });
+// }
+// Molstar react component to read from file pdb
+const Molstara: FunctionComponent<MolProps> = (props) => {
+  var pdbId = props.pdbId,
+    url = props.url,
+    dimensions = props.dimensions;
+  var viewerElement = useRef(null);
+  var viewer = useRef(null);
 
-//     var viewerOptions = (...({}, options || {}), mandatoryOptions);
+  useEffect((): void => {
+    var mandatoryOptions = dimensions
+      ? {
+          layoutIsExpanded: false,
+        }
+      : {};
 
-//     viewer.current = new molstar.exports.Viewer(viewerElement.current, viewerOptions);
-//     if (pdbId) viewer.current.loadPdb(pdbId);
-//     if (url) viewer.current.loadStructureFromUrl(url);
-//     return function () {
-//       return (viewer.current = null);
-//     };
-//   }, []);
+    // var viewerOptions = (...({}, ), mandatoryOptions);
 
-//   if (!dimensions)
-//     return /*#__PURE__*/ React.createElement('div', {
-//       ref: viewerElement,
-//     });
-//   return /*#__PURE__*/ React.createElement(
-//     'div',
-//     {
-//       style: {
-//         position: 'relative',
-//         width: dimensions[0],
-//         height: dimensions[1],
-//       },
-//     },
-//     /*#__PURE__*/ React.createElement('div', {
-//       ref: viewerElement,
-//       style: {
-//         position: 'absolute',
-//         width: dimensions[0],
-//         height: dimensions[1],
-//         left: 0,
-//         right: 0,
-//       },
-//     }),
-//   );
-// };
+    viewer.current = new Viewer(viewerElement.current, mandatoryOptions);
 
-// Molstar.propTypes = {
-//   pdbId: PropTypes.string,
-//   url: PropTypes.string,
-//   dimensions: PropTypes.array,
-//   options: PropTypes.object
-// };
+    if (viewer.current) {
+      if (pdbId) viewer.current.loadPdb(pdbId);
+      if (url) viewer.current?.loadStructureFromUrl(url);
+    }
+    // return (): void => (viewer.current = null);
+  }, []);
+
+  // if (!dimensions) {
+  //   return <div ref={viewerElement} />;
+  // }
+  return (
+    <div className="relative left-0 right-0">
+      <div className="absolute" ref={viewerElement} />
+    </div>
+  );
+};
+
+type MolProps = {
+  pdbId: string;
+  url: string;
+  dimensions: [number, number];
+};
 
 export default Molstara;
