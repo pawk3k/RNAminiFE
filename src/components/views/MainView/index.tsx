@@ -4,18 +4,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import parsePdb from 'parse-pdb';
 import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import useGetFromBank from '@hooks/queries/useGetFromBank';
+import { toast } from 'react-toastify';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
-import { toast } from 'react-toastify';
 import SubmitButton from './SubmitButton/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
 
 const Main: NextPage = () => {
-  const [isOk, setIsOk] = useState<boolean | null>(null);
+  const [, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useFileContext();
   const [email, setEmail] = useState<null | string>(null);
-  const { characters } = useOTPContext();
-  const { mutate: getDataFromBank } = useGetFromBank();
 
   const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
@@ -27,17 +25,13 @@ const Main: NextPage = () => {
       toast('File upload failed!');
       setFile('');
     }
-  }, [file]);
+  }, [file, setFile]);
 
   useEffect(() => {
     if (file) {
       checkValidity();
     }
   }, [checkValidity, file]);
-
-  const resetFile = (): void => {
-    setFile('');
-  };
 
   return (
     <div className="w-full px-4 md:p-14 flex-auto md:pl-44 md:pr-24 ">
@@ -58,7 +52,7 @@ const Main: NextPage = () => {
               placeholder="example@gmail.com"
             />
           )}
-          <SubmitButton file={file} />
+          <SubmitButton />
         </div>
       </div>
     </div>

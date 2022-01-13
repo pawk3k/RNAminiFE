@@ -1,21 +1,15 @@
-import React, { FunctionComponent, useLayoutEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
-import MolstarViewer from './viewer-3d/Viewer3D';
-import { MolstarWrapper } from './viewer-3d/MolstarWrapper';
-// import Molstara from './Molstar';
+// import MolStarWrapper from './MyMol';
 // @ts-ignore
 const Molstar = dynamic(() => import('molstar-react'), {
   ssr: false,
 });
 
-const Molstara = dynamic(() => import('./viewer-3d/Viewer3D'), {
-  ssr: false,
-});
-
-const Molstarb = dynamic(() => import('./Molstar'), {
+const MolStarWrapper = dynamic(() => import('./MyMol'), {
   ssr: false,
 });
 
@@ -34,6 +28,13 @@ const OutputView: FunctionComponent = () => {
     a.download = 'input.pdb';
     a.click();
   };
+  const myRef = useRef();
+  // console.log(myRef);
+  useEffect(() => {
+    if (myRef.current) {
+      console.log(myRef?.current);
+    }
+  });
 
   // const [molstarPlugin, setMolstarPlugin] = useState<MolstarWrapper | undefined>();
 
@@ -84,13 +85,16 @@ const OutputView: FunctionComponent = () => {
   //   </div>
   // );
   return (
-    <Molstara
-      model3D={''}
-      model3DName={'1a0a'}
-      report={{
-        entanglements: [],
-        structures: [],
-        meshes: {},
+    // <MolStarWrapper />
+    <Molstar
+      // url="https://files.rcsb.org/download/1a0a.pdb"
+
+      // @ts-ignore
+      dimensions={[500, 500]}
+      options={{
+        layoutShowControls: false,
+        'hide-controls': 1,
+        ref: myRef,
       }}
       showControls={false}
       selectedEntanglementIndex={0}
