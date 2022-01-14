@@ -53,6 +53,7 @@ const Molstar: FunctionComponent = () => {
     }
     initViewer3d();
   }, [file1, file2, molstarPlugin]);
+
   return (
     <div>
       <div id="viewer3d-molstar" className="w-96 h-96 -ml-3">

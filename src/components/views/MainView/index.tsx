@@ -2,8 +2,6 @@ import type { NextPage } from 'next';
 import React, { useCallback, useEffect, useState } from 'react';
 // @ts-ignore
 import parsePdb from 'parse-pdb';
-import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
-import useGetFromBank from '@hooks/queries/useGetFromBank';
 import { toast } from 'react-toastify';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
@@ -19,7 +17,7 @@ const Main: NextPage = () => {
     const { atoms } = parsePdb(file);
     setIsOk(atoms.length > 0);
     if (atoms.length > 0) {
-      toast('File upload sucseed!');
+      toast('File upload succeed!');
       // handleSendFileToServer();
     } else {
       toast('File upload failed!');

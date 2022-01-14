@@ -8,7 +8,7 @@ type MutationArguments = {
 };
 
 const getFromBank: MutationFunction<string, MutationArguments> = async ({ proteinChars }) => {
-  const data = await fetch(`https://files.rcsb.org/download/${proteinChars}.cif.gz`);
+  const data = await fetch(`https://files.rcsb.org/download/${proteinChars}.pdb`);
   if (!data.ok) {
     throw new Error('Network response was not ok');
   }

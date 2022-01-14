@@ -11,7 +11,7 @@ type FileContextType = [file: string, setFile: Dispatch<SetStateAction<string>>]
 
 const FileContext = createContext({} as FileContextType);
 
-export const useFileContext = () => useContext(FileContext);
+export const useFileContext = (): FileContextType => useContext(FileContext);
 
 const FileContextProvider: FunctionComponent = ({ children }) => {
   const [file, setFile] = useState('');
