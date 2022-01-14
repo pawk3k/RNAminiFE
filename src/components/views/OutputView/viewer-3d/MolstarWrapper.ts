@@ -92,7 +92,7 @@ export class MolstarWrapper {
   async loadStructureFromData(
     data_string: string,
     format: BuiltInTrajectoryFormat,
-    options?: { dataLabel?: string },
+    options?: { dataLabel?: string; myColor: number },
   ) {
     await this.plugin.clear();
     this.plugin.canvas3d?.setProps((old) => {
@@ -110,10 +110,12 @@ export class MolstarWrapper {
     this.modelRef = model.ref;
     const structure = await structureBuilder.createStructure(model);
     const components = this.plugin.build().to(structure);
+    const colorName = options?.myColor || ColorNames.green;
     const traceRepr = createStructureRepresentationParams(this.plugin, void 0, {
       type: 'carbohydrate',
       color: 'uniform',
-      colorParams: { value: ColorNames.green },
+      //@ts-ignore
+      colorParams: { value: colorName! },
       size: 'uniform',
       sizeParams: { value: 2.0 },
     });

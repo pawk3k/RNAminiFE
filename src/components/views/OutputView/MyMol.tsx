@@ -6,6 +6,7 @@ import { PluginLayoutControlsDisplay } from 'molstar/lib/mol-plugin/layout';
 import { createReadStream, read } from 'fs';
 import { CLIENT_RENEG_LIMIT } from 'tls';
 import { MolstarWrapper } from './viewer-3d/MolstarWrapper';
+import { ColorNames } from 'molstar/lib/mol-util/color/names';
 
 const DefaultViewerOptions = {
   layoutIsExpanded: false,
@@ -127,8 +128,10 @@ function MolStarMy() {
   useEffect(() => {
     async function initViewer3d() {
       if (file2 && file1 && molstarPlugin) {
-        await molstarPlugin.loadStructureFromData(file1, 'pdb');
-        await molstarPlugin.loadStructureFromData(file2, 'pdb');
+        await molstarPlugin.loadStructureFromData(file1 + file2, 'pdb', {
+          myColor: ColorNames.rosybrown,
+        });
+        // await molstarPlugin.loadStructureFromData(file2, 'pdb', { myColor: ColorNames.red });
       }
     }
     initViewer3d();
