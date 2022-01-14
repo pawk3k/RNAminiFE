@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
-import MolstarViewer from './viewer-3d/Viewer3D';
 // import MolStarWrapper from './MyMol';
 // @ts-ignore
 const Molstar = dynamic(() => import('molstar-react'), {
