@@ -1,10 +1,8 @@
 import { DefaultPluginUISpec, PluginUISpec } from 'molstar/lib/mol-plugin-ui/spec';
 import { createPluginAsync } from 'molstar/lib/mol-plugin-ui/index';
 import { PluginConfig } from 'molstar/lib/mol-plugin/config';
-import { ChangeEvent, createRef, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { PluginLayoutControlsDisplay } from 'molstar/lib/mol-plugin/layout';
-import { createReadStream, read } from 'fs';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 import { MolstarWrapper } from './viewer-3d/MolstarWrapper';
 import { ColorNames } from 'molstar/lib/mol-util/color/names';
 
@@ -72,29 +70,9 @@ function MolStarMy() {
   const [file1, setFile1] = useState<string>();
   const [file2, setFile2] = useState<string>();
 
-  const handleUploadFile = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
-    e.preventDefault();
-    const files = e.target.files;
-    const reader = new FileReader();
-    reader.onload = async (event): Promise<void> => {
-      const text = event.target?.result as string;
-      // setFile1([text, text]);
-      // setFile((prevFile) => [...(prevFile || []), text]);
-    };
-    console.log(files);
-    // files.forEach((file) => {
-    //   reader.readAsText(file);
-    // });
-    reader.readAsText(e.target.files![0]);
-    // read file after file
-
-    // reader.readAsText(e.target.files![1]);
-  };
-
   const handleReadAllFiles = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     e.preventDefault();
     const files = e.target.files;
-    const reader = new FileReader();
     files &&
       // @ts-ignore
       Object.keys(files as FileList).forEach((i: number) => {
@@ -103,19 +81,14 @@ function MolStarMy() {
         const reader = new FileReader();
         reader.onload = (event) => {
           const text = event.target?.result as string;
-          // setFile1(text);
           if (i == 0) {
             setFile1(text);
           } else {
             setFile2(text);
           }
-          //server call for uploading or reading the files one-by-one
-          //by using 'reader.result' or 'file'
         };
         reader.readAsText(file);
       });
-
-    // read multiple files with reader
   };
   console.log(file1);
 
@@ -128,32 +101,14 @@ function MolStarMy() {
   useEffect(() => {
     async function initViewer3d() {
       if (file2 && file1 && molstarPlugin) {
-        await molstarPlugin.loadStructureFromData(file1 + file2, 'pdb', {
-          myColor: ColorNames.rosybrown,
+        await molstarPlugin.loadStructureFromData(file1, 'pdb', {
+          myColor: ColorNames.green,
         });
-        // await molstarPlugin.loadStructureFromData(file2, 'pdb', { myColor: ColorNames.red });
+        await molstarPlugin.loadStructureFromData(file2, 'pdb', { myColor: ColorNames.red });
       }
     }
     initViewer3d();
   }, [file1, file2]);
-  console.log(file1?.length);
-  console.log(file2?.length);
-  // console.log(file[1]?.length);
-  // useEffect(() => {
-  //   let plugin: any | undefined = undefined;
-  //   async function init() {
-  //     //   @ts-ignore
-  //     plugin = createPlugin(parent.current);
-  //   }
-  //   if (parent.current) {
-  //     console.log(parent.current);
-  //   }
-  //   init();
-  //   return () => {
-  //     plugin?.dispose();
-  //   };
-  // }, []);
-
   return (
     <div>
       <div id="viewer3d-molstar" className="w-96 h-96">

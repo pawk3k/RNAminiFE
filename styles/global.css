@@ -82,6 +82,13 @@ canvas {
   width: 600px;
   height: 600px;
 }
+.msp-viewport-controls {
+  display: none;
+}
+
+.msp-highlight-toast-wrapper {
+  display: none;
+}
 
 @tailwind base;
 @tailwind components;
