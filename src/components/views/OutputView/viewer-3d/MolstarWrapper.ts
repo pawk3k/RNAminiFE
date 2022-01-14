@@ -22,8 +22,10 @@ const DefaultViewerOptions = {
 };
 type ViewerOptions = typeof DefaultViewerOptions;
 
+// eslint-disable-next-line import/prefer-default-export
 export class MolstarWrapper {
   plugin: PluginContext;
+
   constructor(element: HTMLElement, options: Partial<ViewerOptions> = {}) {
     const o = { ...DefaultViewerOptions, ...options };
     const defaultSpec = DefaultPluginUISpec();
@@ -62,9 +64,11 @@ export class MolstarWrapper {
     data_string: string,
     format: BuiltInTrajectoryFormat,
     options?: { dataLabel?: string; myColor: number },
-  ) {
+  ): Promise<void> {
     this.plugin.canvas3d?.setProps((old) => {
+      // eslint-disable-next-line no-param-reassign
       old.renderer.pickingAlphaThreshold = 0.2;
+      // eslint-disable-next-line no-param-reassign
       old.renderer.backgroundColor = 0xffffff as Color;
     });
     this.plugin.behaviors.layout.leftPanelTabName.next('data');
@@ -78,10 +82,10 @@ export class MolstarWrapper {
     const structure = await structureBuilder.createStructure(model);
     const components = this.plugin.build().to(structure);
     const colorName = options?.myColor || ColorNames.green;
-    const traceRepr = createStructureRepresentationParams(this.plugin, void 0, {
+    const traceRepr = createStructureRepresentationParams(this.plugin, undefined, {
       type: 'carbohydrate',
       color: 'uniform',
-      //@ts-ignore
+      // @ts-ignore
       colorParams: { value: colorName! },
       size: 'uniform',
       sizeParams: { value: 2.0 },
