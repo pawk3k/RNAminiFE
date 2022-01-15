@@ -1,3 +1,4 @@
+import config from '@root/config';
 import { useRouter } from 'next/router';
 //  redirect to url get from react query from endpoint
 
@@ -10,17 +11,14 @@ type MutationArguments = {
   options?: UseMutationOptions<string, unknown, void, unknown>;
 };
 
-const getUID: MutationFunction<string, MutationArguments> = async ({
-  file: proteinChars,
-  email = '',
-}) => {
-  const response = await fetch('http://localhost:8080/api/task', {
+const getUID: MutationFunction<string, MutationArguments> = async ({ file = '', email = '' }) => {
+  const response = await fetch(`${config.apiUrl}/api/task`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      data: proteinChars,
+      data: file,
       email,
     }),
   }).then((res) => res.json());
@@ -32,7 +30,7 @@ const useAddFile = (
 ): UseMutationResult<string, unknown, MutationArguments, unknown> => {
   const { push } = useRouter();
   return useMutation(getUID, {
-    onSuccess: (uid) => {
+    onSuccess: (uid: string) => {
       push(`/output/${uid}`);
     },
     onError: () => {
