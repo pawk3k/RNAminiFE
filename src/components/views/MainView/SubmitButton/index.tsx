@@ -1,5 +1,6 @@
 import useAddFile from '@hooks/queries/useAddFile';
 import useGetFromBank from '@hooks/queries/useGetFromBank';
+import { useEmailContext } from '@root/contextProviders/EmailContext';
 import { useFileContext } from '@root/contextProviders/FileContextProvider';
 import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import { FunctionComponent } from 'react';
@@ -7,13 +8,14 @@ import { FunctionComponent } from 'react';
 const SubmitButton: FunctionComponent = () => {
   const { characters } = useOTPContext();
   const [file] = useFileContext();
+  const [email] = useEmailContext();
   const { mutate: getDataFromBank } = useGetFromBank();
   const { mutate: sendFileToServer } = useAddFile();
   const submitDisabled = !file && characters.join('').length < 4;
 
   const handleSubmit = (): void => {
     if (characters.join('').length < 4) {
-      sendFileToServer({ proteinChars: file });
+      sendFileToServer({ file, email: email ?? '' });
     } else {
       getDataFromBank({
         proteinChars: characters.join(''),

@@ -5,11 +5,12 @@ import { MutationFunction, useMutation, UseMutationOptions, UseMutationResult } 
 import { toast } from 'react-toastify';
 
 type MutationArguments = {
-  proteinChars: string;
+  file: string;
+  email?: string;
   options?: UseMutationOptions<string, unknown, void, unknown>;
 };
 
-const getUID: MutationFunction<string, MutationArguments> = async ({ proteinChars }) => {
+const getUID: MutationFunction<string, MutationArguments> = async ({ file: proteinChars }) => {
   const response = await fetch('http://localhost:8080/api/task', {
     method: 'POST',
     headers: {
@@ -29,7 +30,6 @@ const useAddFile = (
   const { push } = useRouter();
   return useMutation(getUID, {
     onSuccess: (uid) => {
-      console.log(uid);
       push(`/output/${uid}`);
     },
     onError: () => {

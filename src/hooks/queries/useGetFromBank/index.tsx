@@ -1,3 +1,4 @@
+import { useEmailContext } from '@root/contextProviders/EmailContext';
 import { MutationFunction, useMutation, UseMutationOptions, UseMutationResult } from 'react-query';
 import { toast } from 'react-toastify';
 import useAddFile from '../useAddFile';
@@ -21,9 +22,10 @@ const useGetFromBank = (
   options?: UseMutationOptions<string, unknown, MutationArguments, unknown>,
 ): UseMutationResult<string, unknown, MutationArguments, unknown> => {
   const { mutate: sendToServer } = useAddFile();
+  const [email] = useEmailContext();
   return useMutation(getFromBank, {
     onSuccess: (data) => {
-      sendToServer({ proteinChars: data });
+      sendToServer({ file: data, email: email ?? '' });
       toast('Success!');
     },
     onError: () => {

@@ -3,15 +3,18 @@ import React, { useCallback, useEffect, useState } from 'react';
 // @ts-ignore
 import parsePdb from 'parse-pdb';
 import { toast } from 'react-toastify';
+import { useToggle } from 'react-use';
 import ProteinInput from './ProteinInput';
 import Switch from './Switch/Switch';
 import SubmitButton from './SubmitButton/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
+import EmailInput from './EmailInput';
 
 const Main: NextPage = () => {
   const [, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useFileContext();
-  const [email, setEmail] = useState<null | string>(null);
+
+  const [toggle, setToggle] = useToggle(false);
 
   const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
@@ -40,16 +43,10 @@ const Main: NextPage = () => {
         <div className="w-full">
           <ProteinInput setFile={setFile} file={file} />
           <div className="pt-6 flex">
-            <Switch setEmail={setEmail} />
+            <Switch setToggle={setToggle} />
             Notify me when results are ready
           </div>
-          {email != null && (
-            <input
-              type="email"
-              className="rounded-3xl mt-6 pl-4 h-9 w-full shadow-lg"
-              placeholder="example@gmail.com"
-            />
-          )}
+          {toggle && <EmailInput />}
           <SubmitButton />
         </div>
       </div>
