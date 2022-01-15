@@ -3,7 +3,12 @@ import { useRouter } from 'next/router';
 
 type StatusResponse = {
   status: string;
+  // start file
   data: string;
+  solution: string;
+  superComposition: string;
+  logs: string;
+  filteredPdb: string;
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {

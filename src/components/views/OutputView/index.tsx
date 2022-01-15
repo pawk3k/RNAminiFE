@@ -12,9 +12,7 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const { query } = useRouter();
-  const [file] = useFileContext();
-  console.log(file);
-  const { data: { status } = {}, isError } = useGetStatus();
+  const { data: { status, data, solution } = {}, isError } = useGetStatus();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isLoading = status === 'queued';
@@ -34,7 +32,7 @@ const OutputView: FunctionComponent = () => {
             ? 'An error occurred while processing your\n task. Please try again later.'
             : 'Processing file'}
         </div>
-        <DownloadTaskButton />
+        <DownloadTaskButton file={data ?? ''} text="Download task" />
       </div>
     </div>
   ) : (
@@ -46,7 +44,8 @@ const OutputView: FunctionComponent = () => {
           <div className="flex justify-center w-full items-center mt-3 text-3xl ">
             Your solution is ready!
           </div>
-          <DownloadTaskButton />
+          <DownloadTaskButton file={data ?? ''} text="Download task" />
+          <DownloadTaskButton file={solution ?? ''} text="Download solution" />
         </div>
       </div>
       <Molstar />
