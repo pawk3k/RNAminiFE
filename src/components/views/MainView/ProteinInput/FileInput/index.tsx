@@ -1,9 +1,10 @@
 import { DragAndDrop } from '@assets/index';
-import { ChangeEvent, Dispatch, FunctionComponent, SetStateAction } from 'react';
+import { useFileContext } from '@root/contextProviders/FileContextProvider';
+import { ChangeEvent, FunctionComponent } from 'react';
 
-const FileInput: FunctionComponent<{ setFile: Dispatch<SetStateAction<string>> }> = ({
-  setFile,
-}) => {
+const FileInput: FunctionComponent = () => {
+  const [, setFile] = useFileContext();
+
   const handleUploadFile = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     e.preventDefault();
     const reader = new FileReader();

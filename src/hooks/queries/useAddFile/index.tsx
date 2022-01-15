@@ -10,7 +10,10 @@ type MutationArguments = {
   options?: UseMutationOptions<string, unknown, void, unknown>;
 };
 
-const getUID: MutationFunction<string, MutationArguments> = async ({ file: proteinChars }) => {
+const getUID: MutationFunction<string, MutationArguments> = async ({
+  file: proteinChars,
+  email = '',
+}) => {
   const response = await fetch('http://localhost:8080/api/task', {
     method: 'POST',
     headers: {
@@ -18,7 +21,7 @@ const getUID: MutationFunction<string, MutationArguments> = async ({ file: prote
     },
     body: JSON.stringify({
       data: proteinChars,
-      email: null,
+      email,
     }),
   }).then((res) => res.json());
   return response.uuid;

@@ -3,18 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 // @ts-ignore
 import parsePdb from 'parse-pdb';
 import { toast } from 'react-toastify';
-import { useToggle } from 'react-use';
 import ProteinInput from './ProteinInput';
-import Switch from './Switch/Switch';
-import SubmitButton from './SubmitButton/index';
 import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
-import EmailInput from './EmailInput';
+import UserForm from './UserForm';
 
 const Main: NextPage = () => {
   const [, setIsOk] = useState<boolean | null>(null);
   const [file, setFile] = useFileContext();
-
-  const [toggle, setToggle] = useToggle(false);
 
   const checkValidity = useCallback((): void => {
     const { atoms } = parsePdb(file);
@@ -41,13 +36,8 @@ const Main: NextPage = () => {
           Start by uploading your file
         </div>
         <div className="w-full">
-          <ProteinInput setFile={setFile} file={file} />
-          <div className="pt-6 flex">
-            <Switch setToggle={setToggle} />
-            Notify me when results are ready
-          </div>
-          {toggle && <EmailInput />}
-          <SubmitButton />
+          <ProteinInput />
+          <UserForm />
         </div>
       </div>
     </div>
