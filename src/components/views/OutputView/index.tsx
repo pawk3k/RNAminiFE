@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
-import { useFileContext } from '../../../contextProviders/FileContextProvider/index';
 import Loader from './Loader';
 import DownloadTaskButton from './DownloadTaskButton';
 
