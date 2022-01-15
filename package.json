@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "postinstall": "patch-package",
-    "compress": "gzipper c --gzip-level 9 -v --threshold 256 --remove-larger ./build",
     "custom-start": "node server.js",
     "dev": "next dev -p 4010",
     "build": "next build ",
@@ -15,7 +14,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
-    "pretest:e2e:run": "npm run build",
+    "pretest:e2e:run": "npm run build && next export",
     "test:e2e:run": "start-server-and-test dev http://localhost:4010 cy:run",
     "test:e2e:dev": "start-server-and-test dev http://localhost:4010 cy:open"
   },
@@ -30,10 +29,9 @@
     "@reach/tabs": "^0.16.4",
     "@tanem/react-nprogress": "^3.0.82",
     "axios": "^0.24.0",
-    "gzipper": "^6.2.1",
     "molstar": "^3.0.0-dev.4",
     "molstar-react": "^0.3.0",
-    "next": "12.0.3",
+    "next": "^12.0.8",
     "next-compose-plugins": "^2.2.1",
     "next-svgr": "^0.0.2",
     "parse-pdb": "^1.0.0",
@@ -47,6 +45,7 @@
   },
   "devDependencies": {
     "@masterborn/eslint-config": "0.0.13",
+    "@next/eslint-plugin-next": "^12.0.8",
     "@testing-library/cypress": "^8.0.2",
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",

@@ -1,5 +1,9 @@
 {
-  "extends": ["@masterborn/eslint-config/frontend/typescript", "prettier"],
+  "extends": [
+    "@masterborn/eslint-config/frontend/typescript",
+    "prettier",
+    "plugin:@next/next/recommended"
+  ],
   "rules": {
     "react/jsx-no-useless-fragment": "error",
     "react/react-in-jsx-scope": "off"

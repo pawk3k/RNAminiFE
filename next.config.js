@@ -7,7 +7,9 @@ const plugins = [[withSvgr]];
 
 module.exports = withPlugins(plugins, {
   reactStrictMode: true,
-  swcMinify: false,
+  experimental: {
+    outputStandalone: true,
+  },
   async redirects() {
     return [
       {

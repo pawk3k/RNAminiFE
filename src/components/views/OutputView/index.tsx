@@ -18,17 +18,8 @@ const OutputView: FunctionComponent = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isLoading = status === 'queued';
-  // const isErrorOrLoading = isError || isLoading;
 
-  // const handleDownloadFile = () => {
-  //   // download and decode from base64
-  //   const a = document.createElement('a');
-  //   a.href = `data:text/plain;base64,${data}`;
-  //   a.download = 'input.pdb';
-  //   a.click();
-  // };
-
-  return false ? (
+  return isLoading ? (
     <div className="my-auto w-full h-full flex justify-center items-center text-dashas-purple">
       <div className="pl-9 relative bg-dashas-pink rounded-3xl w-2/3 h-60 flex justify-start items-start flex-col">
         <div className="mt-11">Task : {query.uid}</div>
@@ -44,13 +35,6 @@ const OutputView: FunctionComponent = () => {
             : 'Processing file'}
         </div>
         <DownloadTaskButton />
-        {/* <button
-          type="button"
-          onClick={handleDownloadFile}
-          className="text-dashas-pink absolute bottom-5 ml-4 bg-dashas-purple px-9 rounded-full py-2 "
-        >
-          Download task
-        </button> */}
       </div>
     </div>
   ) : (

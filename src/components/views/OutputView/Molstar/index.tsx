@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 import { ColorNames } from 'molstar/lib/mol-util/color/names';
-import { MolstarWrapper } from './viewer-3d/MolstarWrapper';
+import { MolstarWrapper } from './MolstarWrapper';
 
 const Molstar: FunctionComponent = () => {
   const parent = useRef<HTMLDivElement>(null);
