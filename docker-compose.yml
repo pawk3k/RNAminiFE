@@ -5,4 +5,4 @@ services:
     image: nextjs-docker3
     restart: on-failure
     ports:
-      - '5000:5000'
+      - '3000:3000'
