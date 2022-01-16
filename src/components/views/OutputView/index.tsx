@@ -36,7 +36,7 @@ const OutputView: FunctionComponent = () => {
     );
   }
 
-  if (true) {
+  if (status==="finished") {
     return (
       <div className="flex w-full justify-around">
         <div className="w-2/3 my-auto h-full flex justify-around items-center text-dashas-purple">
