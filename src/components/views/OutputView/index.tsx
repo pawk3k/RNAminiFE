@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, { FunctionComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
@@ -11,7 +12,8 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const { query } = useRouter();
-  const { data: { status, data, solution, superComposition, filteredPdb } = {}, isError } = useGetStatus();
+  const { data: { status, data, solution, superComposition, filteredPdb } = {}, isError } =
+    useGetStatus();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isLoading = status === 'queued' || isError;
@@ -29,7 +31,7 @@ const OutputView: FunctionComponent = () => {
             <DownloadTaskButton file={solution ?? ''} text="Download solution" />
           </div>
         </div>
-        <Molstar inputFile1={superComposition ?? ''} inputFile2={filteredPdb ?? ''}/>
+        <Molstar inputFile1={superComposition ?? ''} inputFile2={filteredPdb ?? ''} />
       </div>
     );
   }
@@ -50,6 +52,7 @@ const OutputView: FunctionComponent = () => {
             : 'Processing file'}
         </div>
         <DownloadTaskButton file={data ?? ''} text="Download task" />
+        <DownloadTaskButton file={data ?? ''} text="Logs" />
       </div>
     </div>
   );

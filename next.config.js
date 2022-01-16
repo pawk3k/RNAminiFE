@@ -14,7 +14,7 @@ module.exports = withPlugins(plugins, {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8080/:path*', // Proxy to Backend
+        destination: 'http://rna-server:8080/:path*', // Proxy to Backend
       },
     ];
   },
