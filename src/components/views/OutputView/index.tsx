@@ -45,12 +45,12 @@ const OutputView: FunctionComponent = () => {
             <div className="flex justify-center w-full items-center mt-3 text-3xl ">
               Your solution is ready!
             </div>
-            <div className="flex w-full self-end">
+            <div className="flex w-full justify-center self-end">
               <DownloadTaskButton file={data ?? ''} text="Download task" />
               <DownloadTaskButton file={logs ?? ''} text="Logs" />
               <DownloadTaskButton file={solution ?? ''} text="Download solution" />
             </div>
-         </div>
+          </div>
         </div>
         <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
       </div>
