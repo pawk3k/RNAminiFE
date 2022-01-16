@@ -6,7 +6,7 @@ import FileInput from './FileInput';
 import LinkInput from './LinkInput';
 
 const ProteinInput: FunctionComponent = () => {
-  const [file] = useFileContext();
+  const [file, setFile] = useFileContext();
   return (
     <div className=" bg-purple-300 rounded-3xl shadow-md">
       <Tabs>
@@ -28,8 +28,15 @@ const ProteinInput: FunctionComponent = () => {
               <TabPanels>
                 <TabPanel className="w-full">
                   {file ? (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex  relative flex-col justify-center items-center">
                       <div className="my-4">File uploaded succeed!</div>
+                      <button
+                        className="absolute top-4 right-12 cursor-pointer"
+                        type="button"
+                        onClick={(): void => setFile('')}
+                      >
+                        x
+                      </button>
                       <FileIcon className="w-20 h-20 m-16 mt-4" />
                     </div>
                   ) : (
