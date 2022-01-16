@@ -7,11 +7,11 @@ import { toast } from 'react-toastify';
 
 type MutationArguments = {
   file: string;
-  email?: string;
+  email: string | null;
   options?: UseMutationOptions<string, unknown, void, unknown>;
 };
 
-const getUID: MutationFunction<string, MutationArguments> = async ({ file = '', email = '' }) => {
+const getUID: MutationFunction<string, MutationArguments> = async ({ file = '', email }) => {
   const response = await fetch(`/api/task`, {
     method: 'POST',
     headers: {

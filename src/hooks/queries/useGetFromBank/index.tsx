@@ -25,7 +25,7 @@ const useGetFromBank = (
   const [email] = useEmailContext();
   return useMutation(getFromBank, {
     onSuccess: (data) => {
-      sendToServer({ file: data, email: email ?? '' });
+      sendToServer({ file: data, email });
       toast('Success!');
     },
     onError: () => {
