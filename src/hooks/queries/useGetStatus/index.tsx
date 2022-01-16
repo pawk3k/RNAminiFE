@@ -19,7 +19,7 @@ const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) =>
 const useGetStatus = (): QueryObserverResult<StatusResponse, Error> => {
   const { query } = useRouter();
   return useQuery(['task', query.uid], getStatus, {
-    keepPreviousData: true,
+    enabled: Boolean(query.uid),
   });
 };
 
