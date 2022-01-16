@@ -6,14 +6,13 @@ type StatusResponse = {
   // start file
   data: string;
   solution: string;
-  superComposition: string;
+  supercomposition: string;
   logs: string;
-  filteredPdb: string;
+  filteredpdb: string;
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
   const response = await fetch(`/api/task/${id}`).then((res) => res.json());
-
   return response;
 };
 

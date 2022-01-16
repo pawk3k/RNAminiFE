@@ -64,7 +64,7 @@ const Molstar: FunctionComponent<{ inputFile1: string; inputFile2: string }> = (
       <div id="viewer3d-molstar" className="w-96 h-96 -ml-3">
         <div id="structure-3d-viewer" ref={parent} />
       </div>
-      <input type="file" onChange={handleReadAllFiles} multiple />
+      {/* <input type="file" onChange={handleReadAllFiles} multiple /> */}
     </div>
   );
 };

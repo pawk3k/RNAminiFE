@@ -7,7 +7,7 @@ const DownloadTaskButton: FunctionComponent<{ file: string; text: string | undef
   const handleDownloadFile = (): void => {
     const a = document.createElement('a');
     a.href = `data:text/plain;base64,${file}`;
-    a.download = `${text ?? 'file'}.pdb`;
+    a.download = `${text ?? 'file'}.${text === 'Logs' ? 'txt' : 'pdb'}`;
     a.click();
   };
 

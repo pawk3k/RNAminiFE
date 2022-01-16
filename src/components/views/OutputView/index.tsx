@@ -12,7 +12,7 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const { query } = useRouter();
-  const { data: { status, data, logs, solution, superComposition, filteredPdb } = {}, isError } =
+  const { data: { status, data, logs, solution, supercomposition, filteredpdb } = {}, isError } =
     useGetStatus();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -52,7 +52,7 @@ const OutputView: FunctionComponent = () => {
             </div>
          </div>
         </div>
-        <Molstar inputFile1={superComposition ?? ''} inputFile2={filteredPdb ?? ''} />
+        <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
       </div>
     );
   }
