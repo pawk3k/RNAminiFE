@@ -14,11 +14,11 @@ module.exports = withPlugins(plugins, {
     return [
       {
         source: '/api/task',
-        destination: 'http://localhost:8080/api/task', // Proxy to Backend
+        destination: 'http://rna-server:8080/api/task', // Proxy to Backend
       },
       {
         source: '/api/task/:slug',
-        destination: 'http://localhost:8080/api/task/:slug', // Proxy to Backend
+        destination: 'http://rna-server:8080/api/task/:slug', // Proxy to Backend
       },
     ];
   },
