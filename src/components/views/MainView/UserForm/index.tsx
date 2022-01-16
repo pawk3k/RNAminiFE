@@ -18,7 +18,7 @@ const UserForm: FunctionComponent = () => {
   const [toggle, setToggle] = useToggle(false);
   const handleSubmit = (): void => {
     if (characters.join('').length < 4) {
-      sendFileToServer({ file, email: email ?? '' });
+      sendFileToServer({ file, email });
     } else {
       getDataFromBank({
         proteinChars: characters.join(''),
