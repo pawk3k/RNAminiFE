@@ -9,7 +9,10 @@ import {
 import { ColorNames } from 'molstar/lib/mol-util/color/names';
 import { MolstarWrapper } from './MolstarWrapper';
 
-const Molstar: FunctionComponent = () => {
+const Molstar: FunctionComponent<{ inputFile1: string; inputFile2: string }> = ({
+  inputFile1,
+  inputFile2,
+}) => {
   const parent = useRef<HTMLDivElement>(null);
   const [molstarPlugin, setMolstarPlugin] = useState<MolstarWrapper | undefined>();
 
@@ -44,15 +47,15 @@ const Molstar: FunctionComponent = () => {
 
   useEffect(() => {
     async function initViewer3d(): Promise<void> {
-      if (file2 && file1 && molstarPlugin) {
-        await molstarPlugin.loadStructureFromData(file1, 'pdb', {
+      if (inputFile1 && inputFile2 && molstarPlugin) {
+        await molstarPlugin.loadStructureFromData(inputFile1, 'pdb', {
           myColor: ColorNames.green,
         });
-        await molstarPlugin.loadStructureFromData(file2, 'pdb', { myColor: ColorNames.red });
+        await molstarPlugin.loadStructureFromData(inputFile2, 'pdb', { myColor: ColorNames.red });
       }
     }
     initViewer3d();
-  }, [file1, file2, molstarPlugin]);
+  }, [file1, file2, inputFile1, inputFile2, molstarPlugin]);
 
   return (
     <div>
