@@ -12,7 +12,7 @@ type MutationArguments = {
 };
 
 const getUID: MutationFunction<string, MutationArguments> = async ({ file = '', email = '' }) => {
-  const response = await fetch(`${config.apiUrl}/api/task`, {
+  const response = await fetch(`/api/task`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
