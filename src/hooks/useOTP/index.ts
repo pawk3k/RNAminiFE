@@ -54,13 +54,6 @@ const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
       case 'ArrowRight':
         focusNext(index);
         break;
-      case 'Backspace': {
-        event.preventDefault();
-        const newCharacters = [...characters];
-        newCharacters[index] = '';
-        setCharacters(newCharacters);
-        focusPrev(index);
-      }
     }
   };
   return { characters, handleKeyDown, handleChange, inputRefs };
