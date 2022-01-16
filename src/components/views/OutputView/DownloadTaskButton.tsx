@@ -15,7 +15,7 @@ const DownloadTaskButton: FunctionComponent<{ file: string; text: string | undef
     <button
       type="button"
       onClick={handleDownloadFile}
-      className="text-dashas-pink absolute bottom-5 ml-4 bg-dashas-purple px-9 rounded-full py-2 "
+      className="text-dashas-pink bottom-5 ml-4 bg-dashas-purple px-9 rounded-full py-2 "
     >
       {text}
     </button>

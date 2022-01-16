@@ -20,7 +20,7 @@ const OutputView: FunctionComponent = () => {
   if (status === 'finished') {
     return (
       <div className="flex w-full justify-around">
-        <div className="w-2/3 my-auto h-full flex justify-center items-center text-dashas-purple">
+        <div className="w-2/3 my-auto h-full flex justify-around items-center text-dashas-purple">
           <div className="w-full mx-9 px-7 relative bg-dashas-pink rounded-3xl h-60 flex justify-start items-start flex-col">
             <div className="mt-11">Task : {query.uid}</div>
             <div>Submission time: time</div>
@@ -28,6 +28,7 @@ const OutputView: FunctionComponent = () => {
               Your solution is ready!
             </div>
             <DownloadTaskButton file={data ?? ''} text="Download task" />
+            <DownloadTaskButton file={data ?? ''} text="Logs" />
             <DownloadTaskButton file={solution ?? ''} text="Download solution" />
           </div>
         </div>
@@ -51,8 +52,9 @@ const OutputView: FunctionComponent = () => {
             ? 'An error occurred while processing your\n task. Please try again later.'
             : 'Processing file'}
         </div>
-        <DownloadTaskButton file={data ?? ''} text="Download task" />
-        <DownloadTaskButton file={data ?? ''} text="Logs" />
+        <div className="flex w-full self-end, ">
+          <DownloadTaskButton file={data ?? ''} text="Download task" />
+        </div>
       </div>
     </div>
   );
