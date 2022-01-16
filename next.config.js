@@ -13,8 +13,12 @@ module.exports = withPlugins(plugins, {
   async rewrites() {
     return [
       {
-        source: '/api/task:path*',
-        destination: 'http://localhost:8080/api/task:path*', // Proxy to Backend
+        source: '/api/task',
+        destination: 'http://localhost:8080/api/task', // Proxy to Backend
+      },
+      {
+        source: '/api/task/:slug',
+        destination: 'http://localhost:8080/api/task/:slug', // Proxy to Backend
       },
     ];
   },
