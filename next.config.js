@@ -14,7 +14,7 @@ module.exports = withPlugins(plugins, {
     return [
       {
         source: '/api/task:path*',
-        destination: 'http://localhost:8080/api/task/:path*', // Proxy to Backend
+        destination: 'http://localhost:8080/api/task:path*', // Proxy to Backend
       },
     ];
   },

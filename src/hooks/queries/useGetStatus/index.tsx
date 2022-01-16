@@ -12,7 +12,7 @@ type StatusResponse = {
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
-  const response = await fetch(`http://localhost:8080/api/task/${id}`).then((res) => res.json());
+  const response = await fetch(`/api/task/${id}`).then((res) => res.json());
 
   return response;
 };
