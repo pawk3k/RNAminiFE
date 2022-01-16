@@ -48,10 +48,12 @@ const Molstar: FunctionComponent<{ inputFile1: string; inputFile2: string }> = (
   useEffect(() => {
     async function initViewer3d(): Promise<void> {
       if (inputFile1 && inputFile2 && molstarPlugin) {
-        await molstarPlugin.loadStructureFromData(inputFile1, 'pdb', {
+        await molstarPlugin.loadStructureFromData(atob(inputFile1), 'pdb', {
           myColor: ColorNames.green,
         });
-        await molstarPlugin.loadStructureFromData(inputFile2, 'pdb', { myColor: ColorNames.red });
+        await molstarPlugin.loadStructureFromData(atob(inputFile2), 'pdb', {
+          myColor: ColorNames.red,
+        });
       }
     }
     initViewer3d();

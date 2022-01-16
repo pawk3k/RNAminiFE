@@ -50,7 +50,7 @@ const OutputView: FunctionComponent = () => {
               <DownloadTaskButton file={logs ?? ''} text="Logs" />
               <DownloadTaskButton file={solution ?? ''} text="Download solution" />
             </div>
-          </div>
+         </div>
         </div>
         <Molstar inputFile1={superComposition ?? ''} inputFile2={filteredPdb ?? ''} />
       </div>
