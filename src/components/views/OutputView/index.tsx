@@ -12,7 +12,7 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const { query } = useRouter();
-  const { data: { status, data,logs, solution, superComposition, filteredPdb } = {}, isError } =
+  const { data: { status, data, logs, solution, superComposition, filteredPdb } = {}, isError } =
     useGetStatus();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,7 +38,7 @@ const OutputView: FunctionComponent = () => {
 
   return (
     <div className="my-auto w-full h-full flex justify-center items-center text-dashas-purple">
-      <div className="pl-9 relative bg-dashas-pink rounded-3xl w-2/3 h-60 flex justify-start items-start flex-col">
+      <div className="pl-9 relative bg-dashas-pink rounded-3xl w-2/3 h-60 flex justify-around items-start flex-col">
         <div className="mt-11">Task : {query.uid}</div>
         <div
           className={`self-center mt-2 text-2xl whitespace-pre-wrap text-center ${

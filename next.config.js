@@ -13,8 +13,8 @@ module.exports = withPlugins(plugins, {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'http://rna-server:8080/:path*', // Proxy to Backend
+        source: '/api/task',
+        destination: 'http://localhost:8080/api/task', // Proxy to Backend
       },
     ];
   },
