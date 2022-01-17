@@ -30,10 +30,8 @@ const Molstar: FunctionComponent<{ inputFile1: string; inputFile2: string }> = (
   }, [inputFile1, inputFile2, molstarPlugin]);
 
   return (
-    <div>
-      <div id="viewer3d-molstar" className="w-96 h-96 -ml-3">
-        <div id="structure-3d-viewer" ref={parent} />
-      </div>
+    <div id="viewer3d-molstar" className="mx-auto my-10">
+      <div id="structure-3d-viewer mx-10 rounded-xl" ref={parent} />
     </div>
   );
 };
