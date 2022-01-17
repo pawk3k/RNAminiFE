@@ -1,13 +1,14 @@
 import { FunctionComponent } from 'react';
 
-const DownloadTaskButton: FunctionComponent<{ file: string; text: string | undefined }> = ({
-  file,
-  text = 'Download Task s',
-}) => {
+const DownloadTaskButton: FunctionComponent<{
+  file: string;
+  text: string | undefined;
+  fileName: string;
+}> = ({ file, text = 'Download Task s', fileName }) => {
   const handleDownloadFile = (): void => {
     const a = document.createElement('a');
     a.href = `data:text/plain;base64,${file}`;
-    a.download = `${text ?? 'file'}.${text === 'Logs' ? 'txt' : 'pdb'}`;
+    a.download = fileName;
     a.click();
   };
 

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/dist/client/router';
 import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import Loader from './Loader';
-import DownloadTaskButton from './DownloadTaskButton';
+import DownloadFileButton from './DownloadTaskButton';
 
 const Molstar = dynamic(() => import('./Molstar'), {
   ssr: false,
@@ -29,14 +29,14 @@ const OutputView: FunctionComponent = () => {
             An error occurred while processing your task. Please try again later.
           </div>
           <div className="flex w-full self-end, ">
-            <DownloadTaskButton file={data ?? ''} text="Download task" />
+            <DownloadFileButton file={data ?? ''} text="Download task" />
           </div>
         </div>
       </div>
     );
   }
 
-  if (status==="finished") {
+  if (status === 'finished') {
     return (
       <div className="flex w-full justify-around">
         <div className="w-2/3 my-auto h-full flex justify-around items-center text-dashas-purple">
@@ -46,9 +46,13 @@ const OutputView: FunctionComponent = () => {
               Your solution is ready!
             </div>
             <div className="flex w-full justify-center self-end">
-              <DownloadTaskButton file={data ?? ''} text="Download task" />
-              <DownloadTaskButton file={logs ?? ''} text="Logs" />
-              <DownloadTaskButton file={solution ?? ''} text="Download solution" />
+              <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />
+              <DownloadFileButton fileName="logs.txt" file={logs ?? ''} text="Logs" />
+              <DownloadFileButton
+                fileName="solution.pdb"
+                file={solution ?? ''}
+                text="Download solution"
+              />
             </div>
           </div>
         </div>
@@ -72,7 +76,7 @@ const OutputView: FunctionComponent = () => {
             : 'Processing file'}
         </div>
         <div className="flex w-full self-end, ">
-          <DownloadTaskButton file={data ?? ''} text="Download task" />
+          <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />
         </div>
       </div>
     </div>
