@@ -29,7 +29,7 @@ const OutputView: FunctionComponent = () => {
             An error occurred while processing your task. Please try again later.
           </div>
           <div className="flex w-full self-end, ">
-            <DownloadFileButton file={data ?? ''} text="Download task" />
+            <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />
           </div>
         </div>
       </div>
