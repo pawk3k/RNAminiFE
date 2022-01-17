@@ -11,6 +11,9 @@ module.exports = withPlugins(plugins, {
   experimental: {
     outputStandalone: true,
   },
+  images: {
+    domains: ['www2.cs.put.poznan.pl', 'www.ibch.poznan.pl'],
+  },
   async rewrites() {
     return [
       {

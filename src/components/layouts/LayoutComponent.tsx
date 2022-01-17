@@ -1,6 +1,7 @@
 /* eslint-disable no-bitwise */
 import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Loading from '../uiKit/Loading';
 import NavigationLink from './LayoutComponent.styles';
 import useNProgress from '../../hooks/useNProgress';
@@ -44,7 +45,24 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <main className="flex flex-grow justify-center items-center h-max">{children}</main>
+          <main className="relative flex flex-grow justify-center items-center h-max">
+            {children}
+            <div className="absolute bottom-0 left-4">
+              <Image
+                alt="pps"
+                width="85"
+                className="bg-white rounded-full"
+                height="73"
+                src="/pp.png"
+              />
+              <Image
+                alt="pp"
+                width={85}
+                height={73}
+                src="https://www.ibch.poznan.pl/graphics/ichbpan_logo_short_en.png"
+              />
+            </div>
+          </main>
         </div>
       </div>
     </>
