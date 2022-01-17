@@ -4,18 +4,25 @@ import { FunctionComponent, useMemo } from 'react';
 import { Column } from 'react-table';
 import mockData from './mockData';
 
-type TableData = { input: number; output: number; rowName: string };
+type TableData = { key: string; input: string; output: string };
 
 const Table = dynamic<TableProps<TableData>>(() => import('@components/uiKit/Table/index'));
 
 const MolProbityTable: FunctionComponent = () => {
   const tableData = useMemo(() => mockData, []);
+  const keys = Object.keys(tableData.input);
+  const outputEntries = Object.entries(mockData.output);
+  const result = Object.entries(mockData.input).map((inputElement, index) => ({
+    key: keys[index],
+    input: inputElement[1],
+    output: outputEntries[index][1],
+  }));
 
   const columns = useMemo<Column<TableData>[]>(
     () => [
       {
         Header: 'Row name',
-        accessor: 'rowName',
+        accessor: 'key',
       },
       {
         Header: 'Input',
@@ -31,7 +38,7 @@ const MolProbityTable: FunctionComponent = () => {
 
   return (
     <div className="mx-auto flex justify-center">
-      <Table columns={columns} data={tableData} />
+      <Table columns={columns} data={result} />
     </div>
   );
 };
