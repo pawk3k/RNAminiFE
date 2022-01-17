@@ -34,7 +34,7 @@ const UserForm: FunctionComponent = () => {
     >
       <div className="pt-6 flex">
         <Switch setToggle={setToggle} />
-        Notify me when results are ready
+        <span className="text-dashas-pink">Notify me when results are ready</span>
       </div>
       {toggle && <EmailInput />}
       <SubmitButton />
