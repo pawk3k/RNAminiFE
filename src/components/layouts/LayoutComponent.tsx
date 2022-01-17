@@ -50,10 +50,10 @@ const Layout: FunctionComponent = ({ children }) => {
             <div className="absolute bottom-0 left-4">
               <Image
                 alt="pps"
-                width="85"
-                className="bg-white rounded-full"
-                height="73"
+                width="80"
+                height="80"
                 src="/pp.png"
+                className="bg-white rounded-full"
               />
               <Image
                 alt="pp"

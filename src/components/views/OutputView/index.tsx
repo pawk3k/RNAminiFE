@@ -5,14 +5,16 @@ import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import Loader from './Loader';
 import DownloadFileButton from './DownloadTaskButton';
 import MainStatus from './MainStatus';
+import MolProbityTable from './MolProbity';
 
 const Molstar = dynamic(() => import('./Molstar'), {
   ssr: false,
+  loading: () => <Loader />,
 });
 
 const OutputView: FunctionComponent = () => {
   const {
-    data: { status = 'error', data, logs, solution, supercomposition, filteredpdb } = {},
+    data: { status = 'finished', data, logs, solution, supercomposition, filteredpdb } = {},
     isError,
   } = useGetStatus();
 
@@ -30,7 +32,7 @@ const OutputView: FunctionComponent = () => {
         }
         buttons={
           <div className="flex w-full self-end">
-            <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />
+            <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download input" />
           </div>
         }
       />
@@ -53,13 +55,15 @@ const OutputView: FunctionComponent = () => {
                 file={solution ?? ''}
                 text="Download solution"
               />
-
-              <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />
-              <DownloadFileButton fileName="logs.txt" file={logs ?? ''} text="Download Logs" />
+              <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download input" />
+              <DownloadFileButton fileName="logs.txt" file={logs ?? ''} text="Download logs" />
             </>
           }
         />
-        <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
+        <div className="flex">
+          <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
+          <MolProbityTable />
+        </div>
       </div>
     );
   }
@@ -72,7 +76,7 @@ const OutputView: FunctionComponent = () => {
           Processing your file
         </div>
       }
-      buttons={<DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download task" />}
+      buttons={<DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download input" />}
     />
   );
 };
