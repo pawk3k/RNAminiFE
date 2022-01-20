@@ -14,9 +14,11 @@ const UserForm: FunctionComponent = () => {
   const [file] = useFileContext();
   const [email] = useEmailContext();
   const { mutate: getDataFromBank } = useGetFromBank();
-  const { mutate: sendFileToServer } = useAddFile();
+  const { mutate: sendFileToServer, isSuccess } = useAddFile();
+  const isResolved = isSuccess;
   const [toggle, setToggle] = useToggle(false);
   const handleSubmit = (): void => {
+    // If file from user
     if (characters.join('').length < 4) {
       sendFileToServer({ file, email });
     } else {
@@ -37,7 +39,7 @@ const UserForm: FunctionComponent = () => {
         <span className="text-dashas-pink">Notify me when results are ready</span>
       </div>
       {toggle && <EmailInput />}
-      <SubmitButton />
+      <SubmitButton isDisabled={isResolved} />
     </form>
   );
 };

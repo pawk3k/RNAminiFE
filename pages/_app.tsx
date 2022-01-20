@@ -4,6 +4,7 @@ import { FunctionComponent } from 'react';
 import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
 import AppContextProvider from '@root/contextProviders/ContextProvider';
+import { ToastContainer } from 'react-toastify';
 import Layout from '../src/components/layouts/LayoutComponent';
 
 const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) => (
@@ -21,6 +22,7 @@ const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }: AppProps) 
         <Component {...pageProps} />
       </Layout>
     </AppContextProvider>
+    <ToastContainer />
   </>
 );
 
