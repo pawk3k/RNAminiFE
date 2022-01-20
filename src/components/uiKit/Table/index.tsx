@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/prefer-default-export
+export const kek = 2;
 // import { useTable } from 'react-table';
 
 // import { TableProps } from './Table.types';
