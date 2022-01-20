@@ -48,7 +48,7 @@ const Layout: FunctionComponent = ({ children }) => {
           <main className="relative flex flex-grow justify-center items-center h-max">
             {children}
           </main>
-          <div className="absolute bottom-0 left-4">
+          <div className="relative bottom-0 left-4">
             <Image
               alt="pps"
               width="80"

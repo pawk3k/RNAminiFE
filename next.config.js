@@ -18,11 +18,11 @@ module.exports = withPlugins(plugins, {
     return [
       {
         source: '/api/task',
-        destination: 'http://rna-server:8080/api/task', // Proxy to Backend
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/task`, // Proxy to Backend
       },
       {
         source: '/api/task/:slug',
-        destination: 'http://rna-server:8080/api/task/:slug', // Proxy to Backend
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/task/:slug`, // Proxy to Backend
       },
     ];
   },

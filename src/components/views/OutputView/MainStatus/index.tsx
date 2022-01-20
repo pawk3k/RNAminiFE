@@ -13,8 +13,7 @@ const MainStatus: FunctionComponent<{ buttons: JSX.Element; mainText: JSX.Elemen
         <div className="min-w-[500px] mx-9 px-7 relative bg-dashas-pink rounded-3xl h-60 flex justify-around items-start flex-col">
           <div className="mt-11">Task : {query.uid}</div>
           {mainText}
-
-          <div className="flex w-full justify-center self-end">{buttons}</div>
+          <div className="flex w-full justify-center items-center">{buttons}</div>
         </div>
       </div>
     </div>

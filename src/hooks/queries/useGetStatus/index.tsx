@@ -1,6 +1,7 @@
 import { QueryFunction, QueryObserverResult, useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
 
 type StatusResponse = {
   status: string;
@@ -13,19 +14,26 @@ type StatusResponse = {
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
-  const response = await fetch(`/api/task/${id}`).then((res) => res.json());
-  return response;
+  const response = await axios.get(`/api/task/${id}`);
+  return response.data;
 };
 
-const useGetStatus = (): QueryObserverResult<StatusResponse, Error> => {
-  const { query, isReady } = useRouter();
+const useGetStatus = (): QueryObserverResult<StatusResponse, AxiosError> => {
+  const { query, isReady, push } = useRouter();
   const [refetchInterval, setRefetchInterval] = useState<5000 | false>(5000);
   return useQuery(['task', query.uid], getStatus, {
     onSuccess: (data) => {
-      if (data.status !== 'queued') {
+      if (data.status === 'error' || data.status === 'finished') {
         setRefetchInterval(false);
       }
     },
+    onError: (error) => {
+      // @ts-ignore
+      if (error?.response?.status >= 400 && error?.response?.status < 500) {
+        push('/404');
+      }
+    },
+    retry: false,
     enabled: Boolean(query.uid) && isReady,
     refetchInterval,
   });
