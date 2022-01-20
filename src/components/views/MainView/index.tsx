@@ -15,7 +15,7 @@ const Main: NextPage = () => {
     const { atoms } = parsePdb(file);
     setIsOk(atoms.length > 0);
     if (atoms.length > 0) {
-      toast('File upload succeed!');
+      // toast('File upload succeed!');
       // handleSendFileToServer();
     } else {
       toast('File upload failed!');

@@ -1,12 +1,14 @@
 import { FileIcon } from '@assets/index';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import { useFileContext } from '@root/contextProviders/FileContextProvider';
+import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import { FunctionComponent } from 'react';
 import FileInput from './FileInput';
 import LinkInput from './LinkInput';
 
 const ProteinInput: FunctionComponent = () => {
   const [file, setFile] = useFileContext();
+  const { characters } = useOTPContext();
   return (
     <div className=" bg-dashas-pink rounded-3xl shadow-md">
       <Tabs>
@@ -19,10 +21,18 @@ const ProteinInput: FunctionComponent = () => {
           return (
             <>
               <TabList className="pt-5 px-16">
-                <Tab className="w-full md:w-1/2 " style={getTabStyle(0)}>
+                <Tab
+                  disabled={characters.join('').length === 4}
+                  className="w-full md:w-1/2 "
+                  style={getTabStyle(0)}
+                >
                   Local file
                 </Tab>
-                <Tab className="w-full mt-5 md:mt-0 md:w-1/2 " style={getTabStyle(1)}>
+                <Tab
+                  disabled={Boolean(file)}
+                  className="w-full mt-5 md:mt-0 md:w-1/2 "
+                  style={getTabStyle(1)}
+                >
                   Protein Data Bank
                 </Tab>
               </TabList>
