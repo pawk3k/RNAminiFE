@@ -13,10 +13,15 @@ const SubmitButton: FunctionComponent<{ isDisabled: boolean; isLoading: boolean 
   const [isRouteChanging, setRouteChanging] = useState(false);
   const router = useRouter();
   const submitDisabled = !file && characters.join('').length < 4;
+
   useEffect(() => {
     router.events.on('routeChangeStart', (): void => setRouteChanging(true));
+    router.events.on('routeChangeComplete', (): void => setRouteChanging(false));
+    router.events.on('routeChangeError', (): void => setRouteChanging(false));
     return (): void => {
-      router.events.off('routeChangeStart', (): void => setRouteChanging(false));
+      router.events.on('routeChangeStart', (): void => setRouteChanging(true));
+      router.events.on('routeChangeComplete', (): void => setRouteChanging(false));
+      router.events.on('routeChangeError', (): void => setRouteChanging(false));
     };
   }, [router.events]);
   return (
@@ -26,7 +31,7 @@ const SubmitButton: FunctionComponent<{ isDisabled: boolean; isLoading: boolean 
         type="submit"
         className="disabled:bg-slate-400 disabled:shadow-none disabled:text-green-50 shadow-md text-dashas-purple shadow-dashas-purple mt-6 relative rounded-3xl mx-auto w-1/2 h-10 text-center duration-300 bg-dashas-pink  transform focus:translate-y-1"
       >
-        {isLoading || isRouteChanging ? (
+        {isRouteChanging || isLoading ? (
           <>
             <Loader />
             <span>loading...</span>

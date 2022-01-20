@@ -2,6 +2,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PPLogo } from '@assets/index';
 import Loading from '../uiKit/Loading';
 import NavigationLink from './LayoutComponent.styles';
 import useNProgress from '../../hooks/useNProgress';
@@ -49,13 +50,7 @@ const Layout: FunctionComponent = ({ children }) => {
             {children}
           </main>
           <div className="relative bottom-0 left-4">
-            <Image
-              alt="pps"
-              width="80"
-              height="80"
-              src="/pp.png"
-              className="bg-white rounded-full"
-            />
+            <PPLogo className="w-20 h-20 inline mb-4 bg-white rounded-full" />
             <Image
               alt="pp"
               width={85}
