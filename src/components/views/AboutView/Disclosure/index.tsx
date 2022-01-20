@@ -8,7 +8,7 @@ const Disclosure: FunctionComponent<{ summary: string; details: React.ReactNode 
     <summary className="font-bold text-xl cursor-pointer py-1 px-10">
       <span className="">{summary}</span>
     </summary>
-    <div className="ml-9 whitespace-pre">{details}</div>
+    <div className="text-black ml-9 whitespace-pre">{details}</div>
   </details>
 );
 

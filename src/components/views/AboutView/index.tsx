@@ -13,7 +13,7 @@ const AboutView: FunctionComponent = () => (
       <Disclosure
         summary="Authors"
         details={
-          <div className="whitespace-normal text-black ">
+          <div className="whitespace-normal  ">
             Pavlo Ravliv<sup>1</sup>, Mariusz Popenda
             <sup>2</sup>, <Link href="http://www.cs.put.poznan.pl/tzok">Tomasz Zok</Link>
             <sup>1</sup>, Joanna Sarzynska<sup>2</sup>, Daria Poda<sup>1</sup>, Denys Hromniuk
