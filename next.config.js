@@ -17,12 +17,8 @@ module.exports = withPlugins(plugins, {
   async rewrites() {
     return [
       {
-        source: '/api/task',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/task`, // Proxy to Backend
-      },
-      {
-        source: '/api/task/:slug',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/task/:slug`, // Proxy to Backend
+        source: '/api/task/:slug*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/task/:slug*`, // Proxy to Backend
       },
     ];
   },
