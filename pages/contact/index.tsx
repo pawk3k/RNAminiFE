@@ -1,5 +1,3 @@
-import { FunctionComponent } from 'react';
+import CiteUsView from '@components/views/CiteUsView';
 
-const Contact: FunctionComponent = () => <div>Contact</div>;
-
-export default Contact;
+export default CiteUsView;
