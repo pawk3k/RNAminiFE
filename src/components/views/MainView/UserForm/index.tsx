@@ -13,18 +13,20 @@ const UserForm: FunctionComponent = () => {
   const { characters } = useOTPContext();
   const [file] = useFileContext();
   const [email] = useEmailContext();
-  const { mutate: getDataFromBank, isLoading: isLoadingDataFromPDB } = useGetFromBank();
-  const { mutate: sendFileToServer, isSuccess, isLoading } = useAddFile();
-  const isResolved = isSuccess;
+  const { mutateAsync: getDataFromBank, isLoading } = useGetFromBank();
+  const { mutate: sendFileToServer, isLoading: isSendingToServer } = useAddFile();
   const [toggle, setToggle] = useToggle(false);
   const handleSubmit = (): void => {
     // If file from user
     if (characters.join('').length < 4) {
       sendFileToServer({ file, email });
     } else {
+      // If from pdb bank
       getDataFromBank({
         proteinChars: characters.join(''),
-      });
+      })
+        .then((data) => sendFileToServer({ file: data, email }))
+        .catch(() => {});
     }
   };
   return (
@@ -39,10 +41,7 @@ const UserForm: FunctionComponent = () => {
         <span className="text-dashas-pink">Notify me when results are ready</span>
       </div>
       {toggle && <EmailInput />}
-      <SubmitButton
-        isLoading={isLoading || isLoadingDataFromPDB}
-        isDisabled={isResolved || isLoading}
-      />
+      <SubmitButton isLoading={isLoading || isSendingToServer} isDisabled={isLoading} />
     </form>
   );
 };
