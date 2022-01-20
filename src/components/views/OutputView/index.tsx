@@ -13,10 +13,8 @@ const Molstar = dynamic(() => import('./Molstar'), {
 });
 
 const OutputView: FunctionComponent = () => {
-  const {
-    data: { status = 'finished', data, logs, solution, supercomposition, filteredpdb } = {},
-    isError,
-  } = useGetStatus();
+  const { data: { status, data, logs, solution, supercomposition, filteredpdb } = {}, isError } =
+    useGetStatus();
 
   if (status === 'error' || isError) {
     return (

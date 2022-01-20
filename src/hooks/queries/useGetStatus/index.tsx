@@ -1,5 +1,6 @@
 import { QueryFunction, QueryObserverResult, useQuery } from 'react-query';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 type StatusResponse = {
   status: string;
@@ -17,9 +18,16 @@ const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) =>
 };
 
 const useGetStatus = (): QueryObserverResult<StatusResponse, Error> => {
-  const { query } = useRouter();
+  const { query, isReady } = useRouter();
+  const [refetchInterval, setRefetchInterval] = useState<5000 | false>(5000);
   return useQuery(['task', query.uid], getStatus, {
-    enabled: Boolean(query.uid),
+    onSuccess: (data) => {
+      if (data.status !== 'queued') {
+        setRefetchInterval(false);
+      }
+    },
+    enabled: Boolean(query.uid) && isReady,
+    refetchInterval,
   });
 };
 
