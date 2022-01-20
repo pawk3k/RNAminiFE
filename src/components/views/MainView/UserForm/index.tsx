@@ -13,8 +13,8 @@ const UserForm: FunctionComponent = () => {
   const { characters } = useOTPContext();
   const [file] = useFileContext();
   const [email] = useEmailContext();
-  const { mutate: getDataFromBank } = useGetFromBank();
-  const { mutate: sendFileToServer, isSuccess } = useAddFile();
+  const { mutate: getDataFromBank, isLoading: isLoadingDataFromPDB } = useGetFromBank();
+  const { mutate: sendFileToServer, isSuccess, isLoading } = useAddFile();
   const isResolved = isSuccess;
   const [toggle, setToggle] = useToggle(false);
   const handleSubmit = (): void => {
@@ -39,7 +39,10 @@ const UserForm: FunctionComponent = () => {
         <span className="text-dashas-pink">Notify me when results are ready</span>
       </div>
       {toggle && <EmailInput />}
-      <SubmitButton isDisabled={isResolved} />
+      <SubmitButton
+        isLoading={isLoading || isLoadingDataFromPDB}
+        isDisabled={isResolved || isLoading}
+      />
     </form>
   );
 };

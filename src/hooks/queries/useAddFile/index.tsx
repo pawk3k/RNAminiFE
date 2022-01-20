@@ -1,4 +1,3 @@
-import config from '@root/config';
 import { useRouter } from 'next/router';
 //  redirect to url get from react query from endpoint
 
