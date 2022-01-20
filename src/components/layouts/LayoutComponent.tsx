@@ -47,22 +47,22 @@ const Layout: FunctionComponent = ({ children }) => {
           </nav>
           <main className="relative flex flex-grow justify-center items-center h-max">
             {children}
-            <div className="absolute bottom-0 left-4">
-              <Image
-                alt="pps"
-                width="80"
-                height="80"
-                src="/pp.png"
-                className="bg-white rounded-full"
-              />
-              <Image
-                alt="pp"
-                width={85}
-                height={73}
-                src="https://www.ibch.poznan.pl/graphics/ichbpan_logo_short_en.png"
-              />
-            </div>
           </main>
+          <div className="relative bottom-0 left-4">
+            <Image
+              alt="pps"
+              width="80"
+              height="80"
+              src="/pp.png"
+              className="bg-white rounded-full"
+            />
+            <Image
+              alt="pp"
+              width={85}
+              height={73}
+              src="https://www.ibch.poznan.pl/graphics/ichbpan_logo_short_en.png"
+            />
+          </div>
         </div>
       </div>
     </>

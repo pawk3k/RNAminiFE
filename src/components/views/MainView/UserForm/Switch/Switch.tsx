@@ -14,7 +14,7 @@ const Switch: FunctionComponent<SwitchProps> = ({ setToggle }) => (
           id="switch"
           className="hidden peer"
         />
-        <div className="bg-gray-400 peer-checked:translate-x-6 sm:peer-checked:translate-x-5 peer-checked:bg-dashas-purple border border-purple-500 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" />
+        <div className="peer-checked:translate-x-5 md:peer-checked:translate-x-6 bg-gray-400   peer-checked:bg-dashas-purple border border-purple-500 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" />
       </div>
     </label>
   </div>
