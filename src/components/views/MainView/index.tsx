@@ -31,8 +31,8 @@ const Main: NextPage = () => {
 
   return (
     <div className="w-full px-4 md:p-14 flex-auto md:pl-44 md:pr-24 ">
-      <div className="w-full flex gap-x-8 flex-wrap md:flex-nowrap items-center justify-center">
-        <div className="md:text-6xl font-bold self-start mt-4 md:mb-3 justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
+      <div className="w-full flex gap-x-8 flex-wrap lg:flex-nowrap items-center justify-center">
+        <div className="text-6xl flex-wrap font-bold self-start mt-4 md:mb-3 justify-center lg:w-1/3 lg:mr-10 lg:ml-10 text-white text-shadow-xl">
           Start by uploading your file
         </div>
         <div className="w-full">

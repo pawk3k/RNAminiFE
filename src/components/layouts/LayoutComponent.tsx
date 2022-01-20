@@ -20,7 +20,7 @@ const Layout: FunctionComponent = ({ children }) => {
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
           }}
-          className="flex flex-col md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
+          className="relative flex flex-col md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex w-full justify-between">
@@ -48,7 +48,7 @@ const Layout: FunctionComponent = ({ children }) => {
           <main className="relative flex flex-grow justify-center items-center h-max">
             {children}
           </main>
-          <div className="relative bottom-0 left-4">
+          <div className="absolute bottom-0 left-4">
             <Image
               alt="pps"
               width="80"
