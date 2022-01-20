@@ -1,3 +1,4 @@
+import { useFileContext } from '@root/contextProviders/FileContextProvider';
 import { useRouter } from 'next/router';
 //  redirect to url get from react query from endpoint
 
@@ -28,9 +29,11 @@ const useAddFile = (
   options?: UseMutationOptions<string, unknown, MutationArguments, unknown>,
 ): UseMutationResult<string, unknown, MutationArguments, unknown> => {
   const { push } = useRouter();
+  const [, setFile] = useFileContext();
   return useMutation(getUID, {
     onSuccess: (uid: string) => {
       push(`/output/${uid}`);
+      setFile('');
     },
     onError: () => {
       toast('Error!');
