@@ -1,9 +1,7 @@
 /* eslint-disable no-bitwise */
 import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { PPLogo } from '@assets/index';
-import ibch from '@assets/ibch.png';
+import { PPLogo, Ibch } from '@assets/index';
 import Loading from '../uiKit/Loading';
 import NavigationLink from './LayoutComponent.styles';
 import useNProgress from '../../hooks/useNProgress';
@@ -51,8 +49,8 @@ const Layout: FunctionComponent = ({ children }) => {
             {children}
           </main>
           <div className="absolute bottom-0 left-4 flex pb-4">
-            <PPLogo className="w-20 h-20 inline  bg-white rounded-full" />
-            <Image alt="pp" width={85} height={73} src={ibch} />
+            <PPLogo className="w-20 h-20 inline bg-white rounded-full" />
+            <Ibch className="w-20 h-20" />
           </div>
         </div>
       </div>
