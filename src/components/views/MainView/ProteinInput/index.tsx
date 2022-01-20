@@ -14,6 +14,7 @@ const ProteinInput: FunctionComponent = () => {
           const getTabStyle = (index: number): object => ({
             borderBottom: `3px solid ${selectedIndex === index ? '#6100FF' : 'gray'}`,
             color: selectedIndex === index ? '#6100FF' : 'gray',
+            whiteSpace: 'nowrap',
           });
           return (
             <>

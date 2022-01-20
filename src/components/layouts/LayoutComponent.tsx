@@ -14,7 +14,7 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex justify-center  items-center  w-full min-h-full">
+      <div className="flex p-14 pb-auto justify-center w-full max-h-min">
         <div
           style={{
             background:
