@@ -23,7 +23,7 @@ const Layout: FunctionComponent = ({ children }) => {
           className="relative flex flex-col md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
-            <div className="flex w-full justify-between">
+            <div className="flex w-full justify-center">
               <span className="text-2xl sm:text-5xl font-bold pl-4 text-white text-shadow-lg">
                 <Link href="/main">RNArefiner</Link>
               </span>
