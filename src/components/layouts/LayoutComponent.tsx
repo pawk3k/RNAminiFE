@@ -29,7 +29,7 @@ const Layout: FunctionComponent = ({ children }) => {
               </span>
               <button
                 type="button"
-                className="flex items-center justify-between focus:outline-none md:hidden"
+                className="ml-5 flex items-center justify-between focus:outline-none md:hidden"
                 onClick={(): void => setIsHamburgerOpen((prevState) => !prevState)}
               >
                 <HamburgerMenu isOpen={!isHamburgerOpen} />
