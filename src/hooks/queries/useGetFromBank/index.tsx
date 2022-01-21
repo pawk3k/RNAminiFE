@@ -16,9 +16,7 @@ type ApiError = AxiosError<{
 
 const getFromBank: MutationFunction<string, MutationArguments> = async ({ proteinChars }) => {
   const data = await axios.get(`https://files.rcsb.org/download/${proteinChars}.pdb`);
-  // data.data;
-  // console.log(data.data)
-  console.log(data.data.includes('RNA'));
+  // If not RNA
   if (!data.data.includes('RNA')) {
     throw new Error('File is not RNA');
   }
