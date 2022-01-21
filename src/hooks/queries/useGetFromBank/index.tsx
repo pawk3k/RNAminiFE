@@ -16,6 +16,12 @@ type ApiError = AxiosError<{
 
 const getFromBank: MutationFunction<string, MutationArguments> = async ({ proteinChars }) => {
   const data = await axios.get(`https://files.rcsb.org/download/${proteinChars}.pdb`);
+  // data.data;
+  // console.log(data.data)
+  console.log(data.data.includes('RNA'));
+  if (!data.data.includes('RNA')) {
+    throw new Error('File is not RNA');
+  }
   return data.data as string;
 };
 
@@ -23,8 +29,12 @@ const useGetFromBank = (
   options?: UseMutationOptions<string, ApiError, MutationArguments, unknown>,
 ): UseMutationResult<string, ApiError, MutationArguments, unknown> =>
   useMutation(getFromBank, {
-    onError: ({ response: { status = 0 } = {} }) => {
-      toast(`${status === 404 ? 'File with this id not found' : 'Error occurred'}`);
+    onError: ({ response: { status = 0 } = {}, message }) => {
+      if (message) {
+        toast.error('File is not RNA');
+      } else {
+        toast.error(`${status === 404 ? 'File with this id not found' : 'Error occurred'}`);
+      }
     },
     ...options,
   });
