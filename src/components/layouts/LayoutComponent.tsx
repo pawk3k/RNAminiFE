@@ -38,8 +38,9 @@ const Layout: FunctionComponent = ({ children }) => {
             <div
               className={`${
                 isHamburgerOpen ? 'hidden' : ''
-              }  w-full text-center md:bg-none md:flex justify-end last:mr-24`}
+              }  w-full text-center md:bg-none md:flex justify-end last:mr-24 justify-around`}
             >
+              <NavigationLink href="/home" />
               <NavigationLink href="/about" />
               <NavigationLink href="/help" />
               <NavigationLink href="/contact" />
