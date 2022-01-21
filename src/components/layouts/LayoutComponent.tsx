@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise */
 import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
-import { PPLogo, Ibch } from '@assets/index';
+import { Ibch, PPLogo, RNAPolis } from '@assets/index';
 import Loading from '../uiKit/Loading';
 import NavigationLink from './LayoutComponent.styles';
 import useNProgress from '../../hooks/useNProgress';
@@ -14,7 +14,7 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex p-14 pb-auto justify-center w-full max-h-min">
+      <div className="flex justify-center  items-center  w-full min-h-full">
         <div
           style={{
             background:
@@ -24,7 +24,7 @@ const Layout: FunctionComponent = ({ children }) => {
         >
           <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
             <div className="flex w-full justify-between">
-              <span className="text-2xl sm:text-5xl font-bold pl-24 text-white text-shadow-lg">
+              <span className="text-2xl sm:text-5xl font-bold pl-4 text-white text-shadow-lg">
                 <Link href="/main">RNArefiner</Link>
               </span>
               <button
@@ -38,7 +38,7 @@ const Layout: FunctionComponent = ({ children }) => {
             <div
               className={`${
                 isHamburgerOpen ? 'hidden' : ''
-              }  w-full text-center md:bg-none md:flex justify-end gap-24 last:mr-24`}
+              }  w-full text-center md:bg-none md:flex justify-end last:mr-24`}
             >
               <NavigationLink href="/about" />
               <NavigationLink href="/help" />
@@ -48,9 +48,10 @@ const Layout: FunctionComponent = ({ children }) => {
           <main className="relative flex flex-grow justify-center items-center h-max">
             {children}
           </main>
-          <div className="absolute bottom-0 left-4 flex pb-4">
-            <PPLogo className="w-20 h-20 inline bg-white rounded-full" />
+          <div className="relative flex bottom-0 left-4">
+            <PPLogo className="w-20 h-20 inline mb-4 bg-white rounded-full" />
             <Ibch className="w-20 h-20" />
+            <RNAPolis className="w-40 h-20" />
           </div>
         </div>
       </div>

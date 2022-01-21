@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 
 const HamburgerMenu: FunctionComponent<{ isOpen: boolean }> = ({ isOpen }) => (
-  <div className="mx-10 w-10 flex flex-col items-center justify-center relative">
+  <div className="w-10 flex flex-col items-center justify-center relative">
     <span
       className={` ${
         isOpen ? 'translate-y-0 rotate-45 ' : '-translate-y-2'
