@@ -28,10 +28,12 @@ const useGetFromBank = (
 ): UseMutationResult<string, ApiError, MutationArguments, unknown> =>
   useMutation(getFromBank, {
     onError: ({ response: { status = 0 } = {}, message }) => {
-      if (message) {
+      if (status === 404) {
+        toast.error('File with this id not found');
+      } else if (message === 'File is not RNA') {
         toast.error('File is not RNA');
       } else {
-        toast.error(`${status === 404 ? 'File with this id not found' : 'Error occurred'}`);
+        toast.error('Something went wrong');
       }
     },
     ...options,
