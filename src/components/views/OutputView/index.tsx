@@ -6,7 +6,6 @@ import Loader from './Loader';
 import DownloadFileButton from './DownloadTaskButton';
 import MainStatus from './MainStatus';
 import MolProbityTable from './MolProbity';
-// import MolProbityTable from './MolProbity';
 
 const Molstar = dynamic(() => import('./Molstar'), {
   ssr: false,
@@ -15,7 +14,7 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const {
-    data: { status, molprobity, data, logs, solution, supercomposition, filteredpdb } = {},
+    data: { status, image, molprobity, data, logs, solution, supercomposition, filteredpdb } = {},
     isError,
   } = useGetStatus();
 
@@ -40,7 +39,7 @@ const OutputView: FunctionComponent = () => {
 
   if (status === 'finished') {
     return (
-      <div>
+      <div className="px-10">
         <MainStatus
           mainText={
             <div className="flex justify-center w-full items-center mt-3 text-3xl ">
@@ -59,10 +58,25 @@ const OutputView: FunctionComponent = () => {
             </>
           }
         />
-        <div className="flex">
-          <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
-        </div>
         {molprobity?.length !== 0 && <MolProbityTable molprobity={molprobity} />}
+        <div className="flex mt-5 gap-2">
+          <div className="w-full md:w-1/2 bg-white justify-center rounded-3xl">
+            <p className="text-center bg-dashas-pink rounded-t-2xl py-2 first-letter:text-dashas-purple">
+              2D Structure
+            </p>
+            <div className="flex justify-center py-2">
+              {image?.length !== 0 && (
+                <img src={`data:image/svg+xml;base64,${image}`} alt="2d structure" />
+              )}
+            </div>
+          </div>
+          <div className="w-1/2">
+            <p className="text-center bg-dashas-pink rounded-t-2xl py-2 first-letter:text-dashas-purple ">
+              3D structure
+            </p>
+            <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
+          </div>
+        </div>
       </div>
     );
   }

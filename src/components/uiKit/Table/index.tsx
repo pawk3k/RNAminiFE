@@ -10,7 +10,7 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
   });
 
   return (
-    <div className="overflow-auto px-10 ">
+    <div className="overflow-auto px-2">
       <table
         {...getTableProps()}
         className="m-2 p-2 table-fixed bg-dashas-pink rounded-md w-full relative "

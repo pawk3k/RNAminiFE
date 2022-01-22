@@ -12,6 +12,7 @@ type StatusResponse = {
   logs: string;
   filteredpdb: string;
   molprobity: string;
+  image: string;
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
