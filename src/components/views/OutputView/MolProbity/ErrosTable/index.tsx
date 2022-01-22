@@ -2,15 +2,11 @@ import { Column, TableProps } from '@components/uiKit/Table/Table.types';
 import dynamic from 'next/dynamic';
 import { FunctionComponent, useMemo } from 'react';
 
-type ErrorTableData = { key: string; numberOfErrors: number };
+type ErrorTableData = { key: string; allErrors: number };
 
 const Table = dynamic<TableProps<ErrorTableData>>(() => import('@components/uiKit/Table/index'));
 
-const ErrorsTable: FunctionComponent = () => {
-  const errorTableData = [
-    { key: 'Input', numberOfErrors: 32 },
-    { key: 'Solution', numberOfErrors: 32 },
-  ];
+const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = () => {
   const columns = useMemo<Column<ErrorTableData>[]>(
     () => [
       {
@@ -19,7 +15,7 @@ const ErrorsTable: FunctionComponent = () => {
       },
       {
         Header: 'Total number of errors',
-        accessor: 'numberOfErrors',
+        accessor: 'allErrors',
       },
     ],
     [],

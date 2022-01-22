@@ -14,9 +14,11 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
       <table {...getTableProps()} className="m-2 p-2">
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()} className=" rounded-xl ">
+            <tr {...headerGroup.getHeaderGroupProps()} className="rounded-xl ">
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps()} className="px-2">
+                  {column.render('Header')}
+                </th>
               ))}
             </tr>
           ))}

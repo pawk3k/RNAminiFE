@@ -1,18 +1,14 @@
 import { FunctionComponent } from 'react';
 import ClashScoreTable from './ClashScoreTable';
 import ErrorsTable from './ErrosTable';
+import SwapsTable from './SwapsTable';
 
 const MolProbityTable: FunctionComponent = () => {
-  //   const tableData = useMemo(() => mockData, []);
-  //   const keys = Object.keys(tableData.input);
-  //   const outputEntries = Object.entries(mockData.output);
-  //   const result = Object.entries(mockData.input).map((inputElement, index) => ({
-  //     key: keys[index],
-  //     input: inputElement[1],
-  //     output: outputEntries[index][1],
-  //   }));
   const resultOne = [
     {
+      // check this
+      chiralSwaps: '1',
+      numPrepOutliers: '1',
       numSuiteOutliers: '4',
       numbadbounds: '1',
       numbadangles: '0',
@@ -25,6 +21,8 @@ const MolProbityTable: FunctionComponent = () => {
       tetraOutliers: '0',
     },
     {
+      chiralSwaps: '1',
+      numPrepOutliers: '1',
       numSuiteOutliers: '4',
       numbadbounds: '0',
       numbadangles: '0',
@@ -43,11 +41,40 @@ const MolProbityTable: FunctionComponent = () => {
     key: index === 0 ? 'Input' : 'Solution',
   }));
 
+  const swapsData = resultOne.map(
+    ({ tetraOutliers, numsuites, numSuiteOutliers, chiralSwaps, numPrepOutliers }, index) => ({
+      numPrepOutliers,
+      tetraOutliers,
+      chiralSwaps,
+      numsuites,
+      numSuiteOutliers,
+      ptc_chiralSwaps: '3',
+      pct_numSuiteOutliers: (Number(numSuiteOutliers) / Number(numsuites)) * 100,
+      allErrors:
+        Number(numSuiteOutliers) +
+        Number(chiralSwaps) +
+        Number(tetraOutliers) +
+        Number(numPrepOutliers),
+
+      key: index === 0 ? 'Input' : 'Solution',
+    }),
+  );
+  const errorsData = resultOne.map((item, index) => ({
+    allErrors:
+      Number(item.numSuiteOutliers) +
+      Number(item.chiralSwaps) +
+      Number(item.tetraOutliers) +
+      Number(item.numPrepOutliers) +
+      Number(item.numbadbounds) +
+      Number(item.numbadangles),
+    key: index === 0 ? 'Input' : 'Solution',
+  }));
+
   return (
-    <div className="mx-auto flex justify-center">
+    <div className="mx-auto flex flex-col gap-y-4 justify-center">
       <ClashScoreTable data={clashScoreData} />
-      {/* <Table columns={columns} data={result} /> */}
-      <ErrorsTable />
+      <SwapsTable data={swapsData} />
+      <ErrorsTable data={errorsData} />
     </div>
   );
 };

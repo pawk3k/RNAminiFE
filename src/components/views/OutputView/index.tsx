@@ -59,8 +59,8 @@ const OutputView: FunctionComponent = () => {
         />
         <div className="flex">
           <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
-          <MolProbityTable />
         </div>
+        <MolProbityTable />
       </div>
     );
   }

@@ -45,11 +45,11 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
         accessor: 'numangels',
       },
       {
-        Header: '#Bad angels [%}',
+        Header: '#Bad angels [%]',
         accessor: 'pct_badangels',
       },
       {
-        Header: '#All errors [%}',
+        Header: '#All errors [%]',
         accessor: 'allErrors',
       },
     ],
