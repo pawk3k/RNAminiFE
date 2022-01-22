@@ -49,7 +49,7 @@ const Layout: FunctionComponent = ({ children }) => {
           <main className="relative flex flex-grow justify-center items-center h-max">
             {children}
           </main>
-          <div className="relative flex bottom-0 left-4 md:absolute">
+          <div className="relative flex bottom-0 left-4">
             <PPLogo className="w-20 h-20 inline mb-4 bg-white rounded-full" />
             <Ibch className="w-20 h-20" />
             <RNAPolis className="w-40 h-20 self-end" />

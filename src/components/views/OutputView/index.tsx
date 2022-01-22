@@ -5,6 +5,7 @@ import useGetStatus from '../../../hooks/queries/useGetStatus/index';
 import Loader from './Loader';
 import DownloadFileButton from './DownloadTaskButton';
 import MainStatus from './MainStatus';
+import MolProbityTable from './MolProbity';
 // import MolProbityTable from './MolProbity';
 
 const Molstar = dynamic(() => import('./Molstar'), {
@@ -58,7 +59,7 @@ const OutputView: FunctionComponent = () => {
         />
         <div className="flex">
           <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
-          {/* <MolProbityTable /> */}
+          <MolProbityTable />
         </div>
       </div>
     );
