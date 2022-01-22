@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
 
 const CiteUsView: FunctionComponent = () => (
-  <div className="px-14 flex flex-col gap-5">
-    <p>Citations</p>
+  <div className="p-4 flex flex-col gap-5 bg-dashas-pink mx-10 rounded-3xl">
+    <h2 className="font-bold">Citations</h2>
     <p>Any published work which has made use of RNArefiner should cite the following paper:</p>
     <p>
       M. Antczak, D. Poda, R. Pylnyk, P. Ravliv, D. Hromniuk, M. Popenda, M. Szachniuk, RNArefiner:
