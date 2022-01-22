@@ -14,8 +14,10 @@ const Molstar = dynamic(() => import('./Molstar'), {
 });
 
 const OutputView: FunctionComponent = () => {
-  const { data: { status, data, logs, solution, supercomposition, filteredpdb } = {}, isError } =
-    useGetStatus();
+  const {
+    data: { status, molprobity, data, logs, solution, supercomposition, filteredpdb } = {},
+    isError,
+  } = useGetStatus();
 
   if (status === 'error' || isError) {
     return (
@@ -60,7 +62,7 @@ const OutputView: FunctionComponent = () => {
         <div className="flex">
           <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
         </div>
-        <MolProbityTable />
+        {molprobity?.length !== 0 && <MolProbityTable molprobity={molprobity} />}
       </div>
     );
   }

@@ -3,60 +3,50 @@ import ClashScoreTable from './ClashScoreTable';
 import ErrorsTable from './ErrosTable';
 import SwapsTable from './SwapsTable';
 
-const MolProbityTable: FunctionComponent = () => {
-  const resultOne = [
-    {
-      // check this
-      chiralSwaps: '1',
-      numPrepOutliers: '1',
-      numSuiteOutliers: '4',
-      numbadbounds: '1',
-      numbadangles: '0',
-      numbounds: '669',
-      pct_badangels: '0.00',
-      clashscore: '8,84',
-      pct_badbounds: '0.00',
-      numangels: '1042',
-      numsuites: '28',
-      tetraOutliers: '0',
-    },
-    {
-      chiralSwaps: '1',
-      numPrepOutliers: '1',
-      numSuiteOutliers: '4',
-      numbadbounds: '0',
-      numbadangles: '0',
-      numbounds: '669',
-      pct_badangels: '0.00',
-      clashscore: '8,84',
-      pct_badbounds: '0.2',
-      numangels: '1042',
-      numsuites: '28',
-      tetraOutliers: '0',
-    },
-  ];
+type MolProbity = {
+  chiralSwaps: string;
+  clashscore: string;
+  numPperpOutliers: string;
+  numSuiteOutliers: string;
+  numSuites: string;
+  numangles: string;
+  numbadangles: string;
+  numbadbonds: string;
+  numbonds: string;
+  pct_badangles: string;
+  pct_badbonds: string;
+  tetraOutliers: string;
+};
+
+const MolProbityTable: FunctionComponent<{ molprobity: string | undefined }> = ({ molprobity }) => {
+  const resultOne: MolProbity[] = Object.values(
+    JSON.parse(Buffer.from(String(molprobity!), 'base64').toString('ascii')),
+  );
+  console.log(resultOne);
+
   const clashScoreData = resultOne.map(({ numSuiteOutliers, tetraOutliers, ...item }, index) => ({
     ...item,
-    allErrors: Number(item.numbadbounds) + Number(item.numbadangles),
+    allErrors: Number(item.numbadbonds) + Number(item.numbadangles),
     key: index === 0 ? 'Input' : 'Solution',
   }));
 
   const swapsData = resultOne.map(
-    ({ tetraOutliers, numsuites, numSuiteOutliers, chiralSwaps, numPrepOutliers }, index) => ({
-      numPrepOutliers,
+    ({ tetraOutliers, numSuites, numSuiteOutliers, chiralSwaps, numPperpOutliers }, index) => ({
+      numPperpOutliers,
       tetraOutliers,
       chiralSwaps,
-      numsuites,
+      numSuites,
       numSuiteOutliers,
       ptc_chiralSwaps: '3',
+
       pct_numSuiteOutliers: Number(
-        ((Number(numSuiteOutliers) / Number(numsuites)) * 100).toFixed(2),
+        ((Number(numSuiteOutliers) / Number(numSuites)) * 100).toFixed(2),
       ),
       allErrors:
         Number(numSuiteOutliers) +
         Number(chiralSwaps) +
         Number(tetraOutliers) +
-        Number(numPrepOutliers),
+        Number(numPperpOutliers),
 
       key: index === 0 ? 'Input' : 'Solution',
     }),
@@ -66,8 +56,8 @@ const MolProbityTable: FunctionComponent = () => {
       Number(item.numSuiteOutliers) +
       Number(item.chiralSwaps) +
       Number(item.tetraOutliers) +
-      Number(item.numPrepOutliers) +
-      Number(item.numbadbounds) +
+      Number(item.numPperpOutliers) +
+      Number(item.numbadbonds) +
       Number(item.numbadangles),
     key: index === 0 ? 'Input' : 'Solution',
   }));

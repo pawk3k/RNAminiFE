@@ -3,16 +3,16 @@ import dynamic from 'next/dynamic';
 import { FunctionComponent, useMemo } from 'react';
 import getColorFromThresholds from '../utils/getColor';
 
+// numbadbounds, pct_badangels, pct_badbounds, numangels, numsuites
 type ClashScoreTableData = {
   key: string;
-  numbadbounds: string;
+  numbadbonds: string;
   numbadangles: string;
-  numbounds: string;
-  pct_badangels: string;
+  numbonds: string;
+  pct_badangles: string;
   clashscore: string;
-  pct_badbounds: string;
-  numangels: string;
-  numsuites: string;
+  pct_badbonds: string;
+  numangles: string;
   allErrors: number;
 };
 const Table = dynamic<TableProps<ClashScoreTableData>>(
@@ -31,26 +31,26 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
       },
       {
         Header: '#All bounds',
-        accessor: 'numbounds',
+        accessor: 'numbonds',
       },
       {
         Header: '#Bad bounds',
-        accessor: 'numbadbounds',
+        accessor: 'numbadbonds',
       },
       {
         Header: 'Bad bounds [%]',
-        accessor: 'pct_badbounds',
+        accessor: 'pct_badbonds',
         Cell: ({ value }): JSX.Element => (
           <div className={getColorFromThresholds([0.1, 0.2], Number(value))}>{value}</div>
         ),
       },
       {
         Header: '#All angels',
-        accessor: 'numangels',
+        accessor: 'numangles',
       },
       {
         Header: '#Bad angels [%]',
-        accessor: 'pct_badangels',
+        accessor: 'pct_badangles',
         Cell: ({ value }): JSX.Element => (
           <div className={getColorFromThresholds([0.1, 0.5], Number(value))}>{value}</div>
         ),
