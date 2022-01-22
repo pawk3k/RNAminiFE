@@ -22,7 +22,6 @@ const MolProbityTable: FunctionComponent<{ molprobity: string | undefined }> = (
   const resultOne: MolProbity[] = Object.values(
     JSON.parse(Buffer.from(String(molprobity!), 'base64').toString('ascii')),
   );
-  console.log(resultOne);
 
   const clashScoreData = resultOne.map(({ numSuiteOutliers, tetraOutliers, ...item }, index) => ({
     ...item,

@@ -16,7 +16,6 @@ type StatusResponse = {
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
   const response = await axios.get(`/api/task/${id}`);
-  console.log(atob(response.data?.molprobity));
   return response.data;
 };
 
