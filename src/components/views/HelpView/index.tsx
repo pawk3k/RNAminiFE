@@ -1,10 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import MolProbityTable from '../OutputView/MolProbity';
 
-const HelpView: FunctionComponent = () => (
-  <div>
-    <MolProbityTable />
-  </div>
-);
+const HelpView: FunctionComponent = () => <div>Help</div>;
 
 export default HelpView;
