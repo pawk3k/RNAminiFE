@@ -1,6 +1,7 @@
 import { Column, TableProps } from '@components/uiKit/Table/Table.types';
 import dynamic from 'next/dynamic';
 import { FunctionComponent, useMemo } from 'react';
+import getColorFromThresholds from '../utils/getColor';
 
 type ClashScoreTableData = {
   key: string;
@@ -39,6 +40,9 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
       {
         Header: 'Bad bounds [%]',
         accessor: 'pct_badbounds',
+        Cell: ({ value }): JSX.Element => (
+          <div className={getColorFromThresholds([0.1, 0.2], Number(value))}>{value}</div>
+        ),
       },
       {
         Header: '#All angels',
@@ -47,6 +51,9 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
       {
         Header: '#Bad angels [%]',
         accessor: 'pct_badangels',
+        Cell: ({ value }): JSX.Element => (
+          <div className={getColorFromThresholds([0.1, 0.5], Number(value))}>{value}</div>
+        ),
       },
       {
         Header: '#All errors [%]',

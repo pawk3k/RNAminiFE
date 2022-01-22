@@ -6,7 +6,10 @@ type ErrorTableData = { key: string; allErrors: number };
 
 const Table = dynamic<TableProps<ErrorTableData>>(() => import('@components/uiKit/Table/index'));
 
-const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = ({ data }) => {
+const ErrorsTable: FunctionComponent<{ data: ErrorTableData[]; inputErrorsNum: number }> = ({
+  inputErrorsNum,
+  data,
+}) => {
   const columns = useMemo<Column<ErrorTableData>[]>(
     () => [
       {
@@ -16,9 +19,12 @@ const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = ({ data }) =>
       {
         Header: 'Total number of errors',
         accessor: 'allErrors',
+        Cell: ({ value }): JSX.Element => (
+          <div className={value === inputErrorsNum ? 'bg-green-300' : 'bg-red-300'}>{value} </div>
+        ),
       },
     ],
-    [],
+    [inputErrorsNum],
   );
 
   return <Table columns={columns} data={data} />;

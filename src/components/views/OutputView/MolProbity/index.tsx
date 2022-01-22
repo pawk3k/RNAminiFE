@@ -29,7 +29,7 @@ const MolProbityTable: FunctionComponent = () => {
       numbounds: '669',
       pct_badangels: '0.00',
       clashscore: '8,84',
-      pct_badbounds: '0.00',
+      pct_badbounds: '0.2',
       numangels: '1042',
       numsuites: '28',
       tetraOutliers: '0',
@@ -76,7 +76,13 @@ const MolProbityTable: FunctionComponent = () => {
     <>
       <ClashScoreTable data={clashScoreData} />
       <SwapsTable data={swapsData} />
-      <ErrorsTable data={errorsData} />
+      <ErrorsTable
+        data={errorsData}
+        inputErrorsNum={
+          errorsData.reduce((prev, curr) => (curr.allErrors < prev.allErrors ? curr : prev))
+            .allErrors
+        }
+      />
     </>
   );
 };
