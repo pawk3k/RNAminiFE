@@ -50,10 +50,6 @@ const SwapsTable: FunctionComponent<{ data: SwapsTableData[] }> = ({ data }) => 
         accessor: 'numSuiteOutliers',
       },
       {
-        Header: '#Bad backbone conformations',
-        accessor: 'numSuiteOutliers',
-      },
-      {
         Header: 'Bad backbone conformations[%]',
         accessor: 'pct_numSuiteOutliers',
       },

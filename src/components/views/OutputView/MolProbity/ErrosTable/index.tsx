@@ -6,7 +6,7 @@ type ErrorTableData = { key: string; allErrors: number };
 
 const Table = dynamic<TableProps<ErrorTableData>>(() => import('@components/uiKit/Table/index'));
 
-const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = () => {
+const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = ({ data }) => {
   const columns = useMemo<Column<ErrorTableData>[]>(
     () => [
       {
@@ -21,7 +21,7 @@ const ErrorsTable: FunctionComponent<{ data: ErrorTableData[] }> = () => {
     [],
   );
 
-  return <Table columns={columns} data={errorTableData} />;
+  return <Table columns={columns} data={data} />;
 };
 
 export default ErrorsTable;

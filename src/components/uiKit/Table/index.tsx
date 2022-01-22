@@ -10,13 +10,20 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
   });
 
   return (
-    <div className="p-2 rounded-xl backdrop-blur-sm bg-dashas-pink">
-      <table {...getTableProps()} className="m-2 p-2">
+    <div className="overflow-auto px-10 ">
+      <table
+        {...getTableProps()}
+        className="m-2 p-2 table-fixed bg-dashas-pink rounded-md w-full relative "
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()} className="rounded-xl ">
+            <tr {...headerGroup.getHeaderGroupProps()} className=" border-2 border-black">
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()} className="px-2">
+                <th
+                  {...column.getHeaderProps()}
+                  className="border-2 border-black "
+                  style={{ overflowWrap: 'break-word' }}
+                >
                   {column.render('Header')}
                 </th>
               ))}
@@ -27,16 +34,18 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="bg-dashas-pink even:bg-purple-300 rounded-xl">
+              <tr
+                {...row.getRowProps()}
+                className="bg-dashas-pink  even:bg-purple-300 text-center "
+              >
                 {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  <td {...cell.getCellProps()} className="border-2 border-black">
+                    {cell.render('Cell')}
+                  </td>
                 ))}
               </tr>
             );
           })}
-          <tr>
-            <td className="w-full text-center" colSpan={columns.length} />
-          </tr>
         </tbody>
       </table>
     </div>

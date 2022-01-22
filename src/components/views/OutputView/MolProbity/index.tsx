@@ -49,7 +49,9 @@ const MolProbityTable: FunctionComponent = () => {
       numsuites,
       numSuiteOutliers,
       ptc_chiralSwaps: '3',
-      pct_numSuiteOutliers: (Number(numSuiteOutliers) / Number(numsuites)) * 100,
+      pct_numSuiteOutliers: Number(
+        ((Number(numSuiteOutliers) / Number(numsuites)) * 100).toFixed(2),
+      ),
       allErrors:
         Number(numSuiteOutliers) +
         Number(chiralSwaps) +
@@ -71,11 +73,11 @@ const MolProbityTable: FunctionComponent = () => {
   }));
 
   return (
-    <div className="mx-auto flex flex-col gap-y-4 justify-center">
+    <>
       <ClashScoreTable data={clashScoreData} />
       <SwapsTable data={swapsData} />
       <ErrorsTable data={errorsData} />
-    </div>
+    </>
   );
 };
 
