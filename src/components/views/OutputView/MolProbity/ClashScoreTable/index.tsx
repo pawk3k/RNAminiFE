@@ -45,11 +45,11 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
         ),
       },
       {
-        Header: '#All angels',
+        Header: '#All angles',
         accessor: 'numangles',
       },
       {
-        Header: '#Bad angels [%]',
+        Header: '#Bad angles [%]',
         accessor: 'pct_badangles',
         Cell: ({ value }): JSX.Element => (
           <div className={getColorFromThresholds([0.1, 0.5], Number(value))}>{value}</div>
