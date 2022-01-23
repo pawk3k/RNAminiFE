@@ -4,6 +4,7 @@ import { FunctionComponent, useMemo } from 'react';
 
 type SwapsTableData = {
   key: string;
+  chiralSwaps: string;
   allErrors: number;
   numPperpOutliers: string;
   tetraOutliers: string;
@@ -21,6 +22,11 @@ const SwapsTable: FunctionComponent<{ data: SwapsTableData[] }> = ({ data }) => 
         accessor: 'key',
       },
       {
+        Header: '#Chiral handedness swaps',
+        accessor: 'chiralSwaps',
+      },
+
+      {
         Header: '#Tetrahedral geometry outliers',
         accessor: 'tetraOutliers',
       },
@@ -37,7 +43,7 @@ const SwapsTable: FunctionComponent<{ data: SwapsTableData[] }> = ({ data }) => 
         accessor: 'numSuiteOutliers',
       },
       {
-        Header: 'Bad backbone conformations[%]',
+        Header: 'Bad backbone conformations [%]',
         accessor: 'pct_numSuiteOutliers',
       },
       {

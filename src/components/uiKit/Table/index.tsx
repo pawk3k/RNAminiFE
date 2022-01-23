@@ -21,7 +21,7 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps()}
-                  className="border-2 border-black "
+                  className="border-2 border-black text-center "
                   style={{ overflowWrap: 'break-word' }}
                 >
                   {column.render('Header')}

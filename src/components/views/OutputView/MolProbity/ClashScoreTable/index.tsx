@@ -49,6 +49,10 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
         accessor: 'numangles',
       },
       {
+        Header: '#Bad angles',
+        accessor: 'numbadangles',
+      },
+      {
         Header: '#Bad angles [%]',
         accessor: 'pct_badangles',
         Cell: ({ value }): JSX.Element => (

@@ -14,7 +14,17 @@ const Molstar = dynamic(() => import('./Molstar'), {
 
 const OutputView: FunctionComponent = () => {
   const {
-    data: { status, image, molprobity, data, logs, solution, supercomposition, filteredpdb } = {},
+    data: {
+      status,
+      image,
+      molprobity,
+      data,
+      logs,
+      dbnFile,
+      solution,
+      supercomposition,
+      filteredpdb,
+    } = {},
     isError,
   } = useGetStatus();
 
@@ -55,6 +65,7 @@ const OutputView: FunctionComponent = () => {
               />
               <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download input" />
               <DownloadFileButton fileName="logs.txt" file={logs ?? ''} text="Download logs" />
+              <DownloadFileButton fileName="output.dbn" file={dbnFile ?? ''} text="Download dbn" />
             </>
           }
         />

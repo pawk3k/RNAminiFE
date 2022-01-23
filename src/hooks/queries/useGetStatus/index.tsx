@@ -13,10 +13,12 @@ type StatusResponse = {
   filteredpdb: string;
   molprobity: string;
   image: string;
+  dbnFile: string;
 };
 
 const getStatus: QueryFunction<StatusResponse> = async ({ queryKey: [, id] }) => {
   const response = await axios.get(`/api/task/${id}`);
+
   return response.data;
 };
 
