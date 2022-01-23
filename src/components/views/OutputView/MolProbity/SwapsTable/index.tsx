@@ -8,7 +8,6 @@ type SwapsTableData = {
   allErrors: number;
   numPperpOutliers: string;
   tetraOutliers: string;
-  ptc_chiralSwaps: string;
   numSuites: string;
   numSuiteOutliers: string;
   pct_numSuiteOutliers: number;
