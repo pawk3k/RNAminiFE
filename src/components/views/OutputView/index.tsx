@@ -33,7 +33,7 @@ const OutputView: FunctionComponent = () => {
       <MainStatus
         mainText={
           <div
-            className={`self-center mt-2 text-2xl whitespace-pre-wrap text-center ${'text-dashas-red'}`}
+            className={`mt-2 self-center whitespace-pre-wrap text-center text-2xl ${'text-dashas-red'}`}
           >
             An error occurred while processing your task.
             <br />
@@ -52,7 +52,7 @@ const OutputView: FunctionComponent = () => {
       <div className="px-10">
         <MainStatus
           mainText={
-            <div className="flex justify-center w-full items-center mt-3 text-3xl ">
+            <div className="mt-3 flex w-full items-center justify-center text-3xl ">
               Your solution is ready!
             </div>
           }
@@ -70,9 +70,9 @@ const OutputView: FunctionComponent = () => {
           }
         />
         {molprobity?.length !== 0 && <MolProbityTable molprobity={molprobity} />}
-        <div className="flex mt-5 gap-2">
-          <div className="w-full md:w-1/2 bg-white justify-center rounded-3xl">
-            <p className="text-center bg-dashas-pink rounded-t-2xl py-2 first-letter:text-dashas-purple">
+        <div className="mt-5 flex gap-2">
+          <div className="w-full justify-center rounded-3xl bg-white md:w-1/2">
+            <p className="rounded-t-2xl bg-dashas-pink py-2 text-center first-letter:text-dashas-purple">
               2D Structure
             </p>
             <div className="flex justify-center py-2">
@@ -82,7 +82,7 @@ const OutputView: FunctionComponent = () => {
             </div>
           </div>
           <div className="w-1/2">
-            <p className="text-center bg-dashas-pink rounded-t-2xl py-2 first-letter:text-dashas-purple ">
+            <p className="rounded-t-2xl bg-dashas-pink py-2 text-center first-letter:text-dashas-purple ">
               3D structure
             </p>
             <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
@@ -95,7 +95,7 @@ const OutputView: FunctionComponent = () => {
   return (
     <MainStatus
       mainText={
-        <div className="self-center mt-2 text-2xl whitespace-pre-wrap text-center">
+        <div className="mt-2 self-center whitespace-pre-wrap text-center text-2xl">
           <Loader />
           Processing your file
         </div>

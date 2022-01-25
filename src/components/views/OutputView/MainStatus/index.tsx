@@ -8,12 +8,12 @@ const MainStatus: FunctionComponent<{ buttons: JSX.Element; mainText: JSX.Elemen
   const { query } = useRouter();
 
   return (
-    <div className="flex  my-28 justify-center items-center flex-col px-24">
-      <div className="my-auto h-full flex justify-around items-center text-dashas-purple">
-        <div className="min-w-[500px] mx-9 px-7 relative bg-dashas-pink rounded-3xl h-60 flex justify-around items-start flex-col">
+    <div className="my-28  flex flex-col items-center justify-center px-24">
+      <div className="my-auto flex h-full items-center justify-around text-dashas-purple">
+        <div className="relative mx-9 flex h-60 min-w-[500px] flex-col items-start justify-around rounded-3xl bg-dashas-pink px-7">
           <div className="mt-11">Task : {query.uid}</div>
           {mainText}
-          <div className="flex w-full justify-center items-center">{buttons}</div>
+          <div className="flex w-full items-center justify-center">{buttons}</div>
         </div>
       </div>
     </div>

@@ -13,11 +13,11 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
     <div className="overflow-auto px-2">
       <table
         {...getTableProps()}
-        className="m-2 p-2 table-fixed bg-dashas-pink rounded-md w-full relative "
+        className="relative m-2 w-full table-fixed rounded-md bg-dashas-pink p-2 "
       >
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()} className=" border-2 border-black">
+            <tr {...headerGroup.getHeaderGroupProps()} className="border-2 border-black">
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps()}
@@ -36,7 +36,7 @@ const Table = <T extends object = object>({ data, columns }: TableProps<T>): JSX
             return (
               <tr
                 {...row.getRowProps()}
-                className="bg-dashas-pink  even:bg-purple-300 text-center "
+                className="bg-dashas-pink  text-center even:bg-purple-300 "
               >
                 {row.cells.map((cell) => (
                   <td {...cell.getCellProps()} className="border-2 border-black">
