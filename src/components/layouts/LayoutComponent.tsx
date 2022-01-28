@@ -14,17 +14,17 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <div className="flex justify-center  items-center  w-full min-h-full">
+      <div className="flex min-h-full  w-full  items-center justify-center">
         <div
           style={{
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
           }}
-          className="relative flex flex-col md:mx-16 w-full rounded-3xl shadow-2xl md:relative min-h-[648px] "
+          className="relative flex min-h-[648px] w-full flex-col rounded-3xl shadow-2xl md:relative md:mx-16 "
         >
-          <nav className="flex flex-col md:flex-row w-full justify-between items-baseline pt-7">
+          <nav className="flex w-full flex-col items-baseline justify-between pt-7 md:flex-row">
             <div className="flex w-full justify-center">
-              <span className="text-2xl sm:text-5xl font-bold pl-4 text-white text-shadow-lg">
+              <span className="pl-4 text-2xl font-bold text-white text-shadow-lg sm:text-5xl">
                 <Link href="/main">RNArefiner</Link>
               </span>
               <button
@@ -38,7 +38,7 @@ const Layout: FunctionComponent = ({ children }) => {
             <div
               className={`${
                 isHamburgerOpen ? 'hidden' : ''
-              }  w-full text-center md:bg-none md:flex justify-end last:mr-24 justify-around`}
+              }  w-full justify-end justify-around text-center last:mr-24 md:flex md:bg-none`}
             >
               <NavigationLink href="/home" />
               <NavigationLink href="/about" />
@@ -46,13 +46,13 @@ const Layout: FunctionComponent = ({ children }) => {
               <NavigationLink href="/contact" />
             </div>
           </nav>
-          <main className="relative flex flex-grow justify-center items-center h-max">
+          <main className="relative flex h-max flex-grow items-center justify-center">
             {children}
           </main>
-          <div className="relative flex bottom-0 left-4">
-            <PPLogo className="w-20 h-20 inline mb-4 bg-white rounded-full" />
-            <Ibch className="w-20 h-20" />
-            <RNAPolis className="w-40 h-20 self-end" />
+          <div className="relative bottom-0 left-4 flex">
+            <PPLogo className="mb-4 inline h-20 w-20 rounded-full bg-white" />
+            <Ibch className="h-20 w-20" />
+            <RNAPolis className="relative  -left-24 h-16 self-center" />
           </div>
         </div>
       </div>

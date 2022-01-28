@@ -65,15 +65,21 @@ const OutputView: FunctionComponent = () => {
               />
               <DownloadFileButton fileName="input.pdb" file={data ?? ''} text="Download input" />
               <DownloadFileButton fileName="logs.txt" file={logs ?? ''} text="Download logs" />
-              <DownloadFileButton fileName="output.dbn" file={dbnFile ?? ''} text="Download dbn" />
+              <DownloadFileButton
+                fileName="output.dbn"
+                file={dbnFile ?? ''}
+                text="Download 2D str."
+              />
             </>
           }
         />
         {molprobity?.length !== 0 && <MolProbityTable molprobity={molprobity} />}
         <div className="mt-5 flex gap-2">
           <div className="w-full justify-center rounded-3xl bg-white md:w-1/2">
-            <p className="rounded-t-2xl bg-dashas-pink py-2 text-center first-letter:text-dashas-purple">
-              2D Structure
+            <p className=" rounded-t-2xl bg-dashas-pink py-2 text-center ">
+              <span className="inline-block bg-gradient-to-r from-red-500 to-dashas-purple bg-clip-text font-bold text-transparent">
+                Input 2D Structure
+              </span>
             </p>
             <div className="flex justify-center py-2">
               {image?.length !== 0 && (
@@ -83,7 +89,9 @@ const OutputView: FunctionComponent = () => {
           </div>
           <div className="w-1/2">
             <p className="rounded-t-2xl bg-dashas-pink py-2 text-center first-letter:text-dashas-purple ">
-              3D structure
+              <span className="inline-block bg-gradient-to-r from-red-500 to-dashas-purple bg-clip-text font-bold text-transparent">
+                Superposition of refined into input 3D
+              </span>
             </p>
             <Molstar inputFile1={supercomposition ?? ''} inputFile2={filteredpdb ?? ''} />
           </div>

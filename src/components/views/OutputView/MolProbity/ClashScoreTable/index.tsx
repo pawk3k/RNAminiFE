@@ -30,15 +30,15 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
         accessor: 'clashscore',
       },
       {
-        Header: '#All bounds',
+        Header: '#All bonds',
         accessor: 'numbonds',
       },
       {
-        Header: '#Bad bounds',
+        Header: '#Bad bonds',
         accessor: 'numbadbonds',
       },
       {
-        Header: 'Bad bounds [%]',
+        Header: 'Bad bonds [%]',
         accessor: 'pct_badbonds',
         Cell: ({ value }): JSX.Element => (
           <div className={getColorFromThresholds([0.1, 0.2], Number(value))}>{value}</div>
@@ -53,7 +53,7 @@ const ClashScoreTable: FunctionComponent<{ data: ClashScoreTableData[] }> = ({ d
         accessor: 'numbadangles',
       },
       {
-        Header: '#Bad angles [%]',
+        Header: 'Bad angles [%]',
         accessor: 'pct_badangles',
         Cell: ({ value }): JSX.Element => (
           <div className={getColorFromThresholds([0.1, 0.5], Number(value))}>{value}</div>
