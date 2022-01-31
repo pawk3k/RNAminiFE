@@ -30,7 +30,7 @@ const Main: NextPage = () => {
   }, [checkValidity, file]);
 
   return (
-    <div className="w-full flex-auto px-4 md:mx-auto md:p-14 ">
+    <div className="w-full px-4 md:mx-auto md:px-14">
       <div className="flex w-full flex-wrap items-center justify-center  gap-x-8 lg:flex-nowrap">
         <div className="flex-wrap  justify-center self-start text-center text-2xl font-bold text-white text-shadow-xl md:mb-3 md:self-center md:text-5xl  lg:mr-10 lg:ml-10 lg:w-1/3 lg:text-7xl">
           Start by uploading your file

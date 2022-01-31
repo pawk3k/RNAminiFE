@@ -20,7 +20,7 @@ const Layout: FunctionComponent = ({ children }) => {
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
           }}
-          className="relative flex w-full flex-col rounded-3xl shadow-2xl md:relative md:mx-16 "
+          className="relative flex w-full flex-col gap-y-4 rounded-3xl shadow-2xl md:relative md:mx-16 "
         >
           <nav className="flex w-full flex-col items-baseline justify-between pt-7 md:flex-row">
             <div className="flex w-full justify-center">
