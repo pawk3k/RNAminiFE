@@ -31,7 +31,7 @@ const useGetFromBank = (
       if (status === 404) {
         toast.error('File with this id not found');
       } else if (message === 'File is not RNA') {
-        toast.error('File is not RNA');
+        toast.error('Requested PDB ID does not include any RNA chains!');
       } else {
         toast.error('Something went wrong');
       }
