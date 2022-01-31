@@ -2,7 +2,7 @@ version: '3'
 
 services:
   frontend:
-    image: next-app1
+    build: .
     restart: on-failure
     ports:
       - '3000:3000'
