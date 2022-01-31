@@ -20,7 +20,7 @@ const Layout: FunctionComponent = ({ children }) => {
             background:
               'linear-gradient(297.8deg,rgba(100, 186, 170, 0.8) -3.14%,rgba(100, 186, 170, 0.01) 101.74%)',
           }}
-          className="relative flex min-h-[648px] w-full flex-col rounded-3xl shadow-2xl md:relative md:mx-16 "
+          className="relative flex w-full flex-col rounded-3xl shadow-2xl md:relative md:mx-16 "
         >
           <nav className="flex w-full flex-col items-baseline justify-between pt-7 md:flex-row">
             <div className="flex w-full justify-center">
@@ -52,7 +52,7 @@ const Layout: FunctionComponent = ({ children }) => {
           <div className="relative bottom-0 left-4 flex">
             <PPLogo className="mb-4 inline h-20 w-20 rounded-full bg-white" />
             <Ibch className="h-20 w-20" />
-            <RNAPolis className="relative  -left-24 h-16 self-center" />
+            <RNAPolis className="h-20 w-64 self-center" />
           </div>
         </div>
       </div>

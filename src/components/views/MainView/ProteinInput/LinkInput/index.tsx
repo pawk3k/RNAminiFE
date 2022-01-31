@@ -13,19 +13,22 @@ const LinkInput: FunctionComponent = () => {
       <div className="mb-6 mt-6" style={{ color: '#6100ff' }}>
         Enter PDB id
       </div>
-      <div>
-        {characters.map((character, index) => (
-          <SingleCharInput
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            onKeyDown={handleKeyDown}
-            value={character || ''}
-            ref={inputRefs[index]}
-            onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void =>
-              handleChange(index, value)
-            }
-          />
-        ))}
+      <div className="">
+        <div>
+          {characters.map((character, index) => (
+            <SingleCharInput
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              onKeyDown={handleKeyDown}
+              value={character || ''}
+              ref={inputRefs[index]}
+              onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>): void =>
+                handleChange(index, value)
+              }
+            />
+          ))}
+        </div>
+
         <Button disabled={clearAllDisabled} onClick={(): void => clear()}>
           Clear All
         </Button>
