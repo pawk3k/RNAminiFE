@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "patch-package",
-    "custom-start": "node server.js",
+    "custom-start": "node serverOne.js",
     "dev": "next dev -p 4010",
     "build": "next build ",
     "start": "next start -p 5000",
