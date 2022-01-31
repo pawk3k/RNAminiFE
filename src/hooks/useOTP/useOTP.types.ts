@@ -3,4 +3,5 @@ export type UseOTPReturnType = {
   handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   handleChange: (index: number, value: string) => void;
   inputRefs: React.RefObject<HTMLInputElement>[];
+  clear: () => void;
 };

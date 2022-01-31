@@ -4,6 +4,7 @@ import { UseOTPReturnType } from './useOTP.types';
 const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
   const [characters, setCharacters] = useState(Array(numberOfCharacters).fill(''));
   const inputRefs = characters.map(() => React.createRef<HTMLInputElement>());
+  const clear = (): void => setCharacters(Array(numberOfCharacters).fill(''));
 
   const focusNext = (index: number): void => {
     if (index < inputRefs.length - 1) {
@@ -56,7 +57,7 @@ const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
         break;
     }
   };
-  return { characters, handleKeyDown, handleChange, inputRefs };
+  return { characters, handleKeyDown, handleChange, inputRefs, clear };
 };
 
 export default useOTP;

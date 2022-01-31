@@ -1,14 +1,16 @@
+import Button from '@components/uiKit/Button';
 import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => {
-  const { characters, handleKeyDown, handleChange, inputRefs } = useOTPContext();
+  const { characters, handleKeyDown, handleChange, inputRefs, clear } = useOTPContext();
+  const clearAllDisabled = characters.join('').length < 1;
 
   return (
-    <div className="flex justify-center flex-col text-center pb-24">
-      <div className="mb-6 mt-11" style={{ color: '#6100ff' }}>
+    <div className="flex flex-col justify-center py-8 text-center">
+      <div className="mb-6 mt-6" style={{ color: '#6100ff' }}>
         Enter PDB id
       </div>
       <div>
@@ -24,6 +26,9 @@ const LinkInput: FunctionComponent = () => {
             }
           />
         ))}
+        <Button disabled={clearAllDisabled} onClick={(): void => clear()}>
+          Clear All
+        </Button>
       </div>
     </div>
   );
