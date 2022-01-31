@@ -8,12 +8,12 @@ import useNProgress from '../../hooks/useNProgress';
 import HamburgerMenu from './HamburegerMenu';
 
 const Layout: FunctionComponent = ({ children }) => {
-  const state = useNProgress();
+  const { isRouteChanging, loadingKey } = useNProgress();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   return (
     <>
-      <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
+      <Loading isRouteChanging={isRouteChanging} key={loadingKey} />
       <div className="flex min-h-full  w-full  items-center justify-center">
         <div
           style={{
