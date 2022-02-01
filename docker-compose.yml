@@ -5,4 +5,18 @@ services:
     build: .
     restart: on-failure
     ports:
-      - '3000:3000'
+      - 3000:3000
+  certbot:
+    build: ./https
+    restart: on-failure
+    env_file:
+      - ./nginx-certbot.env
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx_secrets:/etc/letsencrypt
+      - ./user_conf.d:/etc/nginx/user_conf.d
+
+
+	
