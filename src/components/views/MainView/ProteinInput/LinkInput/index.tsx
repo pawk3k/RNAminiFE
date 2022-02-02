@@ -5,7 +5,7 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 import SingleCharInput from './SingleCharInput';
 
 const LinkInput: FunctionComponent = () => {
-  const { characters, handleKeyDown, handleChange, inputRefs, clear } = useOTPContext();
+  const { characters, handleKeyDown, handleChange, inputRefs, clear, onPaste } = useOTPContext();
   const clearAllDisabled = characters.join('').length < 1;
 
   return (
@@ -17,6 +17,7 @@ const LinkInput: FunctionComponent = () => {
         <div>
           {characters.map((character, index) => (
             <SingleCharInput
+              onPaste={onPaste}
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               onKeyDown={handleKeyDown}

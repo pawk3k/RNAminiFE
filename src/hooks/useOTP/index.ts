@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, ClipboardEvent } from 'react';
 import { UseOTPReturnType } from './useOTP.types';
 
 const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
@@ -40,6 +40,13 @@ const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
       }
     }
   };
+
+  const onPaste = useCallback((e: ClipboardEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('Text').trim().split('').slice(0, 4);
+    setCharacters(text);
+  }, []);
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     const index = inputRefs.findIndex((ref) => ref.current === event.target);
 
@@ -57,7 +64,7 @@ const useOTP = (numberOfCharacters: number = 4): UseOTPReturnType => {
         break;
     }
   };
-  return { characters, handleKeyDown, handleChange, inputRefs, clear };
+  return { characters, handleKeyDown, handleChange, inputRefs, clear, onPaste };
 };
 
 export default useOTP;
