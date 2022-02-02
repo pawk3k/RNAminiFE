@@ -23,14 +23,14 @@ const ProteinInput: FunctionComponent = () => {
               <TabList className="px-16 pt-5">
                 <Tab
                   disabled={characters.join('').length === 4}
-                  className="w-full md:w-1/2 "
+                  className="w-full disabled:cursor-not-allowed md:w-1/2"
                   style={getTabStyle(0)}
                 >
                   Local file
                 </Tab>
                 <Tab
                   disabled={Boolean(file)}
-                  className="mt-5 w-full md:mt-0 md:w-1/2 "
+                  className="w-full disabled:cursor-not-allowed md:mt-0  md:w-1/2"
                   style={getTabStyle(1)}
                 >
                   Protein Data Bank
@@ -40,7 +40,7 @@ const ProteinInput: FunctionComponent = () => {
                 <TabPanel className="w-full">
                   {file ? (
                     <div className="relative flex flex-col items-center justify-center">
-                      <div className="my-4">File uploaded succeed!</div>
+                      <div className="my-4">File uploaded successfully 🚀</div>
                       <button
                         className="absolute top-4 right-12 cursor-pointer"
                         type="button"
