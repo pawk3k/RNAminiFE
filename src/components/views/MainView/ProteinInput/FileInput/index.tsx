@@ -63,10 +63,10 @@ const FileInput: FunctionComponent = () => {
       onDragEnd={handleDragEnd}
     >
       <label htmlFor="pdb-file" className="w-full cursor-pointer">
-        <div className="flex h-full flex-col items-center justify-center rounded-b-3xl">
-          <DragAndDrop className=" h-20 w-20 text-dashas-purple" />
-          <p className=" text-dashas-purple">Drag&Drop File here</p>
-          <p className="my-5 text-dashas-purple">or</p>
+        <div className="flex h-full flex-col items-center justify-center rounded-b-3xl text-dashas-purple">
+          <DragAndDrop className=" h-20 w-20" />
+          <p>Drag&Drop File here</p>
+          <p className="my-5">or</p>
           <span className="rounded-3xl border-2 border-dashas-purple px-7 text-lg text-dashas-purple">
             Browse Files
           </span>

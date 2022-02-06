@@ -10,10 +10,8 @@ const LinkInput: FunctionComponent = () => {
 
   return (
     <div className="flex flex-col justify-center py-8 text-center">
-      <div className="mb-6 mt-6" style={{ color: '#6100ff' }}>
-        Enter PDB id
-      </div>
-      <div className="">
+      <div className="mb-6 mt-6 text-dashas-purple">Enter PDB id</div>
+      <div>
         <div>
           {characters.map((character, index) => (
             <SingleCharInput
@@ -29,7 +27,6 @@ const LinkInput: FunctionComponent = () => {
             />
           ))}
         </div>
-
         <Button disabled={clearAllDisabled} onClick={(): void => clear()}>
           Clear All
         </Button>
