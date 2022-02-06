@@ -6,12 +6,13 @@ export default class MyDocument extends Document {
       <Html
         style={{
           background: 'linear-gradient(107.42deg, rgba(112, 75, 172, 0.9) 1.85%, #6100FF 100.59%)',
+          backgroundSize: 'cover',
         }}
         lang="en"
-        className="antialiased h-full overflow-y-scroll bg-blue-200"
+        className="overflow-y-auto"
       >
         <Head />
-        <body className="h-full">
+        <body>
           <Main />
           <NextScript />
         </body>
