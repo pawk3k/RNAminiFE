@@ -45,7 +45,7 @@ const AboutView: FunctionComponent = () => (
           </div>
         }
       />
-      <Disclosure summary="Acknowledgements and Funding" details="" />
+      {/* <Disclosure summary="Acknowledgements and Funding" details="" /> */}
     </div>
   </div>
 );

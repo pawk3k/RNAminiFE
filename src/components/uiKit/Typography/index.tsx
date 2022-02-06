@@ -45,7 +45,7 @@ export const Body = styled.p.attrs({
   line-height: 21.82px;
 `;
 
-export const BodySmall = styled.p.attrs({
+export const BodySmall = styled.div.attrs({
   className: 'text-nevada font-normal bg-dashas-pink p-2 rounded-md',
 })`
   font-size: 14px;

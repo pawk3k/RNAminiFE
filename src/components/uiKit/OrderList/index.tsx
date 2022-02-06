@@ -7,6 +7,10 @@ export const ListItem = styled.li.attrs({ className: 'block text-dashas-purple '
     counter-increment: item;
   }
 `;
+export const BlListItem = styled(ListItem)`
+  color: black;
+`;
+
 // eslint-disable-next-line import/prefer-default-export
 export const OrderedList = styled.ol.attrs({ className: '' })`
   counter-reset: item;
