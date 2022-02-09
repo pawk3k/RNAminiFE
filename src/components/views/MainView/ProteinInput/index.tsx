@@ -2,13 +2,17 @@ import { FileIcon } from '@assets/index';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import { useFileContext } from '@root/contextProviders/FileContextProvider';
 import useOTPContext from '@root/contextProviders/OTPContext/useOTPContext';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import FileInput from './FileInput';
 import LinkInput from './LinkInput';
 
 const ProteinInput: FunctionComponent = () => {
   const [file, setFile] = useFileContext();
-  const { characters } = useOTPContext();
+  const { characters, clear } = useOTPContext();
+  useEffect(() => {
+    clear();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className=" rounded-3xl bg-dashas-pink shadow-md">
       <Tabs>
