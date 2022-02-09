@@ -11,7 +11,9 @@ export default class MyDocument extends Document {
         lang="en"
         className="overflow-y-auto"
       >
-        <Head />
+        <Head>
+          <link rel="shortcut icon" href="/favicon.ico" />
+        </Head>
         <body>
           <Main />
           <NextScript />
